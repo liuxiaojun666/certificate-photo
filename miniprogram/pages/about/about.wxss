@@ -1,0 +1,5 @@
+/* miniprogram/pages/about/about.wxss */
+view {
+	line-height: 1.5;
+	margin-bottom: 1em;
+}

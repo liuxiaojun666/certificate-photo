@@ -1,0 +1,29 @@
+
+
+<scroll-view class="container" scroll-y bindscrolltolower="moredata">
+<!-- <ad unit-id="adunit-024ae35dd18ed419"></ad> -->
+<view class="searchView">
+	<input confirm-type="search" bindconfirm="confirm"
+  value="{{putText}}" focus="{{true}}" bindinput="bindModel" class="searchput" placeholder="请输入关键字搜索">
+
+</input>
+
+<icon bindtap="searchClick" size="30" type="search"></icon>
+
+</view>
+
+<view class="card" wx:for="{{photoSizeList}}" wx:key="name" data-index="{{index}}" bindtap="goNextPage">
+			<text class="name">{{item.name}}</text>
+			<view>
+				<text wx:if="{{item.width_px}}" class="size">{{item.width_px}}*{{item.height_px}} 像素 </text>
+				<text class="discription">{{item.width_mm}}*{{item.height_mm}}mm</text>
+			</view>
+			<view>{{item.discription}}</view>
+			<!-- <text class="size">{{item.size}}</text> -->
+		</view>
+		<!-- <view class="moredata" hidden="{{hideLoadView}}" bindtap="moreclick">
+			<text>点击加载更多</text>
+		</view> -->
+</scroll-view>
+
+<!-- <canvas type="2d" id="myCanvas" style="width: {{myCanvas.width}}px;height: {{myCanvas.height}}px;"></canvas> -->

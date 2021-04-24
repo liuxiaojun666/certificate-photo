@@ -1,0 +1,76 @@
+page {
+	overflow-x: hidden;
+}
+
+.container {
+	height: 100vh;
+	padding: 10rpx 30rpx;
+	padding-bottom: 100rpx;
+	overflow: visible;
+	box-sizing: border-box;
+}
+
+.tips {
+	width: 100%;
+	margin-bottom: 20rpx;
+	background-color: rgba(255,255,255,1);
+	padding: 30rpx;
+	line-height: 2;
+	color: #333;
+	border-radius: 10rpx;
+	font-size: 28rpx;
+	position: relative;
+}
+
+.tips .cu-btn {
+	position: absolute;
+	right: 30rpx;
+	top: 30rpx;
+}
+
+.header {
+	width: 100%;
+	line-height: 2em;
+	padding-left: 30rpx;
+	font-size: 28rpx;
+	font-weight: bold;
+}
+
+.tips .li {
+	margin-right: 20rpx;
+}
+
+.container > .cu-btn {
+	margin: 30rpx auto;
+}
+
+.help-btn {
+	position: fixed;
+	z-index: 9999;
+	right: 30rpx;
+	bottom: 150rpx;
+	width: 100rpx;
+	height: 100rpx;
+	line-height: 100rpx;
+	border-radius: 50%;
+	background-color: rgba(0,0,0,.8);
+}
+
+.btn-view {
+	position: fixed;
+	left: 0;
+	/* right: 0; */
+	bottom: 0;
+	width: 100%;
+	height: 100rpx;
+	background-color: #fff;
+	padding-top: 10rpx;
+	box-shadow: 0 -10rpx 10rpx rgba(0,0,0,.1);
+	z-index: 9999;
+}
+
+#myCanvas {
+	position: absolute;
+	left: 100vw;
+	top: 0;
+}

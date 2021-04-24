@@ -1,0 +1,4 @@
+.msg {
+	font-size: 40rpx;
+	text-align: center;
+}

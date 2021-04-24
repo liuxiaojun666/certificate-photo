@@ -1,0 +1,35 @@
+/* miniprogram/pages/share/share.wxss */
+.scroll-view {
+	width: 100%;
+	height: 100vh;
+	overflow: auto;
+	position: relative;
+	background-color: #fff;
+}
+
+ad {
+	/* position: absolute;
+	left: 0;
+	bottom: 0; */
+	margin-bottom: 50rpx;
+}
+
+.scroll-view .jia3ci-btn {
+	width: 6em;
+}
+
+button.share-btn[type='default'] {
+	/* margin-top: 1em; */
+	/* background-color: transparent; */
+	color: #fff;
+}
+
+.cu-item .content {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.cu-item .content .cu-avatar {
+	margin-right: 10rpx;
+}

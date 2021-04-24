@@ -1,0 +1,28 @@
+<view class="tips">
+	<view class="solid-bottom"><text class="li">1.</text>优先使用后置摄像头</view>
+	<view class="solid-bottom"><text class="li">2.</text>保持<text class="text-red">光线充足</text></view>
+	<view class="solid-bottom"><text class="li">3.</text>身体<text class="text-red">正对</text>摄像头</view>
+	<view class="solid-bottom"><text class="li">4.</text><text class="text-red">露出耳朵</text>、<text class="text-red">眉毛</text>，面部无遮挡</view>
+</view>
+
+
+<!-- <view class="flex margin-bottom" bindtap="viewGroupQRcode">
+	<image mode="heightFix" style="margin:auto;" src="cloud://dev-4iov0.6465-dev-4iov0-1301148496/huoma.png"></image>
+</view> -->
+
+<!-- <view class="padding-left padding-right margin-bottom text-content">
+	<view class="bg-white radius padding-xs text-xs text-green">
+		<text>免费领取免冠照、证件照制作教程，加微信：</text>
+		<text bindtap="copy" class="text-red">1297768249</text> 
+		<text bindtap="copy" class="text-green">复制</text>
+	</view>
+</view> -->
+
+<!-- <view class="padding">
+	<navigator class="text-center text-white bg-blue text-lg padding radius" url="/pages/index/index" open-type="reLaunch">开始制作</navigator>
+</view> -->
+
+<view class="padding">
+	<!-- <ad unit-id="adunit-a7f050b23d6aa705" ad-type="video" ad-theme="white"></ad> -->
+	<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+</view>

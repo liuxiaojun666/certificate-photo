@@ -1,0 +1,59 @@
+<scroll-view class="container" scroll-y>
+
+<ad class="margin-bottom" unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+
+<view class="header">{{photoName}}</view>
+<view class="tips">
+	<!-- <view bindtap="chooseImage" class="cu-btn round bg-blue shadow lg">开始制作</view> -->
+	<view>照片像素：{{px}}</view>
+	<view>打印尺寸：{{size}}</view>
+	<view>照片描述：{{discription}}</view>
+</view>
+
+<!-- <view class=" margin-bottom text-content">
+	<view class="bg-white radius padding-xs text-xs text-green">
+		<text>免费领取免冠照、证件照制作教程，加微信：</text>
+		<text bindtap="copy" class="text-red">1297768249</text> 
+		<text bindtap="copy" class="text-green">复制</text>
+	</view>
+</view> -->
+
+<!-- <view class="flex justify-around padding-right">
+	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow">帮 制 作</navigator>
+	<view bindtap="chooseImage" class="cu-btn round bg-blue lg shadow">开始制作</view>
+</view> -->
+
+<navigator class="text-center text-white text-lg help-btn" url="/pages/help/help" open-type="reLaunch">帮助</navigator>
+
+<view class="header margin-top">拍照秘籍</view>
+<view class="tips">
+	<view><text class="li">1.</text>优先使用后置摄像头</view>
+	<view><text class="li">2.</text>保持<text class="text-red">光线充足</text></view>
+	<view><text class="li">3.</text>身体<text class="text-red">正对</text>摄像头</view>
+	<view><text class="li">4.</text><text class="text-red">露出耳朵</text>、<text class="text-red">眉毛</text>，面部无遮挡</view>
+</view>
+<!-- 
+<view class="flex justify-around padding-right">
+	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow">帮 制 作</navigator>
+	<view bindtap="chooseImage" class="cu-btn round bg-blue lg shadow">开始制作</view>
+</view> -->
+
+<view class="header margin-top">Tips</view>
+<view class="tips">
+	<view><text class="li">·</text>全身照也可以，支持<text class="text-red">缩放、裁切</text></view>
+	<view><text class="li">·</text>着装随意，支持p图<text class="text-red">换装</text></view>
+	<view><text class="li">·</text>不洗头也可以，支持p图<text class="text-red">换发型</text></view>
+</view>
+
+<view class="flex justify-around padding-right btn-view">
+	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow">帮 制 作</navigator>
+	<view bindtap="chooseImage" class="cu-btn round bg-blue lg shadow">开始制作</view>
+</view>
+
+</scroll-view>
+
+<view class="flex justify-around padding-right btn-view">
+	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow">帮 制 作</navigator>
+	<view bindtap="chooseImage" class="cu-btn round bg-blue lg shadow">开始制作</view>
+</view>
+

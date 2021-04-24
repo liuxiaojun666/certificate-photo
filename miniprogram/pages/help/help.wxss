@@ -1,0 +1,14 @@
+/* miniprogram/pages/help/help.wxss */
+
+.container1 {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+}
+
+.container1 .ad-video {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}

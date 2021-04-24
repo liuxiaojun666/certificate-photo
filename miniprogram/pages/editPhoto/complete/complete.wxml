@@ -1,0 +1,22 @@
+<view class="container">
+	<!-- <ad unit-id="adunit-42a2c50afe6933fb" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad> -->
+	<!-- <ad unit-id="adunit-5757d08b9dc805e2" ad-type="video" ad-theme="white"></ad> -->
+	<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+
+	<view class="msg padding">
+		{{msg}}
+	</view>
+
+	<view>
+		<image bindtap="preView" mode="heightFix" src="{{url}}" style="width: 100rpx; height: 100rpx"></image>
+	</view>
+
+	<view class="msg padding">
+		请在 <text class="text-red">手机相册</text> 查看下载结果
+	</view>
+
+	<view>
+		<button class="bg-orange text-white" open-type="share">分享给朋友</button>
+		<button bindtap="contineu" class="bg-green text-white margin-top">再来一张</button>
+	</view>
+</view>

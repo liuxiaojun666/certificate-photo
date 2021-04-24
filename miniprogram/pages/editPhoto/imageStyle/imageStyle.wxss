@@ -1,0 +1,47 @@
+/* miniprogram/pages/editPhoto/imageStyle/imageStyle.wxss */
+.scroll-height {
+	height: calc(100vh - 90rpx - 252rpx);
+	padding: 10rpx;
+	overflow: auto;
+}
+
+.scroll-height .img-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.scroll-height .img-view {
+	width: 49%;
+	padding: 24.5% 0;
+	box-sizing: border-box;
+	background-color: rgba(255, 255, 255, .5);
+	margin-bottom: 2%;
+	position: relative;
+	/* background-size: 90%;
+	background-repeat: no-repeat;
+	background-position: center; */
+	/* background-origin: center; */
+}
+.scroll-height .img-view image {
+	position: absolute;
+	width: 90%;
+	height: 90%;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.scroll-height .img-view .msg {
+	position: absolute;
+	background-color: rgba(255, 255, 255, .8);
+	line-height: 2;
+	height: 2em;
+	width: 100%;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}

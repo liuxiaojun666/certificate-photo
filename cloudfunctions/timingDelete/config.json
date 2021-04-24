@@ -1,0 +1,9 @@
+{
+  "triggers": [
+    {
+      "name": "timingDelete",
+      "type": "timer",
+      "config": "0 */10 * * * * *"
+    }
+  ]
+}

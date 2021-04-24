@@ -1,0 +1,143 @@
+.c {
+  color: #5f27cd;
+}
+.bg {
+  background: #5f27cd;
+}
+.t50 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.tx50 {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.ty50 {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.cw {
+  color: #fff;
+}
+.bw {
+  background: #fff;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.fb {
+  font-weight: bold;
+}
+.ib {
+  display: inline-block !important;
+  vertical-align: middle;
+}
+.tac {
+  text-align: center;
+}
+.tal {
+  text-align: left;
+}
+.tar {
+  text-align: right;
+}
+.cp {
+  cursor: pointer;
+}
+.none {
+  display: none !important;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.mainSection {
+  min-height: 100vh;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.col {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.color-picker-container {
+  width: 600rpx;
+}
+.color-picker-container .wrapper {
+  margin: auto;
+}
+.color-picker-container .pick-area {
+  display: flex;
+  justify-content: space-between;
+}
+.color-picker-container .pick-area .color-picker-map {
+  position: relative;
+  width: 500rpx;
+  height: 500rpx;
+}
+.color-picker-container .pick-area .color-picker-map .color-picker-map-item {
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  width: 500rpx;
+  height: 500rpx;
+  border: 2rpx solid transparent;
+}
+.color-picker-container .pick-area .color-picker-map .color-picker-map-item.white {
+  z-index: 10;
+}
+.color-picker-container .pick-area .color-picker-map .color-picker-map-item.black {
+  z-index: 11;
+  border: 2rpx solid #666;
+}
+.color-picker-container .pick-area .color-picker-map .picker {
+  position: absolute;
+  z-index: 12;
+  width: 20rpx;
+  height: 20rpx;
+  border: 2rpx solid #666;
+  background: #fff;
+  border-radius: 50%;
+}
+.color-picker-container .pick-area .color-picker-bar {
+  position: relative;
+  width: 60rpx;
+  height: 500rpx;
+  border: 2rpx solid #666;
+  background: -webkit-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+}
+.color-picker-container .pick-area .color-picker-bar .picker {
+  position: absolute;
+  z-index: 10;
+  width: 110%;
+  height: 10rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 2rpx solid #666;
+}
+.color-picker-container .data-area {
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  display: flex;
+  justify-content: space-between;
+}
+/*# sourceMappingURL=./color-picker.wxss.map */

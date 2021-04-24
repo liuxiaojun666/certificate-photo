@@ -1,0 +1,301 @@
+/* miniprogram/pages/editPhoto/editPhoto.wxss */
+.container {
+	width: 100%;
+	overflow: hidden;
+}
+
+.tabs {
+	width: 100%;
+	height: 100rpx;
+	background-color: rgba(255,255,255,.5);
+	display: flex;
+	flex-direction: row;
+}
+
+.tabs .tab {
+	width: 50%;
+	height: 100%;
+	text-align: center;
+}
+.tabs .tab .name {
+	font-size: 36rpx;
+	line-height: 1.5;
+}
+
+
+/* 颜色选择 */
+.container .colors {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around ;
+	margin-top: 20rpx;
+}
+.container .colors .color {
+	width: 15%;
+	height: 0;
+	padding-top: 15%;
+	border: 2rpx solid #000;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.container .colors .color.active {
+	border-color: #06ae56;
+}
+.container .colors .color.transparent {
+	background-color: transparent;
+	position: relative;
+}
+.container .colors .color.transparent::before {
+	content: '透明';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 100%;
+	text-align: center;
+	color: #333;
+	line-height: 1;
+	height: 1em;
+	margin-top: -0.5em;
+	font-size: 14px;
+}
+.blue {
+	background-color: rgb(67,142,219);
+}
+.blue2 {
+	background-color: rgb(0,191,243);
+}
+.red {
+	background-color: red;
+}
+.white {
+	background-color: white;
+}
+.container .colors .color.custom {
+	padding-top: 0;
+	height: max-content;
+}
+.container .colors .color.custom .text {
+	width: 100%;
+	padding-top: 50%;
+	height: 0;
+	text-align: center;
+}
+.container .colors .color.custom .text text {
+	transform: translateY(-100%);
+	display: block;
+	font-size: 14px;
+}
+.container .colors .color .custom-bg {
+	width: 100%;
+	height: 0;
+	padding-top: 50%;
+}
+
+/* color picker */
+.color-picker-view {
+	position: relative;
+	margin-top: 10px;
+	width: 100%;
+	height: 0;
+	overflow: visible;
+	z-index: 99;
+}
+.color-picker-view .color-picker-content {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	background-color: #fff;
+}
+.color-picker-view .color-picker-content .tips {
+	position: absolute;
+	width: 4em;
+	right: 5px;
+	top: 30px;
+}
+.color-picker-view .color-picker-content .current-color {
+	position: absolute;
+	width: 4em;
+	height: 4em;
+	right: 5px;
+	bottom: 80px;
+}
+.color-picker-view .color-picker-content button {
+	position: absolute;
+	right: 5px;
+	bottom: 30px;
+}
+
+/* 尺寸 */
+.container .size-picker {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0 5px;
+}
+
+/* canvas */
+.container .pthto-edit-content {
+	padding: 5px;
+	width: 100%;
+	box-sizing: border-box;
+}
+.container .pthto-edit-content .canvas-view {
+	position: relative;
+	width: 100%;
+	height: 300px;
+	margin: 0 auto;
+	/* border: 10rpx solid #fff; */
+	box-sizing: content-box;
+	overflow: hidden;
+	/* box-shadow: 0 5rpx 5rpx 5rpx rgba(255,255,255,.5) inset; */
+	overflow: hidden;
+}
+/* .container .pthto-edit-content .canvas-view #myCanvas {
+	width:100%;
+	height:100%;
+} */
+.container .pthto-edit-content .canvas-view .people-photo {
+	position: absolute;
+	/* left: 0;
+	bottom: 0; */
+	width: 100%;
+  transform-origin: center center;
+}
+
+.container .pthto-edit-content .canvas-view .guide {
+	position: absolute;
+	z-index: 9;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,.5);
+	/* pointer-events: none; */
+}
+
+.container .pthto-edit-content .canvas-view .guide .guide-know {
+	position: absolute;
+	width: 6em;
+	line-height: 2em;
+	height: 2em;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	border-radius: 5px;
+	color: #fff;
+	border: 1px solid #fff;
+	text-align: center;
+}
+
+.container .pthto-edit-content .canvas-view .guide text {
+	position: absolute;
+	top: 10rpx;
+	left: 0rpx;
+	right: 0rpx;
+	/* bottom: 0; */
+	margin: auto;
+	color: #fff;
+	text-align: center;
+	font-size: 40rpx;
+}
+.container .pthto-edit-content .canvas-view .guide image {
+	position: absolute;
+	width: 200rpx;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.gesture {
+	width: 100%;
+	position: relative;
+	overflow: visible;
+	z-index: 2;
+}
+
+.gesture .right {
+	right: 10rpx;
+}
+.gesture .left {
+	left: 10rpx;
+}
+
+.gesture .change-clothes {
+	position: absolute;
+	bottom: 20rpx;
+	width: 100rpx;
+	height: 100rpx;
+	text-align: center;
+}
+.gesture .change-hair {
+	position: absolute;
+	bottom: 250rpx;
+	width: 100rpx;
+	height: 100rpx;
+	text-align: center;
+}
+.gesture .look-videw {
+	position: absolute;
+	top: -250rpx;
+	width: 100rpx;
+	height: 100rpx;
+	text-align: center;
+}
+.gesture image {
+	width: 100%;
+}
+.gesture text {
+	font-size: 30rpx;
+	/* color: #06ae56; */
+}
+
+.result-canvas-view {
+	max-height: 1px;
+	overflow: hidden;
+}
+
+#myCanvas {
+	opacity: 0;
+}
+
+#originImg {
+	/* position: fixed;
+	left: 100%;
+	opacity: 0; */
+}
+
+.download-view {
+	width: 100%;
+	margin-top: 50rpx;
+}
+
+.download-view .no-count {
+	padding: 0 10rpx;
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.download-view .no-count > button, .download-view .no-count navigator {
+	width: 45%;
+	margin: 0;
+	margin-bottom: 0;
+	box-sizing: border-box;
+}
+
+.download-view .no-count navigator button {
+	box-sizing: border-box;
+	width: 100%;
+	margin-bottom: 0;
+}
+
+.download-view button {
+	margin-bottom: 20rpx;
+	box-shadow: 0 0 10rpx 5rpx rgba(67,142,219,.25);
+}

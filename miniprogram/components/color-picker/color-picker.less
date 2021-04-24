@@ -1,0 +1,73 @@
+@import '../../style/style.less';
+
+.color-picker-container {
+  width: 600rpx;
+
+  .wrapper {
+    margin: auto;
+  }
+
+  .pick-area {
+    display: flex;
+    justify-content: space-between;
+
+    .color-picker-map {
+      position: relative;
+      width: 500rpx;
+      height: 500rpx;
+
+      .color-picker-map-item {
+        position: absolute;
+        top: 0rpx;
+        left: 0rpx;
+        width: 500rpx;
+        height: 500rpx;
+        border: 2rpx solid transparent;
+
+        &.white {
+          z-index: 10;
+        }
+
+        &.black {
+          z-index: 11;
+          border: 2rpx solid #666;
+        }
+      }
+
+      .picker {
+        position: absolute;
+        z-index: 12;
+        width: 20rpx;
+        height: 20rpx;
+        border: 2rpx solid #666;
+        .bw;
+        .br(50%);
+      }
+    }
+
+    .color-picker-bar {
+      position: relative;
+      width: 60rpx;
+      height: 500rpx;
+      border: 2rpx solid #666;
+      background: -webkit-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+
+      .picker {
+        position: absolute;
+        z-index: 10;
+        width: 110%;
+        height: 10rpx;
+        .tx50;
+        .bw;
+        border: 2rpx solid #666;
+      }
+    }
+  }
+
+  .data-area {
+    margin-top: 20rpx;
+    font-size: 26rpx;
+    display: flex;
+    justify-content: space-between;
+  }
+}

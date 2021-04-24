@@ -1,0 +1,60 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/uploadTest/uploadTest",
+		"pages/share/share",
+		"pages/photoSize/index",
+		"pages/editPhoto/editPhoto",
+		"pages/mein/mein",
+		"pages/album/album",
+		"pages/example/example",
+		"pages/touch/touch",
+		"pages/editPhoto/imageStyle/imageStyle",
+		"pages/editPhoto/hair/hair",
+		"pages/photoSize/custom/custom",
+		"pages/editPhoto/watermark/watermark",
+		"pages/help/help",
+		"pages/editPhoto/complete/complete",
+		"pages/help/beatShot/beatShot",
+		"pages/help/tips/tips",
+		"pages/helpMake/helpMake",
+		"pages/preEdit/preEdit",
+		"pages/editPhoto/editPhotoPlus/editPhotoPlus",
+		"pages/about/about"
+	],
+	"window": {
+		"backgroundColor": "#fff",
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#cef3F6",
+		"navigationBarTitleText": "",
+		"navigationBarTextStyle": "black"
+	},
+	"sitemapLocation": "sitemap.json",
+	"style": "v2",
+	"workers": "workers",
+	"tabBar": {
+		"backgroundColor": "#ffd2d2",
+		"color": "#333333",
+		"selectedColor": "#d81e06",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "./images/default.png",
+				"selectedIconPath": "./images/defaultRed.png"
+			},
+			{
+				"pagePath": "pages/mein/mein",
+				"text": "我的",
+				"iconPath": "./images/mein.png",
+				"selectedIconPath": "./images/meinRed.png"
+			},
+			{
+				"pagePath": "pages/help/help",
+				"text": "帮助",
+				"iconPath": "./images/help.png",
+				"selectedIconPath": "./images/helpRed.png"
+			}
+		]
+	}
+}

@@ -1,0 +1,56 @@
+
+<view class="flex margin-bottom" bindtap="viewGroupQRcode">
+	<image mode="widthFix" style="margin:auto;" src="cloud://dev-4iov0.6465-dev-4iov0-1301148496/mein-wechart-qrcode.png"></image>
+	<!-- <image mode="widthFix" style="margin:auto;" src="https://6465-dev-4iov0-1301148496.tcb.qcloud.la/huoma.jpg?sign=3b7be8b83163ad56b45470f2962fe8c2&t=1611402751"></image> -->
+</view>
+<view class="text-center text-red">
+	<text>1.点击预览图片，2.保存图片到相册后，3.使用微信扫一扫</text>
+</view>
+
+<view class="padding flex justify-around">
+	<button open-type="share" class="cu-btn lg radius bg-green" style="margin:0;width:auto;">朋友帮制作</button>
+	<button open-type="contact" class="cu-btn lg radius bg-blue" style="margin:0;width:auto;">联系客服</button>
+</view>
+
+
+
+
+<!-- <view class="padding-left padding-right margin-bottom text-content">
+	<view class="bg-white radius padding-xs text-xs text-green">
+		<text>免费领取免冠照、证件照制作教程，加微信：</text>
+		<text bindtap="copy" class="text-red">1297768249</text> 
+		<text bindtap="copy" class="text-green">复制</text>
+	</view>
+</view> -->
+
+<view class="padding-left padding-right margin-bottom text-content">
+	<view class="bg-white radius padding-xs text-xs text-gray">
+		因微信版本、手机系统等原因，部分用户无法正常操作、无法成功下载图片。
+	</view>
+</view>
+
+<view class="padding-left padding-right margin-bottom text-content">
+	<view class="bg-white radius padding-xs text-xs text-gray">
+		操作繁琐，不够简易，提示不明确等。
+	</view>
+</view>
+
+<view class="padding-left padding-right margin-bottom text-content">
+	<view class="bg-white radius padding-xs text-xs text-gray">
+		虽然作者尽可能的解决以上问题，但作者一人之力，时间精力经费有限。
+	</view>
+</view>
+
+<view class="padding-left padding-right text-content">
+	<view class="bg-white radius padding-xs text-xs text-gray">
+		为了您能成功生成想要的免冠照/证件照，您可以选择找朋友帮忙制作，或联系客服帮制作。
+	</view>
+</view>
+
+<!-- <view class="padding-left padding-right flex justify-center">
+	<navigator open-type="navigateBack" class="cu-btn lg radius bg-olive flex-sub" style="margin:0;width:auto;">算了，自己做</navigator>
+</view> -->
+
+<view class="padding">
+	<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+</view>

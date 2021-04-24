@@ -1,0 +1,41 @@
+<scroll-view scroll-y class="scroll-view">
+	<!-- <ad unit-id="adunit-c5392012ed2d54ec" ad-type="video" ad-theme="white"></ad> -->
+	<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+	<!-- <ad unit-id="adunit-eaee002e3b71ca92"></ad> -->
+	<!-- <view class="bg-gradual-blue padding radius text-center shadow-blur">
+	</view> -->
+	<button class="share-btn bg-gradual-blue padding radius text-center shadow-blur" open-type="share" type="default">点击邀请</button>
+	<!-- <button bindtap="subscribeMessage" class="share-btn bg-gradual-green radius text-center shadow-blur margin-top" type="default">邀请成功通知我</button> -->
+
+
+
+	<view class="padding text-center">
+		<text class="text-green">成功邀请一位朋友 +3 次免费下载免冠照</text>
+	</view>
+
+	<!-- <view class="padding text-center">
+		<text class="text-red">每成功邀请一位新用户生成一张照片，可额外获得10次精细抠图</text>
+	</view> -->
+	
+	<view class="cu-list menu">
+		<!-- <view wx:for="{{invitedList}}" wx:key="item">
+			<text>{{item}}</text>
+		</view> -->
+		<view wx:for="{{invitedList}}" wx:key="item" class="cu-item">
+      <view class="content">
+				<view wx-if="{{successUserList[index].avatarUrl}}" class="cu-avatar round lg" style="background-image:url({{successUserList[index].avatarUrl}});"></view>
+        <text class="text-grey">{{successUserList[index].nickName || '匿名好友'}}</text>
+      </view>
+      <view class="action">
+        <button wx:if="{{!allShareData[item]}}" data-openid="{{item}}" bindtap="shareSuccessUpdateCount" class="jia3ci-btn cu-btn round bg-green shadow">
+					<text>+3 次</text>
+					<text wx:if="{{updateCountLoading}}">...</text>
+				</button>
+        <button wx:else data-openid="{{item}}" class="jia3ci-btn cu-btn round bg-green shadow">已领取</button>
+      </view>
+    </view>
+		
+	</view>
+
+	<view class="padding" wx:if="{{!invitedList[0]}}">今日还没有成功邀请好友</view>
+</scroll-view>

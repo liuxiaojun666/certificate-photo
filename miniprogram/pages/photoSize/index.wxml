@@ -1,0 +1,34 @@
+
+
+<scroll-view class="container" scroll-y>
+<!-- <ad unit-id="adunit-024ae35dd18ed419"></ad> -->
+
+	<navigator 
+		class="card margin-top custom"
+		open-type="navigate" 
+		url="./custom/custom">
+		<text class="name">自定义</text>
+		<text class="discription">自定义宽高，你想要的都可以</text>
+	</navigator>
+
+	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="text-blue padding">没找到？不清楚尺寸？点击帮制作</navigator>
+
+	<view class="card-view">
+		<view class="card" wx:for="{{photoSizeList}}" wx:key="name" data-index="{{index}}" bindtap="goNextPage">
+			<text class="name">{{item.name}}</text>
+			<view>
+				<text wx:if="{{item.px}}" class="size">{{item.px}}</text>
+				<text class="discription">{{item.size}}</text>
+			</view>
+			<view>{{item.discription}}</view>
+			<!-- <text class="size">{{item.size}}</text> -->
+		</view>
+
+		<navigator url="/pages/helpMake/helpMake" hover-class="none" class="text-blue padding">没找到？不清楚尺寸？点击帮制作</navigator>
+		
+	</view>
+	
+	<ad unit-id="adunit-eaee002e3b71ca92"></ad>
+</scroll-view>
+
+<!-- <canvas type="2d" id="myCanvas" style="width: {{myCanvas.width}}px;height: {{myCanvas.height}}px;"></canvas> -->

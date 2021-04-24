@@ -1,0 +1,66 @@
+<view class="padding-left padding-right container1">
+	<view class="cu-list menu margin-bottom-sm shadow-lg">
+		<!-- <view class="cu-item arrow">
+			<navigator url="./videoTutorial/videoTutorial" hover-class="none" class="content">
+				<text class="cuIcon-video text-green"></text>
+				<text>视频制作教程</text>
+			</navigator>
+		</view> -->
+		<view class="cu-item arrow">
+			<navigator url="/pages/helpMake/helpMake" hover-class="none" class="content">
+				<text class="cuIcon-group_fill text-blue"></text>
+				<text>帮制作</text>
+			</navigator>
+		</view>
+		<view class="cu-item arrow">
+			<navigator url="./beatShot/beatShot" class="content">
+				<text class="cuIcon-scan text-green"></text>
+				<text>拍照秘籍</text>
+			</navigator>
+		</view>
+		<view class="cu-item arrow">
+			<navigator url="./tips/tips" class="content">
+				<text class="cuIcon-creative text-green"></text>
+				<text>功能优势</text>
+			</navigator>
+		</view>
+    <!-- <view class="cu-item arrow">
+      <view class="content" bindtap="viewGroupQRcode">
+        <text class="cuIcon-add"></text>
+        <text>证件照交流群</text>
+      </view>
+    </view> -->
+		<view class="cu-item arrow">
+			<button class="cu-btn content" open-type="contact">
+				<text class="cuIcon-messagefill text-green"></text>
+				<text class="text-grey">联系客服</text>
+			</button>
+		</view>
+		<!-- <view class="cu-item arrow">
+			<view class="content" bindtap="showQrcode2">
+				<text class="cuIcon-add text-green"></text>
+				<text class="text-grey">联系作者</text>
+			</view>
+		</view> -->
+		<view class="cu-item arrow">
+			<button class="cu-btn content" open-type="feedback">
+				<text class="cuIcon-writefill text-cyan"></text>
+				<text class="text-grey">意见反馈</text>
+			</button>
+		</view>
+		<!-- <view class="cu-item arrow">
+			<navigator url="/pages/mein/mein" open-type="switchTab" class="content">
+				<text class="cuIcon-add text-red"></text>
+				<text class="text-red">获取下载次数</text>
+			</navigator>
+		</view> -->
+		<!-- <view class="cu-item arrow" bindtap="getNewVersion">
+			<button class="cu-btn content">
+				<text class="cuIcon-vip text-green"></text>
+				<text class="text-grey">检查版本</text>
+			</button>
+		</view> -->
+	</view>
+	<!-- <ad unit-id="adunit-a7f050b23d6aa705" ad-type="video" ad-theme="white"></ad> -->
+	<ad class="ad-video" unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+</view>

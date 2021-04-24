@@ -1,0 +1,23 @@
+<view class="container">
+	<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+	<form>
+		<view class="cu-form-group">
+			<view class="title">宽度（像素 px）</view>
+			<input bindinput="widthChange" type="number" value="{{width}}" placeholder="请输入像素宽度 px"></input>
+		</view>
+		<view class="cu-form-group">
+			<view class="title">高度（像素 px）</view>
+			<input bindinput="heightChange" type="number" value="{{height}}" placeholder="请输入像素高度 px"></input>
+		</view>
+		<view class="cu-form-group">
+			<view class="title">用途描述</view>
+			<input bindinput="remakChange" type="text" value="{{remak}}" placeholder="如‘护师职称考试报名’"></input>
+		</view>
+		<view class="padding">
+			<button class="bg-blue" type="default" bindtap="selectPhoto">确定</button>
+		</view>
+	</form>
+	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow margin-top">看不懂？不知道尺寸？帮制作</navigator>
+</view>
+
+<!-- <canvas type="2d" id="myCanvas" style="width: {{myCanvas.width}}px;height: {{myCanvas.height}}px;"></canvas> -->

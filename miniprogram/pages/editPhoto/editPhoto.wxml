@@ -1,0 +1,167 @@
+<view class="container">
+	<view wx:if="{{vipCount || filePath2 || videoLoaded}}" class="tabs">
+		<view bindtap="changeTab" data-index="0" class="{{tabIndex === 0 ? 'tab text-red' : 'tab'}}">
+			<text class="name">普通版</text>
+			<view>每日不限量抠图</view>
+		</view>
+		<view bindtap="changeTab" data-index="1" class="{{tabIndex === 1 ? 'tab text-red' : 'tab'}}">
+			<text class="name">升级版</text>
+			<view>抠图精细发丝可见</view>
+		</view>
+	</view>
+	<view class="color-picker-view">
+		<view wx:if="{{showColorPicker}}" class="color-picker-content">
+			<button bindtap="closeColorPicker" size="mini" type="default">确定</button>
+			<view class="tips">
+				<text class="text-red">先选右侧色系</text>
+				<text>\n\n</text>
+				<text class="text-red">后选左侧色值</text>
+			</view>
+			<view class="current-color" style="background-color: {{colorData.pickerData.hex}}"></view>
+			<color-picker class="color-picker" colorData="{{colorData}}" rpxRatio="{{rpxRatio}}" bindchangecolor="onChangeColor"></color-picker>
+		</view>
+	</view>
+
+	<!-- <view class="ctrl">
+		<view class="btn zoomin">＋</view>
+		<view class="btn zoomout">－</view>
+		<view class="btn up">↑</view>
+		<view class="btn down">↓</view>
+		<view class="btn left">←</view>
+		<view class="btn right">→</view>
+	</view> -->
+	<!-- <view class="size-picker">
+		<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+			<view class="picker">当前选择：{{array[index] + '： ' + photoSizeList[index].width + '×' + photoSizeList[index].height + '像素'}}</view>
+		</picker>
+	</view> -->
+	<view class="pthto-edit-content">
+		<view class="canvas-view" style="background-color: {{photoBg}};width: {{targetWidth * showScale}}rpx;height: {{targetHeight * showScale}}rpx;">
+			<image 
+				style="width: {{width * showScale}}rpx; height: {{height * showScale}}rpx; left: {{left * showScale}}rpx; top: {{top * showScale}}rpx; transform: translate(-50%, -50%) scale({{ scale }}) rotate({{ rotate }}deg);" 
+				class="people-photo" 
+				src="{{(tabIndex === 1 && filePath2) || filePath}}"
+				bindload="bindload"
+				catchtouchstart="touchstart"
+				catchtouchmove="touchmove"
+				catchtouchend="touchend">
+				</image>
+			<image 
+				wx-if="{{clothes.show && clothes.src}}"
+				style="z-index:2;width: {{clothes.width * showScale}}rpx; height: {{clothes.height * showScale}}rpx; left: {{clothes.left * showScale}}rpx; top: {{clothes.top * showScale}}rpx; transform: translate(-50%, -50%) scale({{clothes.scale }}) rotate({{clothes.rotate }}deg);" 
+				class="people-photo" 
+				src="{{clothes.src}}"
+				data-dataname="clothes"
+				bindload="bindload"
+				catchtouchstart="touchstart"
+				catchtouchmove="touchmove"
+				catchtouchend="touchend">
+				</image>
+			<image 
+				wx-if="{{hair.show && hair.src}}"
+				style="z-index:1;width: {{hair.width * showScale}}rpx; height: {{hair.height * showScale}}rpx; left: {{hair.left * showScale}}rpx; top: {{hair.top * showScale}}rpx; transform: translate(-50%, -50%) scale({{hair.scale }}) rotate({{hair.rotate }}deg);" 
+				class="people-photo" 
+				src="{{hair.src}}"
+				data-dataname="hair"
+				bindload="bindload"
+				catchtouchstart="touchstart"
+				catchtouchmove="touchmove"
+				catchtouchend="touchend">
+				</image>
+			<view wx-if="{{!guided}}" class="guide" bindtap="guideNext">
+				<text wx-if="{{guideStep === 1}}">移动人像可调整位置\n点击下一步</text>
+				<text wx-if="{{guideStep === 2}}">双指可调整人像大小\n点击下一步</text>
+				<text wx-if="{{guideStep === 3}}">点击右侧换装换发型\n点击下一步</text>
+				<image wx-if="{{guideStep === 1}}" mode="aspectFit" class="move" src="./images/move-white.png"></image>
+				<image wx-if="{{guideStep === 2}}" mode="aspectFit" class="zoom" src="./images/zoom-white.png"></image>
+				<image wx-if="{{guideStep === 3}}" mode="aspectFit" class="zoom" src="./images/click-white.png"></image>
+				<view wx-if="{{guideStep > 3}}" bindtap="completionGuide" class="guide-know">我知道了</view>
+			</view>
+			<view wx-if="{{tabIndex === 1 && !filePath2}}" class="guide">
+				<text>{{videoLoaded ? '看视频 + 1 次' : ''}}\n\n\n\n ← 点击使用精细抠图</text>
+				<image mode="aspectFit" src="./images/click-white-left.png"></image>
+				<text wx:if="{{(targetHeight * showScale) > 350}}" style="bottom:50rpx;top:auto;">← 更多次数请联系作者</text>
+			</view>
+		</view>
+	</view>
+	<view class="gesture">
+		<view class="change-clothes right" bindtap="changeClothes">
+			<image mode="widthFix" class="style" src="./images/acl8s-bu9e0-016.png"></image>
+			<text class="style-text text-olive">换装</text>
+		</view>
+		<view class="change-hair right" bindtap="changeHair">
+			<image mode="widthFix" class="style" src="./images/ahvga-47qgd-003.png"></image>
+			<text class="style-text text-olive">头发</text>
+		</view>
+
+		<view wx-if="{{tabIndex === 1 && videoLoaded}}" bindtap="lookVideo" class="look-videw left" style="top: {{-(targetHeight * showScale)}}rpx;">
+			<image mode="widthFix" class="style" src="./images/look-video.png"></image>
+			<text class="style-text text-olive">看视频</text>
+		</view>
+		<view wx-if="{{tabIndex === 1}}" bindtap="useVipCount" class="look-videw left" style="top: {{-(targetHeight * showScale) + 200}}rpx;">
+			<image mode="widthFix" class="style" src="./images/use.png"></image>
+			<text class="style-text text-red">{{vipCount}}次</text>
+		</view>
+		<view wx-if="{{tabIndex === 1 && ((targetHeight * showScale) > 350)}}" bindtap="showQrcode2" class="look-videw left" style="top: {{-150}}rpx;">
+			<image mode="widthFix" class="style" src="./images/author.png"></image>
+			<text class="style-text text-olive">作者</text>
+		</view>
+		<!-- <navigator wx-if="{{tabIndex === 0}}"
+			target="miniProgram" 
+			open-type="navigate" 
+			app-id="wxb8dbf52db369e889" 
+			version="release" 
+			path="" 
+			class="look-videw left" 
+			style="top: {{-350}}rpx;">
+			<image mode="widthFix" class="style" src="./images/bgi.png"></image>
+			<text class="style-text text-olive">背景图</text>
+		</navigator> -->
+		<view wx-if="{{((targetHeight * showScale) > 350)}}" bindtap="help" class="look-videw right" style="top: {{-(targetHeight * showScale)}}rpx;">
+			<image mode="widthFix" class="style" src="/images/help.png"></image>
+			<text class="style-text text-olive">帮助</text>
+		</view>
+		<!-- <view wx-if="{{hair.src}}" class="change-hair left" data-name="hair" bindtap="showImage">
+			<image mode="widthFix" class="style" src="./images/ahvga-47qgd-003.png"></image>
+			<text wx-if="{{hair.show}}" class="style-text">隐藏</text>
+			<text wx-if="{{!hair.show}}" class="style-text">显示</text>
+		</view> -->
+	</view>
+	<view class="colors">
+		<!-- <view bindtap="toggleBg" data-color="transparent" class="color transparent {{bgc === 'transparent' ? 'active' : ''}}"></view> -->
+		<view bindtap="toggleBg" data-color="white" class="color white {{bgc === 'white' ? 'active' : ''}}"></view>
+		<view bindtap="toggleBg" data-color="blue" class="color blue {{bgc === 'blue' ? 'active' : ''}}"></view>
+		<view bindtap="toggleBg" data-color="red" class="color red {{bgc === 'red' ? 'active' : ''}}"></view>
+		<view bindtap="toggleBg" data-color="blue2" class="color blue2 {{bgc === 'blue2' ? 'active' : ''}}"></view>
+		<view bindtap="toggleBg" data-color="custom" class="color custom {{bgc === 'custom' ? 'active' : ''}}">
+			<view class="text"><text>自定义</text></view>
+			<view class="custom-bg" style="background-color: {{colorData.pickerData.hex}}"></view>
+		</view>
+	</view>
+	<!-- <view class="padding" wx:if="{{person_num > 1}}">照片中有{{person_num}}人</view> -->
+	<view wx-if="{{photoDescription}}" class="padding-xs">{{photoDescription}}</view>
+	<view class="padding-xs" wx:if="{{count <= 0 && !filePath2}}">
+		<view>下载次数已用完，升级版不限制下载次数。</view>
+		<view wx:if="{{tabIndex === 1}}">点击使用后即可下载</view>
+	</view>
+	<view class="download-view">
+		<view class="no-count" wx:if="{{count <= 0 && !filePath2 && !photoDescription && tabIndex === 0}}">
+			<!-- <button wx:if="{{videoLoaded}}" bindtap="lookVideo" type="default">看视频后下载</button> -->
+			<navigator target="self" url="/pages/mein/mein" open-type="reLaunch">
+				<button type="default">领 取 次 数</button>
+			</navigator>
+		</view>
+		<button wx:if="{{(!hideDownloadBtn) && (count > 0) && (tabIndex === 0)}}" bindtap="imageToCanvas" type="default">下 载 图 片</button>
+		<button wx:if="{{(!hideDownloadBtn) && filePath2 && (tabIndex === 1)}}" bindtap="imageToCanvas" type="default">下 载 图 片</button>
+		<navigator wx:if="{{hideDownloadBtn && downloadSuccess}}" open-type="navigateBack">
+			<button type="default">继 续 生 成</button>
+		</navigator>
+	</view>
+	<!-- <view class="download-view">
+		<button bindtap="imageToCanvas" type="default">下 载 图 片</button>
+	</view> -->
+	<view class="result-canvas-view">
+		<canvas wx:if="{{canvasShow}}" type="2d" id="myCanvas" style="width: {{targetWidth}}px;height: {{targetHeight}}px;"></canvas>
+	</view>
+</view>
+<!-- <canvas type="2d" id="originImg" style="width: {{initImgWidth}}px;height: {{initImgHeight}}px;:"></canvas> -->

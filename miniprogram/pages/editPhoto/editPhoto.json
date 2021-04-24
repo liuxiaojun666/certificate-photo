@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+		"color-picker": "/components/color-picker/color-picker"
+	},
+  "navigationBarTitleText": "生成免冠照",
+ "disableScroll": true
+}
