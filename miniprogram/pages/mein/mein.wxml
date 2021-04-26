@@ -6,9 +6,13 @@
 					<!-- <open-data type="userAvatarUrl"></open-data> -->
           <image wx-if="{{authorized}}" mode="widthFix" src="{{userInfo.avatarUrl}}"></image>
 				</view>
-        <view class="text-cut text-xl text-green nickName" style="width:6em;">
+        <view wx:if="{{!canIUseGetUserProfile}}" class="text-cut text-xl text-green nickName" style="width:6em;">
             <button wx-if="{{!authorized}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" size="mini">授权登录</button>
             <text wx-if="{{authorized}}">{{userInfo.nickName}}</text>
+        </view>
+        <view wx:if="{{canIUseGetUserProfile}}" class="text-cut text-xl text-green nickName" style="width:6em;">
+            <button wx-if="{{!authorized}}" bindtap="getUserProfile" size="mini">授权登录</button>
+            <text wx-if="{{authorized}}" bindtap="getUserProfile">{{userInfo.nickName}}</text>
         </view>
 				<!-- <open-data class="text-cut text-xl text-green nickName" style="width:6em;" type="userNickName"></open-data> -->
 				<view wx-if="{{signed}}" class="signIn text-green">今日已签到</view>

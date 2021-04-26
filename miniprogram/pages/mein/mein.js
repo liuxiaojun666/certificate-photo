@@ -13,15 +13,30 @@ Page({
 		authorized: false, // 用户头像昵称授权
 		signed: false,
 		signInLoading: false,
-		videoLoaded: false
+		videoLoaded: false,
+		canIUseGetUserProfile: true
 	},
 
+	// 获取用户信息回调
 	bindGetUserInfo (e) {
 		if (e.detail.userInfo) {
 			this.setUserInfo(e.detail.userInfo)
 		}
 	},
+
+	// 新的获取用户信息事件回调
+	getUserProfile(e) {
+    if (this.data.isLatestInfo) return
+    wx.getUserProfile({
+      desc: '用于完善资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+				this.setUserInfo(res.userInfo)
+				this.setData({ isLatestInfo: true })
+      }
+    })
+  },
 	
+	// 设置用户信息
 	setUserInfo (userInfo) {
 		this.setData({
 			authorized: true,
@@ -46,6 +61,7 @@ Page({
 		// })
 	},
 
+	// 签到
 	signIn () {
 		if (this.data.signInLoading) return
 		if (!this.data.authorized) {
@@ -64,6 +80,7 @@ Page({
 		})
 	},
 
+	// 看视频
 	lookVideo () {
 		// 用户触发广告后，显示激励视频广告
 		if (videoAd) {
@@ -81,6 +98,7 @@ Page({
 		}
 	},
 
+	// 选择视频奖励
 	modalConfirm() {
 		wx.showModal({
 			title: '请选择奖励',
@@ -104,6 +122,7 @@ Page({
 		})
 	},
 
+	// 增加次数
 	incCount () {
 		wx.showLoading()
 		wx.cloud.callFunction({
@@ -115,6 +134,7 @@ Page({
 		})
 	},
 
+	// 增加vip次数
 	inccVipCount () {
 		wx.showLoading()
 		wx.cloud.callFunction({
@@ -132,6 +152,12 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+		if (wx.getUserProfile) {
+			this.setData({
+				canIUseGetUserProfile: true
+			})
+		}
+
 		// 在页面onLoad回调事件中创建插屏广告实例
 		if (wx.createInterstitialAd) {
 			interstitialAd = wx.createInterstitialAd({
@@ -180,18 +206,22 @@ Page({
 
 	},
 
+	// 从数据库获取用户信息，并更新用户信息
 	getUserInfo () {
 		const that = this
 		const openid = getApp().globalData.openid
-		if (!openid) {
-			return
-		}
+		if (!openid) return
 		const db = wx.cloud.database()
 		db.collection('user').where({ openid }).get().then(res => {
 			this.setData({
 				userInfo: res.data[0],
 				signed: res.data[0].signInDate.trim() === new Date().toDateString().trim()
 			})
+
+			// 如果是新接口，就算授权也不能直接获取用户信息，结束执行并设置已有信息
+			if (this.data.canIUseGetUserProfile) {
+				return this.setUserInfo(res.data[0])
+			}
 			
 			wx.getSetting({
 				success (res){
@@ -212,6 +242,7 @@ Page({
 		})
 	},
 
+	// 获取最新版本
 	getNewVersion () {
 		const updateManager = wx.getUpdateManager()
 
@@ -256,12 +287,13 @@ Page({
 		}
 	},
 
+	// 定时器，解决第一次进入页面没有openid 的问题
 	timerFunc () {
 		const openid = getApp().globalData.openid
 		if (openid) {
 			this.getUserInfo()
 		} else {
-			setTimeout(() => this.timerFunc(),3000)
+			setTimeout(() => this.timerFunc(), 3000)
 		}
 	},
 
@@ -322,7 +354,7 @@ Page({
 			current: 'https://6465-dev-4iov0-1301148496.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200606104940.jpg?sign=e3dac636b9d352831ef70e77c4ee0621&t=1591411804' // 当前显示图片的http链接      
 		})
 	},
-		// 预览群二维码
+		// 预览群二维码，群活吗太麻烦，改成个人二维码了
 		viewGroupQRcode () {
 			wx.previewImage({
 				urls: ['cloud://dev-4iov0.6465-dev-4iov0-1301148496/mein-wechart-qrcode.png'],
