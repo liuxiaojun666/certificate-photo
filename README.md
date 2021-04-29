@@ -24,7 +24,7 @@
 4. 创建数据库集合4个  (user、tmp-file、share、photo_size)
 5. 导入数据到 photo_size,  数据在 cloudfunctions\photoSizeJson\database_export-iIeoJqdDdivP.json
 6. 注册百度AI开放平台人像分割   https://ai.baidu.com/tech/body/seg（记下 API_KEY、APP_ID、SECRET_KEY ）
-7. 找到百度抠图云函数， 配置云函数--> 高级配置 --> 环境变量 添加环境变量（API_KEY、APP_ID、SECRET_KEY）
+7. 找到百度抠图云函数， 配置云函数--> 高级配置 --> 环境变量 添加环境变量（API_KEY、APP_ID、SECRET_KEY）, 超时时间改为 20秒。
 8. 预览
 -------------------------
 
