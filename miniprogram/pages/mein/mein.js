@@ -39,7 +39,7 @@ Page({
 	// 设置用户信息
 	setUserInfo (userInfo) {
 		this.setData({
-			authorized: true,
+			authorized: !!userInfo.nickName,
 			userInfo: {
 				...this.data.userInfo,
 				...userInfo
