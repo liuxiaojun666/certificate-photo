@@ -1,6 +1,6 @@
 
 # 证件照 小程序 (原生微信小程序 + 云开发)
-欢迎提出改进意见
+欢迎提出改进意见，觉得不错点个 Star
 
 **项目仅供学习，如有雷同应用，必究。**
 ### 功能
@@ -22,11 +22,12 @@
 2. 开通云开发
 3. 上传并部署云函数
 4. 创建数据库集合4个  (user、tmp-file、share、photo_size)
-5. 导入数据到 photo_size,  数据在 cloudfunctions\photoSizeJson\database_export-iIeoJqdDdivP.json
-6. 注册百度AI开放平台人像分割   https://ai.baidu.com/tech/body/seg（记下 API_KEY、APP_ID、SECRET_KEY ）
+5. 导入数据到 photo_size,  数据在 cloudfunctions\photoSizeJson\
+6. 注册百度AI开放平台人像分割   https://ai.baidu.com/tech/body/seg （记下 API_KEY、APP_ID、SECRET_KEY ）
 7. 找到百度抠图云函数， 配置云函数--> 高级配置 --> 环境变量 添加环境变量（API_KEY、APP_ID、SECRET_KEY）, 超时时间改为 20秒。
 8. 其他的可能超时的云函数，修改超时时间为20s。
-9. 预览
+9. image资源加载失败，根据需要上传文件到云存储并修改引用路劲或fileID。
+10. 预览
 -------------------------
 
 ![小程序码](https://6465-dev-4iov0-1301148496.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210411162950.jpg?sign=1cdabb92e1b2f3ffa846fc4f8007f5f8&t=1618129824)
