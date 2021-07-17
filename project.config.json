@@ -27,6 +27,7 @@
       "disablePlugins": [],
       "outputPath": ""
     },
+    "enableEngineNative": false,
     "bundle": true,
     "useIsolateContext": true,
     "useCompilerModule": true,
@@ -37,7 +38,7 @@
     "minifyWXSS": true
   },
   "appid": "wxbe6c30a61a51b422",
-  "projectname": "%E8%AF%81%E4%BB%B6%E7%85%A7",
+  "projectname": "证件照微信小程序",
   "libVersion": "2.14.1",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},

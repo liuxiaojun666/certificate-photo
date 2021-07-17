@@ -22,7 +22,8 @@ button::after{
 
 
 page {
-  background: linear-gradient(to bottom, rgba(0,191,243,.2), rgba(67,142,219,.2), rgba(255,0,0,.2));
+  /* background: linear-gradient(to bottom, rgba(0,191,243,.2), rgba(67,142,219,.2), rgba(255,0,0,.2)); */
+  background-color: #F5F5F5;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

@@ -24,15 +24,15 @@
 	"window": {
 		"backgroundColor": "#fff",
 		"backgroundTextStyle": "light",
-		"navigationBarBackgroundColor": "#cef3F6",
+		"navigationBarBackgroundColor": "#3E85EE",
 		"navigationBarTitleText": "",
-		"navigationBarTextStyle": "black"
+		"navigationBarTextStyle": "white"
 	},
 	"sitemapLocation": "sitemap.json",
 	"style": "v2",
 	"workers": "workers",
 	"tabBar": {
-		"backgroundColor": "#ffd2d2",
+		"backgroundColor": "#fff",
 		"color": "#333333",
 		"selectedColor": "#d81e06",
 		"list": [
