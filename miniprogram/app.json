@@ -47,12 +47,6 @@
 				"text": "我的",
 				"iconPath": "./images/mein.png",
 				"selectedIconPath": "./images/meinRed.png"
-			},
-			{
-				"pagePath": "pages/help/help",
-				"text": "帮助",
-				"iconPath": "./images/help.png",
-				"selectedIconPath": "./images/helpRed.png"
 			}
 		]
 	}

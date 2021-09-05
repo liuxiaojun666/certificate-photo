@@ -26,7 +26,7 @@
 }
 
 .UCenter-bg {
-	background: #cef3F6;
+	background: #3E85EE;
   height: 280rpx;
   display: flex;
   justify-content: center;

@@ -12,12 +12,12 @@
         </view>
         <view wx:if="{{canIUseGetUserProfile}}" class="text-cut text-xl text-green nickName" style="width:6em;">
             <button wx-if="{{!authorized}}" bindtap="getUserProfile" size="mini">授权登录</button>
-            <text wx-if="{{authorized}}" bindtap="getUserProfile">{{userInfo.nickName}}</text>
+            <text wx-if="{{authorized}}" bindtap="getUserProfile" style="color: white;">{{userInfo.nickName}}</text>
         </view>
 				<!-- <open-data class="text-cut text-xl text-green nickName" style="width:6em;" type="userNickName"></open-data> -->
-				<view wx-if="{{signed}}" class="signIn text-green">今日已签到</view>
-				<view wx-if="{{!signed && !signInLoading && userInfo.openid}}" class="signIn text-red text-xl" bindtap="signIn">签到+1次下载＞</view>
-				<view wx-if="{{signInLoading && !signed}}" class="signIn text-green">签到中...</view>
+				<view wx-if="{{signed}}" class="signIn">今日已签到</view>
+				<view wx-if="{{!signed && !signInLoading && userInfo.openid}}" class="signIn text-yellow text-xl" bindtap="signIn">签到+1次下载＞</view>
+				<view wx-if="{{signInLoading && !signed}}" class="signIn">签到中...</view>
 		</view>
 		<image src="cloud://dev-4iov0.6465-dev-4iov0-1301148496/pageSource/wave.gif" mode="scaleToFill" class="gif-wave"></image>
 	</view>
@@ -98,12 +98,12 @@
         <text class="text-red">免费无限次 + 作者</text>
       </view>
     </view> -->
-    <!-- <view class="cu-item arrow">
+    <view class="cu-item arrow">
       <button class="cu-btn content" open-type="contact">
         <text class="cuIcon-messagefill text-green"></text>
         <text class="text-grey">联系客服</text>
       </button>
-    </view> -->
+    </view>
     <!-- <view class="cu-item arrow">
       <button class="cu-btn content" open-type="feedback">
         <text class="cuIcon-writefill text-cyan"></text>
