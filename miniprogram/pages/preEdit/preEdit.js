@@ -7,7 +7,7 @@ Page({
 	 */
 	data: {
 		originImgId: '',
-		photoSizeList: getApp().globalData.photoSizeList,
+		photoSizeList: app.globalData.photoSizeList,
 		width: '',
 		height: '',
 		px: '',

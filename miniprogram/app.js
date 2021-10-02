@@ -58,7 +58,7 @@ App({
 		openid: null,
 		photoSizeList: [{
 				name: '一寸',
-				px: '295×413 像素',
+				px: '295×413 px',
 				size: '25 × 35 mm',
 				width: 295,
 				height: 413,
@@ -66,7 +66,7 @@ App({
 			},
 			{
 				name: '小一寸',
-				px: '260×378 像素',
+				px: '260×378 px',
 				size: '22 × 32 mm',
 				width: 260,
 				height: 378,
@@ -74,7 +74,7 @@ App({
 			},
 			{
 				name: '大一寸',
-				px: '390×567 像素',
+				px: '390×567 px',
 				size: '33 × 48 mm',
 				width: 390,
 				height: 567,
@@ -82,7 +82,7 @@ App({
 			},
 			{
 				name: '二寸',
-				px: '413×579 像素',
+				px: '413×579 px',
 				size: '35 × 49 mm',
 				width: 413,
 				height: 579,
@@ -90,7 +90,7 @@ App({
 			},
 			{
 				name: '小二寸',
-				px: '413×531 像素',
+				px: '413×531 px',
 				size: '33 × 45 mm',
 				width: 413,
 				height: 531,
@@ -98,7 +98,7 @@ App({
 			},
 			{
 				name: '大二寸',
-				px: '413×626 像素',
+				px: '413×626 px',
 				size: '35 × 53 mm',
 				width: 413,
 				height: 626,
@@ -106,7 +106,7 @@ App({
 			},
 			{
 				name: '三寸',
-				px: '649×991 像素',
+				px: '649×991 px',
 				size: '55 × 84 mm',
 				width: 413,
 				height: 626,
@@ -114,7 +114,7 @@ App({
 			},
 			{
 				name: '四寸',
-				px: '898×1205 像素',
+				px: '898×1205 px',
 				size: '76 × 102 mm',
 				width: 413,
 				height: 626,
@@ -122,7 +122,7 @@ App({
 			},
 			{
 				name: '五寸',
-				px: '1050×1499 像素',
+				px: '1050×1499 px',
 				size: '89 × 127 mm',
 				width: 413,
 				height: 626,
@@ -130,7 +130,7 @@ App({
 			},
 			{
 				name: '简历',
-				px: '295×413 像素',
+				px: '295×413 px',
 				size: '25 × 35 mm',
 				width: 295,
 				height: 413,
@@ -138,7 +138,7 @@ App({
 			},
 			{
 				name: '健康证',
-				px: '295×413 像素',
+				px: '295×413 px',
 				size: '25 × 35 mm',
 				width: 295,
 				height: 413,
@@ -146,7 +146,7 @@ App({
 			},
 			{
 				name: '结婚证',
-				px: '626x413 像素',
+				px: '626x413 px',
 				size: '53 × 35 mm',
 				width: 626,
 				height: 413,
@@ -154,7 +154,7 @@ App({
 			},
 			{
 				name: '一寸半身照',
-				px: '295×413 像素',
+				px: '295×413 px',
 				size: '25 × 35 mm',
 				width: 295,
 				height: 413,
@@ -162,7 +162,7 @@ App({
 			},
 			{
 				name: '二寸半身照',
-				px: '413×579 像素',
+				px: '413×579 px',
 				size: '35 × 49 mm',
 				width: 413,
 				height: 579,
@@ -170,20 +170,12 @@ App({
 			},
 			{
 				name: '教师资格证',
-				px: '295×413 像素',
+				px: '295×413 px',
 				size: '25 × 35 mm',
 				width: 295,
 				height: 413,
 				discription: '教师资格证'
-			},
-			{
-				name: '定制',
-				px: '',
-				size: '480×640 像素',
-				width: 480,
-				height: 640,
-				discription: ''
-			},
+			}
 		]
 	}
 })

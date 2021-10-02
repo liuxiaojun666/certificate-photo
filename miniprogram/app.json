@@ -34,19 +34,19 @@
 	"tabBar": {
 		"backgroundColor": "#fff",
 		"color": "#333333",
-		"selectedColor": "#d81e06",
+		"selectedColor": "#3E85EE",
 		"list": [
 			{
 				"pagePath": "pages/index/index",
 				"text": "首页",
-				"iconPath": "./images/default.png",
-				"selectedIconPath": "./images/defaultRed.png"
+				"iconPath": "./images/index.png",
+				"selectedIconPath": "./images/index-active.png"
 			},
 			{
 				"pagePath": "pages/mein/mein",
 				"text": "我的",
-				"iconPath": "./images/mein.png",
-				"selectedIconPath": "./images/meinRed.png"
+				"iconPath": "./images/me.png",
+				"selectedIconPath": "./images/me-active.png"
 			}
 		]
 	}

@@ -1,6 +1,5 @@
 // 在页面中定义插屏广告
 let interstitialAd = null
-const app = getApp()
 
 Page({
 
@@ -10,8 +9,7 @@ Page({
   data: {
 		extraData: {
 	　　from: '免冠照片'
-　　},
-		photoSizeList: app.globalData.photoSizeList
+　　}
   },
 
 	toMiniProgramSuccess(res) {
@@ -47,19 +45,13 @@ Page({
 		this.shareSuccess(options.shareOpenid)
 	},
 
-	// 去选择照片页面
 	goNextPage (e) {
 		wx.navigateTo({
 			// url: '/pages/example/example?index=' + e.currentTarget.dataset.index,
 			url: '/pages/preEdit/preEdit?index=' + e.currentTarget.dataset.index,
 		})
 	},
-
-	navigateTo(e) {
-		wx.navigateTo({
-			url: e.currentTarget.dataset.url,
-		})
-	},
+	
 	/**
 	 * 用户来自邀请
 	 */

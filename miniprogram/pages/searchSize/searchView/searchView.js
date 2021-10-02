@@ -29,13 +29,11 @@ Page({
       putText: e.detail.value
 		});
 		if (this.data.putText.length==0) {
-			console.log("没数据")
 			this.setData({
 				photoSizeList:[],
 				putText:"",
 				showMenu:false,
-			});
-			this.requestdata()
+			})
 		}
   },
 	searchClick:function () {

@@ -50,12 +50,12 @@
 		<button class="cu-btn sm margin-0">签到</button>
 	</view> -->
 	<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-    <view class="cu-item arrow">
+    <!-- <view class="cu-item arrow">
       <view class="content" bindtap="showQrcode">
         <text class="cuIcon-appreciatefill text-red"></text>
         <text class="text-red">赞赏支持</text>
       </view>
-    </view>
+    </view> -->
     <!-- <view class="cu-item arrow">
       <button class="cu-btn content" open-type="share">
         <text class="cuIcon-share text-red"></text>
@@ -110,11 +110,11 @@
         <text class="text-grey">意见反馈</text>
       </button>
     </view> -->
-    <view class="cu-item arrow" bindtap="getNewVersion">
+    <!-- <view class="cu-item arrow" bindtap="getNewVersion">
       <button class="cu-btn content">
         <text class="cuIcon-vip text-green"></text>
         <text class="text-grey">检查版本</text>
       </button>
-    </view>
+    </view> -->
   </view>
 </scroll-view>
