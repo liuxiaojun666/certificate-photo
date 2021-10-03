@@ -48,8 +48,8 @@ page {
 }
  
 .active {
-  color: rgb(240, 9, 9);
-  border-bottom: 4rpx solid rgb(240, 9, 9);
+  color: #3E85EE;
+  border-bottom: 4rpx solid #3E85EE;
 }
  
 swiper {
@@ -131,14 +131,11 @@ ad {
 	background-color: #eeeeee;
 }
 .card.custom {
-	background: linear-gradient(45deg, #0081ff, #1cbbb4);
-	/* color: #fff; */
+	padding: 0;
 }
-.card.custom .name {
-	color: #fff;
-}
-.card.custom .discription {
-	color: #fff;
+.card.custom image {
+	width: 100%;
+	height: 120rpx;
 }
 .card .name {
 	font-size: 36rpx;
@@ -156,6 +153,33 @@ ad {
 	color: #666;
 	text-align:justify;
 	/* padding: 8rpx 15rpx !important; */
+}
+
+
+.hot-list-item {
+	box-sizing: border-box;
+	width: 100%;
+	height: 130rpx;
+	padding: 25rpx 40rpx;
+	background: #DBEDFC;
+	border-radius: 10rpx;
+	position: relative;
+	margin-bottom: 20rpx;
+}
+.hot-list-item .title {
+	font-size: 26rpx;
+}
+.hot-list-item .description {
+	font-size: 24rpx;
+	color: #919191;
+	margin-top: 20rpx;
+}
+.hot-list-item image {
+	position: absolute;
+	width: 60rpx;
+	height: 60rpx;
+	right: 40rpx;
+	top: 36rpx;
 }
 
 .transparent {

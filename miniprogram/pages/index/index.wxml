@@ -67,7 +67,7 @@
 			class="hot-list-item">
 			<view class="title">{{ item.name }}</view>
 			<view class="description">{{ item.px }}  |  {{ item.size }}</view>
-			<image src="./images/take.png"></image>
+			<image src="/images/take.png"></image>
 		</view>
 	</view>
 </scroll-view>

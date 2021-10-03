@@ -1,11 +1,6 @@
 <scroll-view class="container" scroll-y bindscrolltolower="moredata">
-	<!-- <ad unit-id="adunit-024ae35dd18ed419"></ad> -->
 	<view bindtap="inputPush" class="searchView">
-		<!-- <text class="searchput">请输入关键字搜索</text> -->
-		<input class="card" disabled="true" value="{{putText}}" bindfocus="inputPush" bindinput="bindModel"
-			class="searchput" placeholder="请输入关键字搜索">
-
-		</input>
+		<image src="./images/search-input.png" style="width: 100%;height:70rpx;"></image>
 	</view>
 	<view class="swiper-tab" hidden="{{showMenu}}">
 		<view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">常用尺寸</view>
@@ -17,25 +12,14 @@
 
 
 	<view wx:for="{{photoSizeList}}" wx:key="name" data-index="{{index}}" bindtap="goNextPage">
-		<navigator wx:if="{{index%6==0}}" class="card margin-top custom" open-type="navigate" url="../photoSize/custom/custom">
-			<text class="name">自定义</text>
-			<text class="discription">自定义宽高，你想要的都可以</text>
+		<navigator wx:if="{{ index % 6 === 0 }}" class="card margin-top custom" open-type="navigate" url="../photoSize/custom/custom">
+			<image src="./images/custom-img.png"></image>
 		</navigator>
-		<ad wx:if="{{index%6==3}}" unit-id="adunit-eaee002e3b71ca92"></ad>
-		<view class="card">
-			<text class="name">{{item.name}}</text>
-			<view>
-				<text wx:if="{{item.width_px}}" class="size">{{item.width_px}}*{{item.height_px}} 像素 </text>
-				<text class="discription">{{item.width_mm}}*{{item.height_mm}}mm</text>
-			</view>
-			<view>{{item.discription}}</view>
+		<ad wx:if="{{ index % 6 === 3 }}" unit-id="adunit-eaee002e3b71ca92"></ad>
+		<view class="hot-list-item">
+			<view class="title">{{ item.name }}</view>
+			<view class="description">{{item.width_px}}*{{item.height_px}} px  |  {{item.width_mm}}*{{item.height_mm}} mm</view>
+			<image src="./images/card-people.png"></image>
 		</view>
-		<!-- <text class="size">{{item.size}}</text> -->
 	</view>
-	<!-- <view class="moredata" hidden="{{hideLoadView}}" bindtap="moreclick">
-		<text>点击加载更多</text>
-	</view> -->
 </scroll-view>
-<!-- 
-<navigator class="text-center text-white text-lg help-btn" url="../photoSize/custom/custom" open-type="reLaunch">自定义</navigator> -->
-<!-- <canvas type="2d" id="myCanvas" style="width: {{myCanvas.width}}px;height: {{myCanvas.height}}px;"></canvas> -->

@@ -1,4 +1,7 @@
 /* miniprogram/pages/editPhoto/editPhoto.wxss */
+page {
+	background: linear-gradient(to bottom, rgba(0,191,243,.2), rgba(67,142,219,.2), rgba(255,0,0,.2));
+}
 .container {
 	width: 100%;
 	overflow: hidden;
@@ -7,7 +10,7 @@
 .tabs {
 	width: 100%;
 	height: 100rpx;
-	background-color: rgba(255,255,255,.5);
+	background-color: rgba(255,255,255,.2);
 	display: flex;
 	flex-direction: row;
 }
@@ -17,9 +20,16 @@
 	height: 100%;
 	text-align: center;
 }
+.tab.tab-active {
+	color: #3E85EE;
+	border-bottom: 3px solid #3E85EE;
+}
 .tabs .tab .name {
-	font-size: 36rpx;
+	font-size: 32rpx;
 	line-height: 1.5;
+}
+.tabs .tab .description {
+	font-size: 24rpx;
 }
 
 
@@ -35,12 +45,12 @@
 	width: 15%;
 	height: 0;
 	padding-top: 15%;
-	border: 2rpx solid #000;
+	border: 2px solid #000;
 	border-radius: 50%;
 	overflow: hidden;
 }
 .container .colors .color.active {
-	border-color: #06ae56;
+	border-color: #3E85EE;
 }
 .container .colors .color.transparent {
 	background-color: transparent;
@@ -271,6 +281,8 @@
 
 .download-view {
 	width: 100%;
+	box-sizing: border-box;
+	padding: 0 20rpx;
 	margin-top: 50rpx;
 }
 
@@ -298,4 +310,18 @@
 .download-view button {
 	margin-bottom: 20rpx;
 	box-shadow: 0 0 10rpx 5rpx rgba(67,142,219,.25);
+	background-color: #3E85EE !important;
+	color: #fff !important;
+	font-weight: normal;
+	height: 90rpx;
+	padding: 0;
+	line-height: 90rpx;
+	width: 100% !important;
+	border-radius: 45rpx;
+}
+
+
+.style-text {
+	color: #333333;
+	font-size: 24rpx !important;
 }
