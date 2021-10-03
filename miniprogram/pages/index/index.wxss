@@ -137,3 +137,10 @@ swiper-item .swiper-item {
 	right: 40rpx;
 	top: 36rpx;
 }
+
+.ad-view {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0 30rpx;
+	overflow: hidden;
+}
