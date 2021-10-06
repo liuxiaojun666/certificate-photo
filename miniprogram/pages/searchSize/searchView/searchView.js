@@ -14,17 +14,8 @@ Page({
 		photoSizeList:[],
 		allRecords:[]
 	},
- 
-	toMiniProgramSuccess(res) {
-		//从其他小程序返回的时候触发
-		wx.showToast({
-			title: this.putText,
-			icon: 'none'
-		})
-	},
 	//输入框值
 	bindModel(e) {
-    let key = e.target.dataset.model;
     this.setData({
       putText: e.detail.value
 		});
@@ -37,11 +28,6 @@ Page({
 		}
   },
 	searchClick:function () {
-		console.log(this.data.putText)
-		// wx.showToast({
-		// 	title:'查询----'+this.data.putText,
-		// 	icon: 'none'
-		// })
 		this.setData({
 			showMenu:true,
 			photoSizeList:[],
@@ -88,9 +74,6 @@ Page({
 		wx.showLoading({
 			title: '搜索中...',
 		})
-		wx.cloud.init({
-      env: 'dev-4iov0'
-		});
 		const db = wx.cloud.database()
 		const MAX_LIMIT = 20
 		const num = this.data.page*MAX_LIMIT

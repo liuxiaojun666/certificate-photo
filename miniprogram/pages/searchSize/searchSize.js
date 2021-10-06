@@ -81,13 +81,6 @@ Page({
 	}
 },
 
-	toMiniProgramSuccess(res) {
-		//从其他小程序返回的时候触发
-		wx.showToast({
-			title: this.putText,
-			icon: 'none'
-		})
-	},
 	//输入框值
 	bindModel(e) {
     let key = e.target.dataset.model;
@@ -128,10 +121,6 @@ Page({
 
 	},
 	goNextPage (e) {
-		console.log("数据sss------"+JSON.stringify(this.data.photoSizeList[e.currentTarget.dataset.index]))
-		// wx.navigateTo({
-		// 	url: '/pages/preEdit/preEdit?datas=' + this.data.photoSizeList[e.currentTarget.dataset.index]
-		// })
 
 		wx.navigateTo({
 			url: '/pages/preEdit/preEdit?index=' + e.currentTarget.dataset.index + '&data='+JSON.stringify(this.data.photoSizeList[e.currentTarget.dataset.index])
@@ -156,9 +145,6 @@ Page({
 	//搜索数据
 	searchData(e){
 		wx.showNavigationBarLoading()
-		wx.cloud.init({
-      env: 'dev-4iov0'
-		});
 		const db = wx.cloud.database()
 		const MAX_LIMIT = 20
 		const num = this.data.page*MAX_LIMIT
@@ -190,9 +176,6 @@ Page({
 		wx.showLoading({
 			title: '加载中...',
 		})
-		wx.cloud.init({
-      env: 'dev-4iov0'
-		});
 		const db = wx.cloud.database()
 		const MAX_LIMIT = 20
 		const num = this.data.page*MAX_LIMIT

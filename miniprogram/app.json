@@ -1,53 +1,46 @@
 {
-	"pages": [
-		"pages/index/index",
-		"pages/share/share",
-		"pages/photoSize/index",
-		"pages/editPhoto/editPhoto",
-		"pages/mein/mein",
-		"pages/album/album",
-		"pages/example/example",
-		"pages/touch/touch",
-		"pages/editPhoto/imageStyle/imageStyle",
-		"pages/editPhoto/hair/hair",
-		"pages/photoSize/custom/custom",
-		"pages/editPhoto/watermark/watermark",
-		"pages/help/help",
-		"pages/editPhoto/complete/complete",
-		"pages/help/beatShot/beatShot",
-		"pages/help/tips/tips",
-		"pages/helpMake/helpMake",
-		"pages/preEdit/preEdit",
-		"pages/editPhoto/editPhotoPlus/editPhotoPlus",
-		"pages/about/about"
-	],
-	"window": {
-		"backgroundColor": "#fff",
-		"backgroundTextStyle": "light",
-		"navigationBarBackgroundColor": "#3E85EE",
-		"navigationBarTitleText": "",
-		"navigationBarTextStyle": "white"
-	},
-	"sitemapLocation": "sitemap.json",
-	"style": "v2",
-	"workers": "workers",
-	"tabBar": {
-		"backgroundColor": "#fff",
-		"color": "#333333",
-		"selectedColor": "#3E85EE",
-		"list": [
-			{
-				"pagePath": "pages/index/index",
-				"text": "首页",
-				"iconPath": "./images/index.png",
-				"selectedIconPath": "./images/index-active.png"
-			},
-			{
-				"pagePath": "pages/mein/mein",
-				"text": "我的",
-				"iconPath": "./images/me.png",
-				"selectedIconPath": "./images/me-active.png"
-			}
-		]
-	}
+  "pages": [
+    "pages/index/index",
+    "pages/share/share",
+    "pages/mein/mein",
+    "pages/touch/touch",
+    "pages/editPhoto/imageStyle/imageStyle",
+    "pages/editPhoto/hair/hair",
+    "pages/searchSize/custom/custom",
+    "pages/editPhoto/watermark/watermark",
+    "pages/editPhoto/complete/complete",
+    "pages/helpMake/helpMake",
+    "pages/preEdit/preEdit",
+    "pages/editPhoto/editPhotoPlus/editPhotoPlus",
+    "pages/groupQrcodeManage/index"
+  ],
+  "window": {
+    "backgroundColor": "#fff",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3E85EE",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "workers": "workers",
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "color": "#333333",
+    "selectedColor": "#3E85EE",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./images/index.png",
+        "selectedIconPath": "./images/index-active.png"
+      },
+      {
+        "pagePath": "pages/mein/mein",
+        "text": "我的",
+        "iconPath": "./images/me.png",
+        "selectedIconPath": "./images/me-active.png"
+      }
+    ]
+  }
 }

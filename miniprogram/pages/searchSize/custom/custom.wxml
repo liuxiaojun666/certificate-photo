@@ -13,11 +13,10 @@
 			<view class="title">用途描述</view>
 			<input bindinput="remakChange" type="text" value="{{remak}}" placeholder="如‘护师职称考试报名’"></input>
 		</view>
-		<view class="padding">
-			<button class="bg-blue" type="default" bindtap="selectPhoto">确定</button>
+		<view>
+			<button class="btn-confirm" type="default" bindtap="selectPhoto">确定</button>
 		</view>
 	</form>
-	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow margin-top">看不懂？不知道尺寸？帮制作</navigator>
+	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="text-orange lg margin-top">看不懂？不知道尺寸？帮制作</navigator>
 </view>
 
-<!-- <canvas type="2d" id="myCanvas" style="width: {{myCanvas.width}}px;height: {{myCanvas.height}}px;"></canvas> -->

@@ -4,7 +4,6 @@
 
 <view class="header">{{photoName}}</view>
 <view class="tips">
-	<!-- <view bindtap="chooseImage" class="cu-btn round bg-blue shadow lg">开始制作</view> -->
 	<view>照片像素：{{px}}</view>
 	<view>打印尺寸：{{size}}</view>
 	<view>照片描述：{{discription}}</view>

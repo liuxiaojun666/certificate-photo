@@ -1,11 +1,11 @@
-// miniprogram/pages/helpMake/helpMake.js
+const app = getApp()
 Page({
 
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-
+		groupQrcodeUrl: app.globalData.groupQrcodeUrl
 	},
 
 	copy () {
@@ -20,8 +20,8 @@ Page({
 	// 预览群二维码
 	viewGroupQRcode () {
 		wx.previewImage({
-			urls: ['cloud://dev-4iov0.6465-dev-4iov0-1301148496/mein-wechart-qrcode.png'],
-			current: 'cloud://dev-4iov0.6465-dev-4iov0-1301148496/mein-wechart-qrcode.png' // 当前显示图片的http链接      
+			urls: [app.globalData.groupQrcodeUrl],
+			current: app.globalData.groupQrcodeUrl // 当前显示图片的http链接      
 		})
 	},
 

@@ -12,7 +12,7 @@
 
 
 	<view wx:for="{{photoSizeList}}" wx:key="name" data-index="{{index}}" bindtap="goNextPage">
-		<navigator wx:if="{{ index % 6 === 0 }}" class="card margin-top custom" open-type="navigate" url="../photoSize/custom/custom">
+		<navigator wx:if="{{ index % 6 === 0 }}" class="card margin-top custom" open-type="navigate" url="../searchSize/custom/custom">
 			<image src="./images/custom-img.png"></image>
 		</navigator>
 		<ad wx:if="{{ index % 6 === 3 }}" unit-id="adunit-eaee002e3b71ca92"></ad>

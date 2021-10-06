@@ -38,13 +38,6 @@ Page({
 			const {width, height, px, size, name, discription} = this.data.photoSizeList[index];
 			this.setData({ width, height, px, size, photoName: name, discription: discription });
 		}
-		
-		// if (width && height) {
-		// 	this.setData({px: width + ' * ' + height + '像素', width: +width, height: +height, discription})
-		// } else if (index) {
-		// 	const {width, height, px, size, name, discription} = this.data.photoSizeList[index]
-		// 	this.setData({ width, height, px, size, photoName: name, discription: discription })
-		// }
 	},
 
 		/**
@@ -126,16 +119,7 @@ Page({
 	onShareAppMessage: function () {
 		return {
 			title: '证件照、免冠照、一寸照片、二寸照片、自定义尺寸、证件照换背景，免费生成、下载。',
-			// path: '/pages/index/index',
 			imageUrl: '/images/shareShow.jpg'
 		}
-	},
-	copy () {
-		wx.setClipboardData({
-			data: '1297768249',
-			success (res) {
-				
-			}
-		})
-	},
+	}
 })

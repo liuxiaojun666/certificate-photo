@@ -12,6 +12,8 @@ App({
 			traceUser: true
 		})
 
+		// 获取群二维码
+		this.getGroupUrl()
 		// 新用户入库
 		this.addUser()
 	},
@@ -27,6 +29,15 @@ App({
 					icon: 'none'
 				})
 			}
+		})
+	},
+
+	// 获取群二维码地址
+	getGroupUrl() {
+		wx.cloud.downloadFile({
+			fileID: 'cloud://dev-4iov0.6465-dev-4iov0-1301148496/group-qrcode/qrcode.jpg'
+		}).then(res => {
+			this.globalData.groupQrcodeUrl = res.tempFilePath
 		})
 	},
 
@@ -56,6 +67,7 @@ App({
 	// 初始化全局数据
 	globalData: {
 		openid: null,
+		groupQrcodeUrl: 'cloud://dev-4iov0.6465-dev-4iov0-1301148496/group-qrcode/qrcode.jpg',
 		photoSizeList: [{
 				name: '一寸',
 				px: '295×413 px',

@@ -1,0 +1,22 @@
+.container {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	/* justify-content: space-between; */
+}
+
+form {
+	margin-top: 50rpx;
+}
+
+button.btn-confirm {
+	width: 100% !important;
+	height: 90rpx !important;
+	padding: 0 !important;
+	line-height: 90rpx !important;
+	color: #fff !important;
+	border-radius: 45rpx !important;
+	background-color: #0081ff !important;
+	font-weight: normal !important;
+	margin-top: 30rpx;
+}

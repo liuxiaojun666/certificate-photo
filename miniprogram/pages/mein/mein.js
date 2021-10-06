@@ -3,6 +3,7 @@
 let interstitialAd = null
 // 在页面中定义激励视频广告
 let videoAd = null
+const app = getApp()
 Page({
 
 	/**
@@ -14,7 +15,8 @@ Page({
 		signed: false,
 		signInLoading: false,
 		videoLoaded: false,
-		canIUseGetUserProfile: true
+		canIUseGetUserProfile: true,
+		envVersion: wx.getAccountInfoSync().miniProgram.envVersion
 	},
 
 	// 获取用户信息回调
@@ -45,20 +47,14 @@ Page({
 				...userInfo
 			}
 		})
-		const openid = getApp().globalData.openid
+		const openid = app.globalData.openid
 		if (!openid) return
 		wx.cloud.callFunction({
 			name: 'setUserInfo',
 			data: {openid, data: userInfo}
 		}).then(res => {
 			console.log(res)
-			// wx.showToast({ title: '签到成功', })
-			// this.getUserInfo()
 		})
-		// const db = wx.cloud.database()
-		// db.collection('user').where({ openid }).update({
-		// 	data: {...userInfo}
-		// })
 	},
 
 	// 签到
@@ -209,7 +205,7 @@ Page({
 	// 从数据库获取用户信息，并更新用户信息
 	getUserInfo () {
 		const that = this
-		const openid = getApp().globalData.openid
+		const openid = app.globalData.openid
 		if (!openid) return
 		const db = wx.cloud.database()
 		db.collection('user').where({ openid }).get().then(res => {
@@ -242,37 +238,6 @@ Page({
 		})
 	},
 
-	// 获取最新版本
-	getNewVersion () {
-		const updateManager = wx.getUpdateManager()
-
-		updateManager.onCheckForUpdate(function (res) {
-			// 请求完新版本信息的回调
-			if (!res.hasUpdate) {
-				wx.showToast({
-					title: '已是最新版本',
-				})
-			} else {
-				wx.showLoading({
-					title: '正在下载新版本',
-				})
-			}
-		})
-
-		updateManager.onUpdateReady(function () {
-			wx.showModal({
-				title: '更新提示',
-				content: '新版本已经准备好，是否重启应用？',
-				success(res) {
-					if (res.confirm) {
-						// 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
-						updateManager.applyUpdate()
-					}
-				}
-			})
-		})
-	},
-
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
@@ -289,7 +254,7 @@ Page({
 
 	// 定时器，解决第一次进入页面没有openid 的问题
 	timerFunc () {
-		const openid = getApp().globalData.openid
+		const openid = app.globalData.openid
 		if (openid) {
 			this.getUserInfo()
 		} else {
@@ -297,68 +262,18 @@ Page({
 		}
 	},
 
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
-	},
-
 	
   onShareTimeline: function () {
 		return {
 			title: '证件照、免冠照、一寸照片、二寸照片、证件照换背景，免费生成、下载。',
-			// path: '/pages/index/index',
 			imageUrl: '/images/shareShow.jpg'
 		}
 	},
-
-	showQrcode() {
-		wx.previewImage({
-			urls: ['https://6465-dev-4iov0-1301148496.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200327222252.jpg?sign=6ed404519a6e636bd8e34071c07f0449&t=1591411659'],
-			current: 'https://6465-dev-4iov0-1301148496.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200327222252.jpg?sign=6ed404519a6e636bd8e34071c07f0449&t=1591411659' // 当前显示图片的http链接      
-		})
-	},
-
-	showQrcode2() {
-		wx.previewImage({
-			urls: ['https://6465-dev-4iov0-1301148496.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200606104940.jpg?sign=e3dac636b9d352831ef70e77c4ee0621&t=1591411804'],
-			current: 'https://6465-dev-4iov0-1301148496.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200606104940.jpg?sign=e3dac636b9d352831ef70e77c4ee0621&t=1591411804' // 当前显示图片的http链接      
-		})
-	},
-		// 预览群二维码，群活吗太麻烦，改成个人二维码了
+		// 预览群二维码
 		viewGroupQRcode () {
 			wx.previewImage({
-				urls: ['cloud://dev-4iov0.6465-dev-4iov0-1301148496/mein-wechart-qrcode.png'],
-				current: 'cloud://dev-4iov0.6465-dev-4iov0-1301148496/mein-wechart-qrcode.png' // 当前显示图片的http链接      
+				urls: [app.globalData.groupQrcodeUrl],
+				current: app.globalData.groupQrcodeUrl // 当前显示图片的http链接      
 			})
 		},
 })
