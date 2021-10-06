@@ -43,7 +43,7 @@
   <text>项目已开源，请在客服消息查看Github开源地址。</text>
 </view>
 	<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-    <view wx:if="'release' !== envVersion" class="cu-item arrow">
+    <view wx:if="{{ 'release' !== envVersion }}" class="cu-item arrow">
       <navigator class="content" url="/pages/groupQrcodeManage/index">
         <text class="cuIcon-friendadd text-red"></text>
         <text>替换群二维码</text>

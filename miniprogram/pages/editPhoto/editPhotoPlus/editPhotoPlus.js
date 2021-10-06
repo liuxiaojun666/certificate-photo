@@ -321,6 +321,8 @@ Page({
 
 	// 使用次数
 	useCount (vip, count = -1) {
+		if(vip && this.data.useVipLoading) return
+		this.data.useVipLoading = true
 		wx.cloud.callFunction({
 			name: vip ? 'useVipCount' : 'useCount',
 			data: {
@@ -328,9 +330,12 @@ Page({
 				isVip: this.usedVip,
 				lookVideo: vip && (count === 1)
 			}
-		}).then(res => {
+		})
+		.catch()
+		.then(res => {
 			wx.hideLoading({})
 			this.getCount()
+			this.data.useVipLoading = false
 		})
 	},
 
@@ -483,7 +488,6 @@ Page({
 		if (!openid) return
 		const db = wx.cloud.database()
 		db.collection('user').where({ openid }).get().then(res => {
-			console.log(res)
 			this.setData({
 				count: res.data[0].count,
 				vipCount: res.data[0].vipCount

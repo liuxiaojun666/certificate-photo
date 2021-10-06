@@ -16,7 +16,7 @@ Page({
 		signInLoading: false,
 		videoLoaded: false,
 		canIUseGetUserProfile: true,
-		envVersion: wx.getAccountInfoSync().miniProgram.envVersion
+		envVersion: wx.getAccountInfoSync().miniProgram.envVersion || 'release'
 	},
 
 	// 获取用户信息回调

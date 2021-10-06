@@ -14,9 +14,6 @@ exports.main = async (event, context) => {
 		vipCount: _.inc(event.lookVideo ? 1 : (1 * event.inc)),
 		lookVideoCount: _.inc(event.lookVideo ? 1 : 0)
 	}
-	// if (event.signIn) {
-	// 	data.signInDate = new Date(Date.now() + 1000 * 60 * 60 * 8).toDateString().trim()
-	// }
 
 	const res = await db.collection('user').where({
 		openid: event.openid || wxContext.OPENID
