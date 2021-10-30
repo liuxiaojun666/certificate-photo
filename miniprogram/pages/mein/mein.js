@@ -19,6 +19,20 @@ Page({
 		envVersion: wx.getAccountInfoSync().miniProgram.envVersion || 'release'
 	},
 
+	// 复制GitHub地址
+	copyGithubLink() {
+		wx.setClipboardData({
+			data: 'https://github.com/liuxiaojun666/ID-Photo-miniapp-wechart',
+			success (res) {
+				wx.getClipboardData({
+					success (res) {
+						console.log(res.data) // data
+					}
+				})
+			}
+		})
+	},
+
 	// 获取用户信息回调
 	bindGetUserInfo (e) {
 		if (e.detail.userInfo) {

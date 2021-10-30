@@ -1,77 +1,78 @@
 <scroll-view scroll-y class="scrollPage">
 
-	<view class="user-info UCenter-bg">
-		<view class="my-info padding">
-				<view bindtap="userInfoAuth" class="cu-avatar xl round">
-          <image wx-if="{{authorized}}" mode="widthFix" src="{{userInfo.avatarUrl}}"></image>
-				</view>
-        <view wx:if="{{!canIUseGetUserProfile}}" class="text-cut text-xl text-green nickName" style="width:6em;">
-            <button wx-if="{{!authorized}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" size="mini">授权登录</button>
-            <text wx-if="{{authorized}}">{{userInfo.nickName}}</text>
-        </view>
-        <view wx:if="{{canIUseGetUserProfile}}" class="text-cut text-xl text-green nickName" style="width:6em;">
-            <button wx-if="{{!authorized}}" bindtap="getUserProfile" size="mini">授权登录</button>
-            <text wx-if="{{authorized}}" bindtap="getUserProfile" style="color: white;">{{userInfo.nickName}}</text>
-        </view>
-				<view wx-if="{{signed}}" class="signIn">今日已签到</view>
-				<view wx-if="{{!signed && !signInLoading && userInfo.openid}}" class="signIn text-yellow text-xl" bindtap="signIn">签到+1次下载＞</view>
-				<view wx-if="{{signInLoading && !signed}}" class="signIn">签到中...</view>
-		</view>
-		<image src="cloud://dev-4iov0.6465-dev-4iov0-1301148496/pageSource/wave.gif" mode="scaleToFill" class="gif-wave"></image>
-	</view>
-
-	<view class="padding flex text-center text-grey bg-white shadow-warp">
-    <view class="flex flex-sub flex-direction solid-right">
-      <view class="text-xxl text-orange">{{userInfo.count || 0}}<text class="text-df">次</text></view>
-      <view class="margin-top-sm">剩余普通下载</view>
-    </view>
-    <view class="flex flex-sub flex-direction solid-right">
-      <view class="text-xxl text-blue">{{userInfo.vipCount || 0}}<text class="text-df">次</text></view>
-      <view class="margin-top-sm">剩余精细抠图</view>
-    </view>
-    <view class="flex flex-sub flex-direction">
-      <view class="text-xxl text-green">{{userInfo.accumCreatePhoto || 0}}<text class="text-df">张</text></view>
-      <view class="margin-top-sm">累计下载</view>
-    </view>
-    <!-- <view class="flex flex-sub flex-direction">
-      <view class="text-xxl text-green">5</view>
-      <view class="margin-top-sm">领取次数</view>
-    </view> -->
+<view class="user-info UCenter-bg">
+  <view class="my-info padding">
+      <view bindtap="userInfoAuth" class="cu-avatar xl round">
+        <image wx-if="{{authorized}}" mode="widthFix" src="{{userInfo.avatarUrl}}"></image>
+      </view>
+      <view wx:if="{{!canIUseGetUserProfile}}" class="text-cut text-xl text-green nickName" style="width:6em;">
+          <button wx-if="{{!authorized}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" size="mini">授权登录</button>
+          <text wx-if="{{authorized}}">{{userInfo.nickName}}</text>
+      </view>
+      <view wx:if="{{canIUseGetUserProfile}}" class="text-cut text-xl text-green nickName" style="width:6em;">
+          <button wx-if="{{!authorized}}" bindtap="getUserProfile" size="mini">授权登录</button>
+          <text wx-if="{{authorized}}" bindtap="getUserProfile" style="color: white;">{{userInfo.nickName}}</text>
+      </view>
+      <view wx-if="{{signed}}" class="signIn">今日已签到</view>
+      <view wx-if="{{!signed && !signInLoading && userInfo.openid}}" class="signIn text-yellow text-xl" bindtap="signIn">签到+1次下载＞</view>
+      <view wx-if="{{signInLoading && !signed}}" class="signIn">签到中...</view>
   </view>
+  <image src="cloud://dev-4iov0.6465-dev-4iov0-1301148496/pageSource/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+</view>
+
+<view class="padding flex text-center text-grey bg-white shadow-warp">
+  <view class="flex flex-sub flex-direction solid-right">
+    <view class="text-xxl text-orange">{{userInfo.count || 0}}<text class="text-df">次</text></view>
+    <view class="margin-top-sm">剩余普通下载</view>
+  </view>
+  <view class="flex flex-sub flex-direction solid-right">
+    <view class="text-xxl text-blue">{{userInfo.vipCount || 0}}<text class="text-df">次</text></view>
+    <view class="margin-top-sm">剩余精细抠图</view>
+  </view>
+  <view class="flex flex-sub flex-direction">
+    <view class="text-xxl text-green">{{userInfo.accumCreatePhoto || 0}}<text class="text-df">张</text></view>
+    <view class="margin-top-sm">累计下载</view>
+  </view>
+  <!-- <view class="flex flex-sub flex-direction">
+    <view class="text-xxl text-green">5</view>
+    <view class="margin-top-sm">领取次数</view>
+  </view> -->
+</view>
+
+<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+  <view wx:if="{{ 'release' !== envVersion }}" class="cu-item arrow">
+    <navigator class="content" url="/pages/groupQrcodeManage/index">
+      <text class="cuIcon-friendadd text-red"></text>
+      <text>替换群二维码</text>
+    </navigator>
+  </view>
+  <view class="cu-item arrow">
+    <navigator class="content" url="/pages/share/share">
+      <text class="cuIcon-friendadd text-red"></text>
+      <text>邀请好友 + 次数</text>
+    </navigator>
+  </view>
+  <view wx:if="{{videoLoaded}}" class="cu-item arrow">
+    <view class="content" bindtap="lookVideo">
+      <text class="cuIcon-video text-red"></text>
+      <text>看视频 + 次数</text>
+    </view>
+  </view>
+  <view class="cu-item arrow">
+    <view class="content" bindtap="viewGroupQRcode">
+      <text class="cuIcon-add text-red"></text>
+      <text>免冠照、证件照交流群</text>
+    </view>
+  </view>
+  <view class="cu-item arrow">
+    <button class="cu-btn content" open-type="contact">
+      <text class="cuIcon-messagefill text-green"></text>
+      <text class="text-grey">联系客服</text>
+    </button>
+  </view>
+</view>
 
 <view class="github margin-top-lg text-center">
-  <text>项目已开源，请在客服消息查看Github开源地址。</text>
+  <text>项目已开源：</text><text bindtap="copyGithubLink" class="text-blue">点击复制开源地址</text>
 </view>
-	<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-    <view wx:if="{{ 'release' !== envVersion }}" class="cu-item arrow">
-      <navigator class="content" url="/pages/groupQrcodeManage/index">
-        <text class="cuIcon-friendadd text-red"></text>
-        <text>替换群二维码</text>
-      </navigator>
-    </view>
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/share/share">
-        <text class="cuIcon-friendadd text-red"></text>
-        <text>邀请好友 + 次数</text>
-      </navigator>
-    </view>
-    <view wx:if="{{videoLoaded}}" class="cu-item arrow">
-      <view class="content" bindtap="lookVideo">
-        <text class="cuIcon-video text-red"></text>
-        <text>看视频 + 次数</text>
-      </view>
-    </view>
-    <view class="cu-item arrow">
-      <view class="content" bindtap="viewGroupQRcode">
-        <text class="cuIcon-add text-red"></text>
-        <text>免冠照、证件照交流群</text>
-      </view>
-    </view>
-    <view class="cu-item arrow">
-      <button class="cu-btn content" open-type="contact">
-        <text class="cuIcon-messagefill text-green"></text>
-        <text class="text-grey">联系客服</text>
-      </button>
-    </view>
-  </view>
 </scroll-view>
