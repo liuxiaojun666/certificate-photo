@@ -11,9 +11,6 @@ App({
 			resourceEnv: 'dev-4iov0',
 			traceUser: true
 		})
-
-		// 获取群二维码
-		this.getGroupUrl()
 		// 新用户入库
 		this.addUser()
 	},
@@ -29,15 +26,6 @@ App({
 					icon: 'none'
 				})
 			}
-		})
-	},
-
-	// 获取群二维码地址
-	getGroupUrl() {
-		wx.cloud.downloadFile({
-			fileID: 'cloud://dev-4iov0.6465-dev-4iov0-1301148496/group-qrcode/qrcode.jpg'
-		}).then(res => {
-			this.globalData.groupQrcodeUrl = res.tempFilePath
 		})
 	},
 

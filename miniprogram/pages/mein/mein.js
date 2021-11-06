@@ -285,7 +285,7 @@ Page({
 		viewGroupQRcode () {
 			wx.previewImage({
 				urls: [app.globalData.groupQrcodeUrl],
-				current: app.globalData.groupQrcodeUrl // 当前显示图片的http链接      
+				current: app.globalData.groupQrcodeUrl  
 			})
 		},
 })

@@ -6,7 +6,6 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		originImgId: '',
 		photoSizeList: app.globalData.photoSizeList,
 		width: '',
 		height: '',
@@ -56,7 +55,6 @@ Page({
 			}
 		})
 	},
-
 	// 上传原图， 后使用百度抠图
 	imgUpload (filePath) {
 		console.log(filePath)
@@ -67,7 +65,6 @@ Page({
 			filePath
 		})
 		.then(res => {
-			this.originImgId = res.fileID
 			this.baiduKoutu(res.fileID)
 		})
 		.catch(error => {

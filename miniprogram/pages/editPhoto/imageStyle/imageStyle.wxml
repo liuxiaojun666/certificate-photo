@@ -3,7 +3,7 @@
 	<!-- <ad unit-id="adunit-e1381b03a0facc9c"></ad> -->
 	<scroll-view scroll-x class="nav">
 		<view class="flex text-center">
-			<view class="cu-item flex-sub {{index==TabCur?'text-red cur':''}}" wx:for="{{['经典女', '经典男', '其他']}}" wx:key="*this" bindtap="tabSelect" data-id="{{index}}">
+			<view class="cu-item flex-sub {{index==TabCur?'text-blue cur':''}}" wx:for="{{['经典女', '经典男', '其他']}}" wx:key="*this" bindtap="tabSelect" data-id="{{index}}">
 				{{item}}
 			</view>
 		</view>
@@ -13,19 +13,19 @@
 		<view wx-if="{{TabCur === 0}}" class="img-list">
 			<view bindtap="selectImg" data-url="{{item}}" wx:for="{{imgList.nv}}" wx:key="*this" class="img-view">
 				<image mode="aspectFit" src="{{baseId + item + '_s.png'}}"></image>
-				<text wx:if="{{videoLoaded}}" class="msg text-center text-green">看视频后使用</text>
+				<text wx:if="{{videoLoaded}}" class="msg text-center text-blue">看视频后使用</text>
 			</view>
 		</view>
 		<view  wx-if="{{TabCur === 1}}" class="img-list">
 			<view bindtap="selectImg" data-url="{{item}}" wx:for="{{imgList.nan}}" wx:key="*this" class="img-view">
 				<image mode="aspectFit" src="{{baseId + item + '_s.png'}}"></image>
-				<text wx:if="{{videoLoaded}}" class="msg text-center text-green">看视频后使用</text>
+				<text wx:if="{{videoLoaded}}" class="msg text-center text-blue">看视频后使用</text>
 			</view>
 		</view>
 		<view  wx-if="{{TabCur === 2}}" class="img-list">
 			<view bindtap="selectImg" data-url="{{item}}" wx:for="{{imgList.other}}" wx:key="*this" class="img-view">
 				<image mode="aspectFit" src="{{baseId + item + '_s.png'}}"></image>
-				<text wx:if="{{videoLoaded}}" class="msg text-center text-green">看视频后使用</text>
+				<text wx:if="{{videoLoaded}}" class="msg text-center text-blue">看视频后使用</text>
 			</view>
 		</view>
 	</scroll-view>

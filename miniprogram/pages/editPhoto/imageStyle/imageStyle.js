@@ -3,7 +3,6 @@
 let videoAd = null
 // 在页面中定义插屏广告
 let interstitialAd = null
-const imgBaseSrc = 'https://6465-dev-4iov0-1301148496.tcb.qcloud.la'
 let imgUrl = ''
 Page({
 

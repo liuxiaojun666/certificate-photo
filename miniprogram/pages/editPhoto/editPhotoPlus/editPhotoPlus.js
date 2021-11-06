@@ -71,8 +71,6 @@ Page({
 		kb: '',
 		person_num: 1,
 		attributes: {},
-		// msg: '',
-		// src: 'http://img01.taopic.com/150508/318763-15050PU9398.jpg',
 		initImgWidth: 0,
 		initImgHeight: 0,
 		originImgWidth: 0,
@@ -342,8 +340,8 @@ Page({
 	// 显示作者二维码
 	showQrcode2() {
 		wx.previewImage({
-			urls: ['https://6465-dev-4iov0-1301148496.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200606104940.jpg'],
-			current: 'https://6465-dev-4iov0-1301148496.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200606104940.jpg' // 当前显示图片的http链接      
+			urls: ['cloud://dev-4iov0.6465-dev-4iov0-1301148496/微信图片_20200606104940.jpg'],
+			current: 'cloud://dev-4iov0.6465-dev-4iov0-1301148496/微信图片_20200606104940.jpg'    
 		})
 	},
 	
