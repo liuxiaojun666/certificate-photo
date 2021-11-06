@@ -24,10 +24,8 @@ Page({
 		wx.setClipboardData({
 			data: 'https://github.com/liuxiaojun666/ID-Photo-miniapp-wechart',
 			success (res) {
-				wx.getClipboardData({
-					success (res) {
-						console.log(res.data) // data
-					}
+				wx.showToast({
+					title: '开源地址已复制',
 				})
 			}
 		})
