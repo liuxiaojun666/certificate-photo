@@ -55,7 +55,7 @@ App({
 	// 初始化全局数据
 	globalData: {
 		openid: null,
-		groupQrcodeUrl: 'cloud://dev-4iov0.6465-dev-4iov0-1301148496/group-qrcode/qrcode.jpg',
+		groupQrcodeUrl: 'https://6465-dev-4iov0-1301148496.tcb.qcloud.la/group-qrcode/qrcode.jpg?t=' + Date.now(),
 		photoSizeList: [{
 				name: '一寸',
 				px: '295×413 px',
