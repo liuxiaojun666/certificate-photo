@@ -21,7 +21,7 @@ exports.main = async (event, context) => {
   const { fileList: resultList } = await cloud.deleteFile({ fileList })
 
   await tmpFiles.where({
-    fileID: _.in(resultList.filter(file => file.status === 0).map(file => file.fileID))
+    fileID: _.in(resultList.filter(file => file.status === 0 || file.status === -503003).map(file => file.fileID))
   }).remove()
 
   return { delete: true, list: resultList }

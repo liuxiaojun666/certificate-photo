@@ -2,34 +2,17 @@
 page {
 	background: #fff
 }
-.moredata{
-	text-align: center;
+
+.top-fixed {
+	position: fixed;
+	left: 0;
+	top: 0;
 	width: 100%;
-	height: 80px;
-}
-.searchView{
-	display: flex;
-	flex-direction: row;
-	align-items: flex-end;
-}
-.searchput{
-	width: 100%;
-	height: 30px;
-	padding-left: 5px;
-	margin-bottom: 10px;
-	/* background-color: lightgray; */
-	border: 1px solid #ccc;
+	padding: 30rpx;
+	z-index: 999;
 	background-color: #fff;
-	border-radius: 3px;
 }
-.searchBtn{
-	size: 30;
-	width: 30px;
-	height: 30px;
-	margin-left: 10px;
-	margin-bottom: 10px;
-  background-color: lightgray;
-}
+
 .swiper-tab {
   width: 100%;
   border-bottom: 2rpx solid rgba(0, 0, 0, 0);
@@ -89,6 +72,7 @@ swiper {
 	height: 100%;
 	display: block;
 	background-color: white;
+	padding-top: 190rpx;
 }
 ad {
 	margin-bottom: 15rpx;

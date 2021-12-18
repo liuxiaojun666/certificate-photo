@@ -1,4 +1,4 @@
-<scroll-view class="container" scroll-y bindscrolltolower="moredata">
+<view class="top-fixed">
 	<view bindtap="inputPush" class="searchView">
 		<image src="./images/search-input.png" style="width: 100%;height:70rpx;"></image>
 	</view>
@@ -8,6 +8,8 @@
 		<view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">公务员</view>
 		<view class="swiper-tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="clickTab">学历/语言</view>
 	</view>
+</view>
+<scroll-view class="container" scroll-y bindscrolltolower="moredata">
 
 
 
