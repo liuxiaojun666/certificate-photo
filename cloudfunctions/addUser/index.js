@@ -5,7 +5,7 @@ cloud.init()
 
 const db = cloud.database()
 
-
+const groupQrcodeUrl = 'https://6465-dev-4iov0-1301148496.tcb.qcloud.la/group-qrcode/qrcode.jpg?t=' + Date.now()
 // 云函数入口函数
 exports.main = async (event, context) => {
 	const wxContext = cloud.getWXContext()
@@ -14,7 +14,7 @@ exports.main = async (event, context) => {
 	
 	const { data } = await db.collection('user').where({ openid }).get()
 
-	if (data.length) return { openid }
+	if (data.length) return { openid, groupQrcodeUrl }
 
 	await db.collection('user').add({
 		data: {
@@ -27,6 +27,7 @@ exports.main = async (event, context) => {
 	})
 	
 	return {
+		groupQrcodeUrl,
 		openid: wxContext.OPENID,
 		unionid: wxContext.UNIONID
 	}

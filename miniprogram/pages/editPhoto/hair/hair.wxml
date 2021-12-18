@@ -11,14 +11,14 @@
 
 	<scroll-view class="scroll-height" enable-flex="{{true}}" scroll-y>
 		<view wx-if="{{TabCur === 0}}" class="img-list">
-			<view bindtap="selectImg" data-url="{{item}}" wx:for="{{imgList.nv}}" wx:key="item" class="img-view">
-				<image mode="aspectFit" src="{{baseId + item + '_s.png'}}"></image>
+			<view bindtap="selectImg" data-url="{{item.src}}" wx:for="{{imgList.nv}}" wx:key="_id" class="img-view">
+				<image mode="aspectFit" src="{{ item.src }}/thumbnail"></image>
 				<text wx:if="{{videoLoaded}}" class="msg text-center text-blue">看视频后使用</text>
 			</view>
 		</view>
-		<view  wx-if="{{TabCur === 1}}" class="img-list">
-			<view bindtap="selectImg" data-url="{{item}}" wx:for="{{imgList.nan}}" wx:key="item" class="img-view">
-				<image mode="aspectFit" src="{{baseId + item + '_s.png'}}"></image>
+		<view wx-if="{{TabCur === 1}}" class="img-list">
+			<view bindtap="selectImg" data-url="{{item.src}}" wx:for="{{imgList.nan}}" wx:key="_id" class="img-view">
+				<image mode="aspectFit" src="{{ item.src }}/thumbnail"></image>
 				<text wx:if="{{videoLoaded}}" class="msg text-center text-blue">看视频后使用</text>
 			</view>
 		</view>

@@ -15,11 +15,14 @@ App({
 		this.addUser()
 	},
 
-	// 新用户入库
+	// 新用户入库，并获取基本信息
 	addUser() {
 		wx.cloud.callFunction({
 			name: 'addUser',
-			success: res => this.globalData.openid = res.result.openid,
+			success: res => {
+				this.globalData.openid = res.result.openid,
+				this.globalData.groupQrcodeUrl = res.result.groupQrcodeUrl
+			},
 			fail(err) {
 				wx.showToast({
 					title: '请求失败，请重试',
@@ -55,7 +58,7 @@ App({
 	// 初始化全局数据
 	globalData: {
 		openid: null,
-		groupQrcodeUrl: 'https://6465-dev-4iov0-1301148496.tcb.qcloud.la/group-qrcode/qrcode.jpg?t=' + Date.now(),
+		groupQrcodeUrl: '',
 		photoSizeList: [{
 				name: '一寸',
 				px: '295×413 px',
