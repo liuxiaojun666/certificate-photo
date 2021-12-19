@@ -71,7 +71,7 @@
     </view>
   </view>
   <view class="cu-item arrow">
-    <button class="cu-btn content" open-type="contact">
+    <button class="cu-btn content" open-type="contact" bindtouchstart="sendGroupQRCode">
       <text class="cuIcon-messagefill text-green"></text>
       <text class="text-grey">联系客服</text>
     </button>

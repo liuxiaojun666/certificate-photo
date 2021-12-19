@@ -8,7 +8,7 @@
 
 <view class="padding flex justify-around">
 	<button open-type="share" class="cu-btn lg radius bg-green" style="margin:0;width:auto;">朋友帮制作</button>
-	<button open-type="contact" class="cu-btn lg radius bg-blue" style="margin:0;width:auto;">联系客服</button>
+	<button open-type="contact" class="cu-btn lg radius bg-blue" style="margin:0;width:auto;" bindtouchstart="sendGroupQRCode">联系客服</button>
 </view>
 
 
