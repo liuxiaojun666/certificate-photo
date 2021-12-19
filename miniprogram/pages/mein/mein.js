@@ -19,6 +19,20 @@ Page({
 		envVersion: wx.getAccountInfoSync().miniProgram.envVersion || 'release'
 	},
 
+	// 下发赞赏二维码
+	sendAppreciateQRCode (e) {
+		wx.cloud.callFunction({
+			name: 'sendAppreciateQRCode'
+		})
+	},
+
+	// 下发群二维码
+	sendGroupQRCode () {
+		wx.cloud.callFunction({
+			name: 'customerService'
+		})
+	},
+
 	// 复制GitHub地址
 	copyGithubLink() {
 		wx.setClipboardData({

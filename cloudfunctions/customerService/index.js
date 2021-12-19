@@ -7,13 +7,15 @@ cloud.init()
 exports.main = async (event, context) => {
 	const wxContext = cloud.getWXContext()
 
-	await sendText(wxContext)
+	// await sendText(wxContext)
 	
 	await sendLink(wxContext)
 	
 	await sendImg(wxContext)
 
-	return 'success'
+	return {
+		event
+	}
 }
 
 // 发送文字消息

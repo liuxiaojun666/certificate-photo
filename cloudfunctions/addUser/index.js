@@ -19,6 +19,7 @@ exports.main = async (event, context) => {
 	await db.collection('user').add({
 		data: {
 			openid,
+			groupQrcodeUrl,
 			create_time: Date.now(),
 			accumCreatePhoto: 0,
 			count: 1,

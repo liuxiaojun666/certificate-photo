@@ -40,9 +40,15 @@
 </view>
 
 <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+  <view class="cu-item arrow">
+    <button class="cu-btn content" open-type="contact" bindtouchstart="sendAppreciateQRCode">
+      <text class="cuIcon-appreciate text-red"></text>
+      <text class="text-red">赞赏支持</text>
+    </button>
+  </view>
   <view wx:if="{{ 'release' !== envVersion }}" class="cu-item arrow">
     <navigator class="content" url="/pages/groupQrcodeManage/index">
-      <text class="cuIcon-friendadd text-red"></text>
+      <text class="cuIcon-edit text-red"></text>
       <text>替换群二维码</text>
     </navigator>
   </view>
