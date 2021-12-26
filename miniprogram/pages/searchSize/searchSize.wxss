@@ -41,28 +41,6 @@ swiper {
 swiper {
   text-align: center;
 }
- 
-.all .list {
-  height: 3000px;
-}
- 
-.clairy .list {
-  height: 3000px;
-}
- 
-.game .list {
-  height: 3000pt;
-}
- 
-.application .list {
-  height: 3000pt;
-}
- 
-.social .list {
-  height: 3000pt;
-}
-
-
 
 .container {
 	padding: 30rpx;
@@ -72,7 +50,7 @@ swiper {
 	height: 100%;
 	display: block;
 	background-color: white;
-	padding-top: 190rpx;
+	padding-top: 200rpx;
 }
 ad {
 	margin-bottom: 15rpx;
