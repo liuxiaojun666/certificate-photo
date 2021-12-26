@@ -62,7 +62,7 @@ page {
 	/* right: 0; */
 	bottom: 0;
 	width: 100%;
-	height: 100rpx;
+	height: 120rpx;
 	background-color: #fff;
 	padding-top: 10rpx;
 	box-shadow: 0 -10rpx 10rpx rgba(0,0,0,.1);

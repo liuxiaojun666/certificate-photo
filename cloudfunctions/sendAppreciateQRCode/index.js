@@ -5,7 +5,7 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const wxContext = cloud.getWXContext()
+  const wxContext = event.wxContext || cloud.getWXContext()
 
   // 上传图片素材
 	const { mediaId } = await cloud.openapi.customerServiceMessage.uploadTempMedia({
