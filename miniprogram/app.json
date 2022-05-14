@@ -6,6 +6,8 @@
     "pages/touch/touch",
     "pages/editPhoto/imageStyle/imageStyle",
     "pages/editPhoto/hair/hair",
+    "pages/searchSize/searchSize",
+    "pages/searchSize/searchView/searchView",
     "pages/searchSize/custom/custom",
     "pages/editPhoto/watermark/watermark",
     "pages/editPhoto/complete/complete",

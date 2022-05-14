@@ -1,5 +1,5 @@
 <view class="container">
-	<!-- <swiper autoplay circular>
+	<swiper autoplay circular>
 			<swiper-item>
 				<navigator
 					hover-class="none"
@@ -18,7 +18,7 @@
 					</view>
 				</navigator>
 			</swiper-item>
-	</swiper> -->
+	</swiper>
 	<view class="search-view">
 		<image bindtap="navigateTo" data-url="/pages/searchSize/searchView/searchView" src="./images/search-input.png"></image>
 	</view>
