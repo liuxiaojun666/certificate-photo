@@ -43,7 +43,7 @@
   <view class="cu-item arrow">
     <button class="cu-btn content" open-type="contact" bindtouchstart="sendAppreciateQRCode">
       <text class="cuIcon-appreciate text-red"></text>
-      <text class="text-red">赞赏支持</text>
+      <text class="text-red">赞赏支持 => 回复"赞赏"</text>
     </button>
   </view>
   <view wx:if="{{ 'release' !== envVersion }}" class="cu-item arrow">
