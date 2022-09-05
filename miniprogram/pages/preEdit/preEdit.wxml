@@ -8,19 +8,6 @@
 	<view>打印尺寸：{{size}}</view>
 	<view>照片描述：{{discription}}</view>
 </view>
-<view class="header margin-top">拍照秘籍</view>
-<view class="tips">
-	<view><text class="li">1.</text>优先使用后置摄像头</view>
-	<view><text class="li">2.</text>保持<text class="text-red">光线充足</text></view>
-	<view><text class="li">3.</text>身体<text class="text-red">正对</text>摄像头</view>
-	<view><text class="li">4.</text><text class="text-red">露出耳朵</text>、<text class="text-red">眉毛</text>，面部无遮挡</view>
-</view>
-<view class="header margin-top">Tips</view>
-<view class="tips">
-	<view><text class="li">·</text>全身照也可以，支持<text class="text-red">缩放、裁切</text></view>
-	<view><text class="li">·</text>着装随意，支持p图<text class="text-red">换装</text></view>
-	<view><text class="li">·</text>不洗头也可以，支持p图<text class="text-red">换发型</text></view>
-</view>
 
 <view class="flex justify-around padding-right btn-view">
 	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow">帮 制 作</navigator>

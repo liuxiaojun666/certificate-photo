@@ -21,7 +21,7 @@ Page({
 	onLoad: function (options) {
 		const {index,width,height,discription,data} = options
 		if (width && height) {
-			this.setData({px: width + ' * ' + height + '像素', width: +width, height: +height, discription});
+			this.setData({px: width + ' * ' + height + '像素', width: +width, height: +height});
 		}else if(data){
 			let newData = JSON.parse(data);
 			console.log("数据------"+newData.width_px);
