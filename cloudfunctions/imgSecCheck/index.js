@@ -1,6 +1,7 @@
 const cloud = require('wx-server-sdk')
 const axios = require('axios')
 const dayjs = require('dayjs')
+const AliCloud = require('./AliCloud')
 cloud.init({
   env:cloud.DYNAMIC_CURRENT_ENV,
 })
@@ -24,7 +25,11 @@ exports.main = async (event, context) => {
     return imgResult
   } catch (error) {
     // 校验含有敏感信息
-    return error
+    if (error.errCode === 87014) return error
+    const aliRes = AliCloud.main(event.filePath)
+    if (aliRes === 'error') return { errCode: -604102, } // 阿里接口调用错误了，重试下
+    else if (aliRes) return { errCode: 0, fileId: await uploadImage(event.filePath, event.type) } // 检测通过
+    else return { errCode: 87014 } // 检测不通过
   }
 }
 

@@ -54,8 +54,8 @@ Page({
 		// wx.showLoading({title: '选择照片'})
 		wx.chooseMedia({
       count: 1,
-      mediaType: 'image',
-			sizeType: ['original'],
+      mediaType: ['image'],
+			sizeType: ['original', 'compressed'],
 			success: (res) => {
         console.log(res)
         this.setData({
@@ -89,7 +89,7 @@ Page({
         },
       })
     })
-    // 上传到CDN
+    // 图片安全检测结果处理
     .then((res) => {
       console.log(res)
       if (res.result.errCode === 0) {
@@ -97,7 +97,7 @@ Page({
       } else if (res.result.errCode === 87014) {
         wx.showToast({ title: '内容可能潜在风险', icon: 'none' })
       } else if (res.result.errCode === -604102) {
-        wx.showToast({ title: '超时，再试一下', icon: 'none' })
+        wx.showToast({ title: '超时，再试一下。或换个图试试', icon: 'none', duration: 3000 })
       } else {
         wx.showToast({ title: '又是啥问题呀' + res.result.errCode, icon: 'none' })
       }
