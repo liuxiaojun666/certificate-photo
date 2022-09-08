@@ -44,11 +44,5 @@
         "selectedIconPath": "./images/me-active.png"
       }
     ]
-  },
-  "plugins": {
-    "poster": {
-      "version": "1.0.4",
-      "provider": "wx8a6f7c4b3d410554"
-    }
   }
 }

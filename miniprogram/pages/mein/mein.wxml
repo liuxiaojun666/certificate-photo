@@ -65,12 +65,6 @@
     </view>
   </view>
   <view class="cu-item arrow">
-    <view class="content" bindtap="viewGroupQRcode">
-      <text class="cuIcon-add text-red"></text>
-      <text>免冠照、证件照交流群</text>
-    </view>
-  </view>
-  <view class="cu-item arrow">
     <button class="cu-btn content" open-type="contact" bindtouchstart="sendGroupQRCode">
       <text class="cuIcon-messagefill text-green"></text>
       <text class="text-grey">联系客服</text>

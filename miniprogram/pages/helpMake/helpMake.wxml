@@ -1,11 +1,4 @@
 
-<view class="flex margin-bottom" bindtap="viewGroupQRcode">
-	<image mode="widthFix" style="margin:auto;" src="{{ groupQrcodeUrl }}"></image>
-</view>
-<view class="text-center text-red">
-	<text>1.点击预览图片，2.保存图片到相册后，3.使用微信扫一扫</text>
-</view>
-
 <view class="padding flex justify-around">
 	<button open-type="share" class="cu-btn lg radius bg-green" style="margin:0;width:auto;">朋友帮制作</button>
 	<button open-type="contact" class="cu-btn lg radius bg-blue" style="margin:0;width:auto;" bindtouchstart="sendGroupQRCode">联系客服</button>
