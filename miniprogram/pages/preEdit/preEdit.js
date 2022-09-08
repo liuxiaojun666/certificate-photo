@@ -96,8 +96,10 @@ Page({
         this.baiduKoutu(res.result.fileId)
       } else if (res.result.errCode === 87014) {
         wx.showToast({ title: '内容可能潜在风险', icon: 'none' })
+      } else if (res.result.errCode === -604102) {
+        wx.showToast({ title: '超时，再试一下', icon: 'none' })
       } else {
-        wx.showToast({ title: '有点问题', icon: 'none' })
+        wx.showToast({ title: '又是啥问题呀' + res.result.errCode, icon: 'none' })
       }
     })
     // 错误处理
