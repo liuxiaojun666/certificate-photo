@@ -69,8 +69,8 @@ page {
 	z-index: 9999;
 }
 
-#myCanvas {
+.result-canvas-view {
 	position: absolute;
 	left: 100vw;
-	top: 0;
+	top: 100vh;
 }

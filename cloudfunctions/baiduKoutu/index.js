@@ -19,8 +19,6 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-	db.collection('tmp-file').add({ data: { time: Date.now(), fileID: event.fileID } })
-
 	// 获取图片url地址
 	const tempFileURL = await getFileUrlByFileID(event.fileID)
 	// 云存储图片处理地址  返回这个地址，   精细抠图可能还会用

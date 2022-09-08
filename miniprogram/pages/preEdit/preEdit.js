@@ -1,3 +1,5 @@
+const { canvasDrawImage, canvasToTempFile } = require("./utils");
+
 const app = getApp()
 
 Page({
@@ -12,7 +14,13 @@ Page({
 		px: '',
 		size: '自定义',
 		photoName: '自定义尺寸',
-		discription: ''
+    discription: '',
+    originalImagePath: '',
+    compressCanvas: {
+			display: false,
+			width: 0,
+			height: 0
+		}
 	},
 
 	/**
@@ -44,37 +52,61 @@ Page({
 	 */
 	chooseImage (event) {
 		// wx.showLoading({title: '选择照片'})
-		wx.chooseImage({
-			count: 1,
-			sizeType: 'original',
+		wx.chooseMedia({
+      count: 1,
+      mediaType: 'image',
+			sizeType: ['original'],
 			success: (res) => {
-				this.imgUpload(res.tempFilePaths[0])
+        console.log(res)
+        this.setData({
+          originalImagePath: res.tempFiles[0].tempFilePath
+        })
+        this.imgSecCheck(res.tempFiles[0].tempFilePath)
 			},
 			fail () {
 				wx.showToast({ title: '取消选择', icon: 'none', duration: 2000 })
 			}
 		})
-	},
-	// 上传原图， 后使用百度抠图
-	imgUpload (filePath) {
-		console.log(filePath)
-		wx.showLoading({ title: '智能人像抠图', })
-
-		wx.cloud.uploadFile({
-			cloudPath: `tmp/${new Date().Format('yyyy-MM-dd')}/${filePath.split('://')[1]}`,
-			filePath
-		})
-		.then(res => {
-			this.baiduKoutu(res.fileID)
-		})
-		.catch(error => {
-			console.log(error)
-			wx.showToast({ title: '失败,请重试', icon: 'loading' })
-		})
-	},
+  },
+  // 图片敏感信息检测   获取图片宽高信息
+	imgSecCheck (tempFilePath) {
+    wx.showLoading({ title: '图片安全校验', })
+    // 获取图片信息
+		wx.getImageInfo({ src: tempFilePath, })
+    // 图片安全校验
+    .then(res => {
+      return wx.cloud.callFunction({
+        name: 'imgSecCheck',
+        data: {
+          width: res.width,
+          height: res.height,
+          type: res.type,
+          // 上传图片到临时CDN，返回图片地址
+          filePath: wx.cloud.CDN({
+            type: 'filePath',
+            filePath: res.path,
+          })
+        },
+      })
+    })
+    // 上传到CDN
+    .then((res) => {
+      console.log(res)
+      if (res.result.errCode === 0) {
+        this.baiduKoutu(res.result.fileId)
+      } else if (res.result.errCode === 87014) {
+        wx.showToast({ title: '内容可能潜在风险', icon: 'none' })
+      } else {
+        wx.showToast({ title: '有点问题', icon: 'none' })
+      }
+    })
+    // 错误处理
+    .catch(console.error)
+  },
 
 	// 使用百度抠图
 	baiduKoutu (fileID) {
+    wx.showLoading({ title: '智能人像分割', })
 		wx.cloud.callFunction({
       name: 'baiduKoutu',
       data: { fileID }
