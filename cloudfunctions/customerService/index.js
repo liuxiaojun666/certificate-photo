@@ -15,7 +15,7 @@ exports.main = async (event, context) => {
 	
 	await sendLink(wxContext)
 	
-	await sendImg(wxContext)
+	// await sendImg(wxContext) // 先不发群二维码了，有违规
 
 	return {
 		event
