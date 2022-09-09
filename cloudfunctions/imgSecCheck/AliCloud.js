@@ -38,11 +38,11 @@ module.exports = class Client {
     try {
       // 复制代码运行请自行打印 API 的返回值
       const aliResult = await client.scanImageWithOptions(scanImageRequest, runtime);
-      return aliResult.body.data.results[0].subResults.every(item => item.suggestion === 'pass')
+      return { status: aliResult.body.data.results[0].subResults.every(item => item.suggestion === 'pass') }
     } catch (error) {
       // 如有需要，请打印 error
       Util.assertAsString(error.message);
-      return 'error'
+      return { error }
     }
   }
 }
