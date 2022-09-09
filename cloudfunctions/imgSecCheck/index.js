@@ -94,6 +94,8 @@ async function imgSecCheck (event, imgInfo) {
     // 上传原图到CDN
     imgResult.fileId = await uploadImage(event.filePath, event.type) // 这行上线后要删掉，暂时兼容处理
     imgResult.filePath = imgInfo.filePath
+    imgResult.originImgPath = event.filePath
+    imgResult.originImgType = event.type
     return imgResult
   } catch (error) {
     // 校验含有敏感信息
@@ -112,7 +114,9 @@ async function aliCheck (event, imgInfo) {
   else if (aliRes.status) return {
     errCode: 0,
     fileId: await uploadImage(event.filePath, event.type), // 这行上线后要删掉，暂时兼容处理
-    filePath: imgInfo.filePath
+    filePath: imgInfo.filePath,
+    originImgPath: event.filePath,
+    originImgType: event.type
   }
   // 检测不通过
   else return { errCode: 87014 }

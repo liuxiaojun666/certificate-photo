@@ -30,7 +30,8 @@ Page({
 		showScale: 1,
 		count: 0, // 用户剩余次数
 		vipCount: 0,
-		tmpOriginImgSrc: '',
+    originImgPath: '',
+    originImgType: '',
 		filePath: '',
 		filePath2: '',
 		canvasFilePath: '',
@@ -309,7 +310,10 @@ Page({
 
 		const { result } = await wx.cloud.callFunction({
       name: 'vipKoutu',
-      data: { imgSrc: this.data.tmpOriginImgSrc }
+      data: {
+        imgSrc: this.data.originImgPath,
+        imgType: this.data.originImgType
+      }
 		}).catch(e => wx.showToast({ title: '失败，请重试或帮助', icon: 'none' }))
 		
 		if (result.status !== 0) return wx.showToast({ title: '请求失败，请重试。或更换图片', icon: 'none' })
@@ -402,14 +406,15 @@ Page({
 	receivingParameters () {
 		const eventChannel = this.getOpenerEventChannel && this.getOpenerEventChannel()
 		eventChannel && eventChannel.on('acceptDataFromOpenerPage', (data) => {
-			const {width, height, tmpOriginImgSrc, baiduKoutuResultFileId} = data
+			const {width, height, baiduKoutuResultFileId, originImgPath, originImgType} = data
 
 			this.setData({
 				targetWidth: width,
 				targetHeight: height,
 				showScale: (480 / (+width)),
 				filePath: baiduKoutuResultFileId,
-				tmpOriginImgSrc
+        originImgPath,
+        originImgType
 			})
 		})
 	},

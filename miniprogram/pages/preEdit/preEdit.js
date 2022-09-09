@@ -1,5 +1,3 @@
-const { canvasDrawImage, canvasToTempFile } = require("./utils");
-
 const app = getApp()
 
 Page({
@@ -15,12 +13,8 @@ Page({
 		size: '自定义',
 		photoName: '自定义尺寸',
     discription: '',
-    originalImagePath: '',
-    compressCanvas: {
-			display: false,
-			width: 0,
-			height: 0
-		}
+    originImgPath: '',
+    originImgType: '',
 	},
 
 	/**
@@ -57,10 +51,6 @@ Page({
       mediaType: ['image'],
 			sizeType: ['original', 'compressed'],
 			success: (res) => {
-        console.log(res)
-        this.setData({
-          originalImagePath: res.tempFiles[0].tempFilePath
-        })
         this.imgSecCheck(res.tempFiles[0].tempFilePath)
 			},
 			fail () {
@@ -93,6 +83,10 @@ Page({
     .then((res) => {
       console.log(res)
       if (res.result.errCode === 0) {
+        this.setData({
+          originImgPath: res.result.originImgPath,
+          originImgType: res.result.originImgType,
+        })
         this.baiduKoutu({
           fileID: res.result.fileId,
           filePath: res.result.filePath
@@ -129,12 +123,14 @@ Page({
 	 */
 	goEditPage (data) {
 		wx.hideLoading()
-		const { width, height } = this.data
+		const { width, height, originImgPath, originImgType } = this.data
 		wx.navigateTo({
 			url: '/pages/editPhoto/editPhotoPlus/editPhotoPlus',
 			success: function (res) {
 				res.eventChannel.emit('acceptDataFromOpenerPage', {
-					...data,
+          ...data,
+          originImgPath,
+          originImgType,
 					width,
 					height
 				})

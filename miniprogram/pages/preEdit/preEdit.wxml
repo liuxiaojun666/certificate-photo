@@ -9,13 +9,6 @@
 	<view>照片描述：{{discription}}</view>
 </view>
 
-<image wx:if="{{compressCanvas.fillPath}}" src="{{compressCanvas.fillPath}}"></image>
-
-<view class="result-canvas-view">
-	<canvas type="2d" id="myCanvas" style="width: {{myCanvas.width}}px;height: {{myCanvas.height}}px;"></canvas>
-	<canvas wx:if="{{compressCanvas.display}}" type="2d" id="compressCanvas" style="width: {{compressCanvas.width}}px;height: {{compressCanvas.height}}px;"></canvas>
-</view>
-
 
 <view class="flex justify-around padding-right btn-view">
 	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow">帮 制 作</navigator>

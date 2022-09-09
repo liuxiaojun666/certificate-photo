@@ -40,7 +40,6 @@ exports.main = async (event, context) => {
 
 
 	return {
-		tmpOriginImgSrc: filePath,
 		baiduKoutuResultFileId: resultFileId
 	}
 }

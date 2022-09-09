@@ -10,6 +10,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"wx-server-sdk": "~2.3.2",
-		"axios": "^0.21.1"
+		"axios": "^0.21.1",
+		"dayjs": "^1.10.3"
 	}
 }
