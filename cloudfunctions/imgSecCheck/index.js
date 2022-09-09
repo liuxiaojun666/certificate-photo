@@ -21,7 +21,7 @@ async function imageMinify (imgInfo) {
     const { result } = await cloud.callFunction({
       name: 'imageCompose',
       data: {
-        imageType: 'jpg',
+        imgType: 'jpg',
         dataType: 'url',
         data: [{ ...imgSize, src: filePath }]
       }
@@ -92,23 +92,28 @@ async function imgSecCheck (event, imgInfo) {
       }
     })
     // 上传原图到CDN
-    imgResult.fileId = await uploadImage(event.filePath, event.type)
+    imgResult.fileId = await uploadImage(event.filePath, event.type) // 这行上线后要删掉，暂时兼容处理
+    imgResult.filePath = imgInfo.filePath
     return imgResult
   } catch (error) {
     // 校验含有敏感信息
     if (error.errCode === 87014) return error
     // 不好用，老报错，用阿里再检测一次
-    return aliCheck(event)
+    return aliCheck(event, imgInfo)
   }
 }
 
 // 阿里云的图片内容安全接口监测
-async function aliCheck (event) {
+async function aliCheck (event, imgInfo) {
   const aliRes = await AliCloud.main(event.filePath)
   // 阿里接口调用错误了
   if (aliRes.error) return { errCode: -604102, msg: aliRes.error.message }
   // 检测通过
-  else if (aliRes.status) return { errCode: 0, fileId: await uploadImage(event.filePath, event.type) }
+  else if (aliRes.status) return {
+    errCode: 0,
+    fileId: await uploadImage(event.filePath, event.type), // 这行上线后要删掉，暂时兼容处理
+    filePath: imgInfo.filePath
+  }
   // 检测不通过
   else return { errCode: 87014 }
 }

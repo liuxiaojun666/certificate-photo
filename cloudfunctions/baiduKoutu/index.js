@@ -19,12 +19,15 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-	// 获取图片url地址
-	const tempFileURL = await getFileUrlByFileID(event.fileID)
-	// 云存储图片处理地址  返回这个地址，   精细抠图可能还会用
-	const tmpOriginImgSrc = encodeURI(`${tempFileURL}?imageMogr2/thumbnail/1500x1500|imageMogr2/format/jpg`)
+  let filePath = event.filePath
+  if (!filePath) {
+    // 获取图片url地址
+    const tempFileURL = await getFileUrlByFileID(event.fileID)
+    // 云存储图片处理地址  返回这个地址，   精细抠图可能还会用
+    filePath = encodeURI(`${tempFileURL}?imageMogr2/thumbnail/1500x1500|imageMogr2/format/jpg`)
+  }
 	// 获取图片buffer
-	const imgBuffer = await getHttpBuffer(tmpOriginImgSrc)
+	const imgBuffer = await getHttpBuffer(filePath)
 	// 图片的base64
 	const imageBase64 = encodeURI(imgBuffer.toString('base64'))
 	// 百度抠图结果
@@ -37,7 +40,7 @@ exports.main = async (event, context) => {
 
 
 	return {
-		tmpOriginImgSrc,
+		tmpOriginImgSrc: filePath,
 		baiduKoutuResultFileId: resultFileId
 	}
 }

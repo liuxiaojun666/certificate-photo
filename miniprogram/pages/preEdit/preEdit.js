@@ -93,9 +93,12 @@ Page({
     .then((res) => {
       console.log(res)
       if (res.result.errCode === 0) {
-        this.baiduKoutu(res.result.fileId)
+        this.baiduKoutu({
+          fileID: res.result.fileId,
+          filePath: res.result.filePath
+        })
       } else if (res.result.errCode === 87014) {
-        wx.showToast({ title: '内容可能潜在风险', icon: 'none' })
+        wx.showToast({ title: '内容可能潜在风险，请重新选择', icon: 'none' })
       } else if (res.result.errCode === -604102) {
         wx.showToast({ title: '超时，再试一下。或换个图试试', icon: 'none', duration: 3000 })
       } else {
@@ -107,11 +110,11 @@ Page({
   },
 
 	// 使用百度抠图
-	baiduKoutu (fileID) {
+	baiduKoutu (data) {
     wx.showLoading({ title: '智能人像分割', })
 		wx.cloud.callFunction({
       name: 'baiduKoutu',
-      data: { fileID }
+      data: data
 		})
 		.then(({ result }) => {
 			this.goEditPage(result)
