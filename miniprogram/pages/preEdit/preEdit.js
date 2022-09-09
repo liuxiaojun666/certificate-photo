@@ -99,7 +99,7 @@ Page({
       } else if (res.result.errCode === -604102) {
         wx.showToast({ title: '超时，再试一下。或换个图试试', icon: 'none', duration: 3000 })
       } else {
-        wx.showToast({ title: '又是啥问题呀' + res.result.errCode, icon: 'none' })
+        wx.showToast({ title: '又是啥问题呀，请重试' + res.result.errCode, icon: 'none' })
       }
     })
     // 错误处理
@@ -127,11 +127,6 @@ Page({
 	goEditPage (data) {
 		wx.hideLoading()
 		const { width, height } = this.data
-		console.log(width,"---",height)
-		let msg = width + "--" + height
-		wx.showToast({
-			title: msg,
-		})
 		wx.navigateTo({
 			url: '/pages/editPhoto/editPhotoPlus/editPhotoPlus',
 			success: function (res) {
