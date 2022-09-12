@@ -8,7 +8,7 @@
 	</view>
 
 	<view>
-		<image bindtap="preView" mode="heightFix" src="{{url}}" style="width: 100rpx; height: 100rpx"></image>
+		<image bindtap="preView" mode="heightFix" src="{{url}}" style="width: 200rpx; height: 200rpx"></image>
 	</view>
 
 	<view class="msg padding">

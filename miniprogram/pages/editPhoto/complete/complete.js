@@ -24,17 +24,19 @@ Page({
 			msg: options.msg,
 			tempFilePath: options.tempFilePath,
 			url: options.url
-		})
+    })
+    
+    wx.showToast({ title: '制作成功', })
 
 		// 在页面onLoad回调事件中创建插屏广告实例
-		if (wx.createInterstitialAd) {
-			interstitialAd = wx.createInterstitialAd({
-				adUnitId: 'adunit-7bd4afc44e5cebbd'
-			})
-			interstitialAd.onLoad(() => {})
-			interstitialAd.onError((err) => {})
-			interstitialAd.onClose(() => {})
-		}
+		// if (wx.createInterstitialAd) {
+		// 	interstitialAd = wx.createInterstitialAd({
+		// 		adUnitId: 'adunit-7bd4afc44e5cebbd'
+		// 	})
+		// 	interstitialAd.onLoad(() => {})
+		// 	interstitialAd.onError((err) => {})
+		// 	interstitialAd.onClose(() => {})
+		// }
 	},
 
 	preView () {
@@ -50,9 +52,9 @@ Page({
 	onShow: function () {
 		// 在适合的场景显示插屏广告
 		if (interstitialAd) {
-			interstitialAd.show().catch((err) => {
-				console.error(err)
-			})
+			// interstitialAd.show().catch((err) => {
+			// 	console.error(err)
+			// })
 		}
 	},
 	/**

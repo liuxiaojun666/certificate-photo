@@ -1,4 +1,9 @@
 
+
+<view class="padding">
+	<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+</view>
+
 <view class="padding flex justify-around">
 	<button open-type="share" class="cu-btn lg radius bg-green" style="margin:0;width:auto;">朋友帮制作</button>
 	<button open-type="contact" class="cu-btn lg radius bg-blue" style="margin:0;width:auto;" bindtouchstart="sendGroupQRCode">联系客服</button>
@@ -27,8 +32,4 @@
 	<view class="bg-white radius padding-xs text-xs text-gray">
 		为了您能成功生成想要的免冠照/证件照，您可以选择找朋友帮忙制作，或联系客服帮制作。
 	</view>
-</view>
-
-<view class="padding">
-	<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
 </view>

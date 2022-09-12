@@ -15,7 +15,7 @@ exports.main = async (event, context) => {
 	
 	await sendLink(wxContext)
 	
-	// await sendImg(wxContext) // 先不发群二维码了，有违规
+	await sendImg(wxContext)
 
 	return {
 		event
@@ -54,7 +54,7 @@ async function sendImg (wxContext) {
 		type: 'image',
 		media: {
 			contentType: 'image/jpg',
-			value: await getCloudBuffer('cloud://dev-4iov0.6465-dev-4iov0-1301148496/group-qrcode/qrcode.jpg') // 群二维码
+			value: await getCloudBuffer('cloud://dev-4iov0.6465-dev-4iov0-1301148496/微信图片_20200606104940.jpg')
 		}
 	})
 
