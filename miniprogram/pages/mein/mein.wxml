@@ -33,10 +33,6 @@
     <view class="text-xxl text-green">{{userInfo.accumCreatePhoto || 0}}<text class="text-df">张</text></view>
     <view class="margin-top-sm">累计下载</view>
   </view>
-  <!-- <view class="flex flex-sub flex-direction">
-    <view class="text-xxl text-green">5</view>
-    <view class="margin-top-sm">领取次数</view>
-  </view> -->
 </view>
 
 <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
@@ -45,12 +41,6 @@
       <text class="cuIcon-appreciate text-red"></text>
       <text class="text-red">赞赏支持 => 回复"赞赏"</text>
     </button>
-  </view>
-  <view wx:if="{{ 'release' !== envVersion }}" class="cu-item arrow">
-    <navigator class="content" url="/pages/groupQrcodeManage/index">
-      <text class="cuIcon-edit text-red"></text>
-      <text>替换群二维码</text>
-    </navigator>
   </view>
   <view class="cu-item arrow">
     <navigator class="content" url="/pages/share/share">

@@ -13,6 +13,7 @@ Page({
 		showSubscribeBtn: false
 	},
 
+  // 邀请成功，领取次数
 	shareSuccessUpdateCount (event) {
 		if (this.data.updateCountLoading) return
 		const openid = event.currentTarget.dataset.openid
@@ -34,13 +35,6 @@ Page({
 	},
 
 	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
-	},
-
-	/**
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
@@ -59,10 +53,9 @@ Page({
 		})
 	},
 
+  // 今天是不是已经邀请过朋友，如果就展示邀请结果
 	getData () {
-		wx.showLoading({
-			title: '加载中',
-		})
+		wx.showLoading({ title: '加载中', })
 		const openid = getApp().globalData.openid
 		const db = wx.cloud.database()
 		db.collection('share').where({ openid, date: new Date().toDateString() }).get().then(res => {
@@ -85,6 +78,7 @@ Page({
 		})
 	},
 
+  // 获取被邀请者的头像
 	getAvatar (openidList = []) {
 		if (!openidList.length) return
 		const db = wx.cloud.database()
@@ -105,34 +99,6 @@ Page({
 	},
 
 	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
 	 * 用户点击右上角分享
 	 */
 	onShareAppMessage: function (res) {
@@ -143,20 +109,20 @@ Page({
 			}
 			return {
 				title: '证件照、免冠照、一寸照片、二寸照片、证件照换背景，免费生成、下载。',
-				path: '/pages/index/index?shareOpenid=' + openid + '&date=' + new Date().toDateString(),
+				path: '/pages/index/index?shareOpenid=' + openid + '&date=' + new Date().toDateString().trim(),
 				imageUrl: '/images/shareShow.jpg'
 			}
 		}
 	},
 
+  // 创建邀请记录
 	share (openid) {
-
 		const db = wx.cloud.database()
 		db.collection('share').add({
 			data: {
 				invitedList: [],
 				openid,
-				date: new Date().toDateString()
+        date: new Date().toDateString(),
 			},
 			success: () => {
 				this.setData({ shared: true })

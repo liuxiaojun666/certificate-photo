@@ -15,8 +15,6 @@ let twoPoint = {
 }
 // 在页面中定义激励视频广告
 let videoAd = null
-// 在页面中定义插屏广告
-let interstitialAd = null
 Page({
 
 	/**
@@ -198,9 +196,8 @@ Page({
 
 			// 保存图片到相册
 			await this.saveImage(tempFilePath, isVip)
-
+      // 使用重定向，因为返回时要返回到选择照片页面
 			wx.redirectTo({ url: '../complete/complete?msg=' + msg + '&tempFilePath=' + tempFilePath + '&url=' + url, })
-
 		} catch (error) {
 			console.log(error)
 			msg = '下载失败，点击下图预览保存图片。'
@@ -226,9 +223,8 @@ Page({
 	downloadImg (url) {
 		return new Promise((resolve, reject) => {
 			wx.downloadFile({
-				url, //仅为示例，并非真实的资源
+				url,
 				success (res) {
-					// 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
 					if (res.statusCode === 200) {
 						console.log(res)
 						resolve(res)
@@ -368,19 +364,6 @@ Page({
 		})
 	},
 
-	// 插屏广告
-	useChapingAd () {
-		// 在页面onLoad回调事件中创建插屏广告实例
-		if (wx.createInterstitialAd) {
-			interstitialAd = wx.createInterstitialAd({
-				adUnitId: 'adunit-d2281bbee1a5dea2'
-			})
-			interstitialAd.onLoad(() => {})
-			interstitialAd.onError((err) => {})
-			interstitialAd.onClose(() => {})
-		}
-	},
-
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
@@ -389,8 +372,6 @@ Page({
 		wx.showLoading({ title: '图片加载中', })
 
 		this.getGuide()
-
-		this.useChapingAd()
 
 		this.useVideoAd()
 		
@@ -551,13 +532,6 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function (e) {
-		
-		// 在适合的场景显示插屏广告
-		if (interstitialAd) {
-			interstitialAd.show().catch((err) => {
-				console.error(err)
-			})
-		}
 
 		if (this.data.clothes.src && !this.data.clothes.width) {
 			wx.showLoading({ title: '图片加载中...', })
@@ -570,7 +544,8 @@ Page({
 	// 关闭上拉加载
 	onReachBottom: function () {
 		return
-	},
+  },
+  // 图片加载成功
 	bindload: function (e) {
 		wx.hideLoading({})
 		const that = this

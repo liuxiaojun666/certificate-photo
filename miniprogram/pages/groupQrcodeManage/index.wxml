@@ -1,4 +1,0 @@
-<view class="container">
-  <image src="{{ groupQrcodeUrl }}" mode="widthFix"></image>
-  <button bindtap="chooseImage">替换</button>
-</view>

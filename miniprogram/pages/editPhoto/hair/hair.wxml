@@ -1,6 +1,5 @@
 <view>
 	<ad unit-id="adunit-eaee002e3b71ca92"></ad>
-	<!-- <ad unit-id="adunit-e1381b03a0facc9c"></ad> -->
 	<scroll-view scroll-x class="nav">
 		<view class="flex text-center">
 			<view class="cu-item flex-sub {{index==TabCur?'text-blue cur':''}}" wx:for="{{['女生', '男生']}}" wx:key="item" bindtap="tabSelect" data-id="{{index}}">

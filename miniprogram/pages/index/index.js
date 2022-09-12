@@ -1,5 +1,3 @@
-// 在页面中定义插屏广告
-let interstitialAd = null
 const app = getApp()
 
 Page({
@@ -8,19 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-		extraData: {
-	　　from: '免冠照片'
-　　},
+    // 近期热门列表
 		photoSizeList: app.globalData.photoSizeList
   },
-
-	toMiniProgramSuccess(res) {
-		//从其他小程序返回的时候触发
-		wx.showToast({
-			title: '欢迎回来',
-			icon: 'none'
-		})
-	},
 
   /**
    * 生命周期函数--监听页面加载
@@ -28,47 +16,34 @@ Page({
   onLoad: function (options) {
 		wx.setNavigationBarTitle({ title: '免冠照/证件照' })
 
-		// 在页面onLoad回调事件中创建插屏广告实例
-		if (wx.createInterstitialAd) {
-			interstitialAd = wx.createInterstitialAd({
-				adUnitId: 'adunit-0a1e9ff7ab9396d0'
-			})
-			if (interstitialAd) {
-				
-				interstitialAd.onLoad(() => {})
-				interstitialAd.onError((err) => {})
-				interstitialAd.onClose(() => {})
-			}
-		}
-
-		if (!options.shareOpenid) return
-		// console.log(options.date.trim() === new Date().toDateString().trim())
-		if (options.date.trim() !== new Date().toDateString().trim()) return
-		this.shareSuccess(options.shareOpenid)
+    // 处理来自用户邀请
+		this.shareSuccess(options.shareOpenid, options.date)
 	},
 
 	// 去选择照片页面
 	goNextPage (e) {
 		wx.navigateTo({
-			// url: '/pages/example/example?index=' + e.currentTarget.dataset.index,
 			url: '/pages/preEdit/preEdit?index=' + e.currentTarget.dataset.index,
 		})
 	},
 
+  // 页面跳转
 	navigateTo(e) {
-		wx.navigateTo({
-			url: e.currentTarget.dataset.url,
-		})
+		wx.navigateTo({ url: e.currentTarget.dataset.url, })
 	},
 	/**
 	 * 用户来自邀请
 	 */
-	shareSuccess (shareOpenid, avatarUrl) {
+	shareSuccess (shareOpenid, date) {
+    // 没有分享自id，不是来自邀请
+    if (!shareOpenid || !date) return
+    // 不是当天的邀请
+    if (date.trim() !== new Date().toDateString().trim()) return
+    // 更新邀请者的邀请记录
 		wx.cloud.callFunction({
 			name: 'shareUpdate',
 			data: {
 				shareOpenid,
-				// avatarUrl,
 				date: new Date().toDateString()
 			},
 			success: res => {
@@ -94,12 +69,4 @@ Page({
 		}
 	},
 	
-	onShow () {
-		// 在适合的场景显示插屏广告
-		// if (interstitialAd) {
-		// 	interstitialAd.show().catch((err) => {
-		// 		console.error(err)
-		// 	})
-		// }
-	}
 })

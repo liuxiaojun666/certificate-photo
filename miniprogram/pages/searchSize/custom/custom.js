@@ -6,34 +6,31 @@ Page({
 	data: {
 		width: '',
 		height: '',
-		remak: ''
 	},
 
+  // 跳转到下一页
 	goNextPage (e) {
-		const {width, height, remak} = this.data
+		const {width, height} = this.data
 		wx.navigateTo({
-			url: '/pages/preEdit/preEdit?width=' +width+ '&height=' + height+ '&discription=' + remak,
+			url: '/pages/preEdit/preEdit?width=' +width+ '&height=' + height+ '&discription='
 		})
 	},
 
+  // 宽度改变
 	widthChange (e) {
 		this.setData({
 			width: +e.detail.value
 		})
 	},
 
+  // 高度改变
 	heightChange (e) {
 		this.setData({
 			height: +e.detail.value
 		})
 	},
 
-	remakChange (e) {
-		this.setData({
-			remak: e.detail.value
-		})
-	},
-
+  // 点击确定，校验用户输入
 	selectPhoto () {
 		const {width, height} = this.data
 		let msg = ''

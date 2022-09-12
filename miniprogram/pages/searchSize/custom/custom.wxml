@@ -9,10 +9,7 @@
 			<view class="title">高度（像素 px）</view>
 			<input bindinput="heightChange" type="number" value="{{height}}" placeholder="请输入像素高度 px"></input>
 		</view>
-		<view class="cu-form-group">
-			<view class="title">用途描述</view>
-			<input bindinput="remakChange" type="text" value="{{remak}}" placeholder="如‘护师职称考试报名’"></input>
-		</view>
+
 		<view>
 			<button class="btn-confirm" type="default" bindtap="selectPhoto">确定</button>
 		</view>

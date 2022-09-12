@@ -1,5 +1,3 @@
-// 在页面中定义插屏广告
-let interstitialAd = null
 
 Page({
 
@@ -27,6 +25,8 @@ Page({
 			})
 		}
   },
+
+  // 点击搜索按钮
 	searchClick:function () {
 		this.setData({
 			showMenu:true,
@@ -36,8 +36,8 @@ Page({
 		if (this.data.putText.length>0) {
 			this.searchData(this.data.putText)
 		}
-
-	},
+  },
+  // 跳转到下一个页面
 	goNextPage (e) {
 		wx.navigateTo({
 			url: '/pages/preEdit/preEdit?index=' + e.currentTarget.dataset.index + '&data='+JSON.stringify(this.data.photoSizeList[e.currentTarget.dataset.index])
@@ -47,19 +47,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-		// 在页面onLoad回调事件中创建插屏广告实例
-		if (wx.createInterstitialAd) {
-			interstitialAd = wx.createInterstitialAd({
-				adUnitId: 'adunit-5e6ca9fec276ce4d'
-			})
-			interstitialAd.onLoad(() => {})
-			interstitialAd.onError((err) => {console.log(err)})
-			interstitialAd.onClose(() => {})
-		}
 		wx.setNavigationBarTitle({ title: '搜索' })
-	},
+  },
+  // 键盘搜索事件
 	confirm() {
-		console.log("键盘搜索")
 		this.setData({
 			photoSizeList:[],
 			page:0
@@ -71,9 +62,7 @@ Page({
 	},
 	//搜索数据
 	searchData(e){
-		wx.showLoading({
-			title: '搜索中...',
-		})
+		wx.showLoading({ title: '搜索中...', })
 		const db = wx.cloud.database()
 		const MAX_LIMIT = 20
 		const num = this.data.page*MAX_LIMIT
@@ -109,20 +98,9 @@ Page({
 		
 	},
 	onReachBottom:function(){
-		console.log("滑动到底部")
 		this.moreclick();
 	},
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-		// 在适合的场景显示插屏广告
-		if (interstitialAd) {
-			// interstitialAd.show().catch((err) => {
-			// 	console.error(err)
-			// })
-		}
-  },
+
   /**
    * 用户点击右上角分享
    */

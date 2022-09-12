@@ -1,4 +1,5 @@
 <view class="container">
+  <!-- tab切换 -->
 	<view wx:if="{{vipCount || filePath2 || videoLoaded}}" class="tabs">
 		<view bindtap="changeTab" data-index="0" class="{{tabIndex === 0 ? 'tab tab-active' : 'tab'}}">
 			<text class="name">普通版</text>
@@ -9,6 +10,8 @@
 			<view class="description">抠图精细发丝可见</view>
 		</view>
 	</view>
+
+  <!-- 自定义背景颜色选择器 -->
 	<view class="color-picker-view">
 		<view wx:if="{{showColorPicker}}" class="color-picker-content">
 			<button bindtap="closeColorPicker" size="mini" type="default">确定</button>
@@ -22,21 +25,9 @@
 		</view>
 	</view>
 
-	<!-- <view class="ctrl">
-		<view class="btn zoomin">＋</view>
-		<view class="btn zoomout">－</view>
-		<view class="btn up">↑</view>
-		<view class="btn down">↓</view>
-		<view class="btn left">←</view>
-		<view class="btn right">→</view>
-	</view> -->
-	<!-- <view class="size-picker">
-		<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-			<view class="picker">当前选择：{{array[index] + '： ' + photoSizeList[index].width + '×' + photoSizeList[index].height + '像素'}}</view>
-		</picker>
-	</view> -->
 	<view class="pthto-edit-content">
 		<view class="canvas-view" style="background-color: {{photoBg}};width: {{targetWidth * showScale}}rpx;height: {{targetHeight * showScale}}rpx;">
+      <!-- 人像 -->
 			<image 
 				style="width: {{width * showScale}}rpx; height: {{height * showScale}}rpx; left: {{left * showScale}}rpx; top: {{top * showScale}}rpx; transform: translate(-50%, -50%) scale({{ scale }}) rotate({{ rotate }}deg);" 
 				class="people-photo" 
@@ -46,6 +37,7 @@
 				catchtouchmove="touchmove"
 				catchtouchend="touchend">
 				</image>
+      <!-- 衣服 -->
 			<image 
 				wx-if="{{clothes.show && clothes.src}}"
 				style="z-index:2;width: {{clothes.width * showScale}}rpx; height: {{clothes.height * showScale}}rpx; left: {{clothes.left * showScale}}rpx; top: {{clothes.top * showScale}}rpx; transform: translate(-50%, -50%) scale({{clothes.scale }}) rotate({{clothes.rotate }}deg);" 
@@ -57,6 +49,7 @@
 				catchtouchmove="touchmove"
 				catchtouchend="touchend">
 				</image>
+      <!-- 头发 -->
 			<image 
 				wx-if="{{hair.show && hair.src}}"
 				style="z-index:1;width: {{hair.width * showScale}}rpx; height: {{hair.height * showScale}}rpx; left: {{hair.left * showScale}}rpx; top: {{hair.top * showScale}}rpx; transform: translate(-50%, -50%) scale({{hair.scale }}) rotate({{hair.rotate }}deg);" 
@@ -68,6 +61,7 @@
 				catchtouchmove="touchmove"
 				catchtouchend="touchend">
 				</image>
+      <!-- 新用户指引 -->
 			<view wx-if="{{!guided}}" class="guide" bindtap="guideNext">
 				<text wx-if="{{guideStep === 1}}">移动人像可调整位置\n点击下一步</text>
 				<text wx-if="{{guideStep === 2}}">双指可调整人像大小\n点击下一步</text>
@@ -77,6 +71,7 @@
 				<image wx-if="{{guideStep === 3}}" mode="aspectFit" class="zoom" src="../images/click-white.png"></image>
 				<view wx-if="{{guideStep > 3}}" bindtap="completionGuide" class="guide-know">我知道了</view>
 			</view>
+      <!-- 精细抠图使用提示 -->
 			<view wx-if="{{tabIndex === 1 && !filePath2}}" class="guide">
 				<text>{{videoLoaded ? '看视频 + 1 次' : ''}}\n\n\n\n ← 点击使用精细抠图</text>
 				<image mode="aspectFit" src="../images/click-white-left.png"></image>
@@ -106,21 +101,7 @@
 			<image mode="widthFix" class="style" src="../images/author.png"></image>
 			<text class="style-text">作者</text>
 		</view>
-		<!-- <navigator wx-if="{{tabIndex === 0}}"
-			target="miniProgram" 
-			open-type="navigate" 
-			app-id="wxb8dbf52db369e889" 
-			version="release" 
-			path="" 
-			class="look-videw left" 
-			style="top: {{-350}}rpx;">
-			<image mode="widthFix" class="style" src="../images/bgi.png"></image>
-			<text class="style-text">背景图</text>
-		</navigator> -->
-		<!-- <view wx-if="{{((targetHeight * showScale) > 350)}}" bindtap="help" class="look-videw right" style="top: {{-(targetHeight * showScale)}}rpx;">
-			<image mode="widthFix" class="style" src="./images/help.png"></image>
-			<text class="style-text">帮助</text>
-		</view> -->
+
 		<!-- <view wx-if="{{hair.src}}" class="change-hair left" data-name="hair" bindtap="showImage">
 			<image mode="widthFix" class="style" src="../images/ahvga-47qgd-003.png"></image>
 			<text wx-if="{{hair.show}}" class="style-text">隐藏</text>
@@ -128,7 +109,6 @@
 		</view> -->
 	</view>
 	<view class="colors">
-		<!-- <view bindtap="toggleBg" data-color="transparent" class="color transparent {{bgc === 'transparent' ? 'active' : ''}}"></view> -->
 		<view bindtap="toggleBg" data-color="white" class="color white {{bgc === 'white' ? 'active' : ''}}"></view>
 		<view bindtap="toggleBg" data-color="blue" class="color blue {{bgc === 'blue' ? 'active' : ''}}"></view>
 		<view bindtap="toggleBg" data-color="red" class="color red {{bgc === 'red' ? 'active' : ''}}"></view>
@@ -138,7 +118,6 @@
 			<view class="custom-bg" style="background-color: {{colorData.pickerData.hex}}"></view>
 		</view>
 	</view>
-	<!-- <view class="padding" wx:if="{{person_num > 1}}">照片中有{{person_num}}人</view> -->
 	<view wx-if="{{photoDescription}}" class="padding-xs">{{photoDescription}}</view>
 	<view class="padding-xs" wx:if="{{count <= 0 && !filePath2}}">
 		<view>下载次数已用完，升级版不限制下载次数。</view>

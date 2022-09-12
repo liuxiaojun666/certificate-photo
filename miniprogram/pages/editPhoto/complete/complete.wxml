@@ -1,19 +1,20 @@
 <view class="container">
-	<!-- <ad unit-id="adunit-42a2c50afe6933fb" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad> -->
-	<!-- <ad unit-id="adunit-5757d08b9dc805e2" ad-type="video" ad-theme="white"></ad> -->
+  <!-- 视频广告 -->
 	<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
 
-	<view class="msg padding">
-		{{msg}}
-	</view>
+  <!-- 图片大小提示文字 -->
+	<view class="msg padding">{{msg}}</view>
 
+  <!-- 制作结果 -->
 	<view>
 		<image bindtap="preView" mode="heightFix" src="{{url}}" style="width: 200rpx; height: 200rpx"></image>
 	</view>
 
+  <!-- 提示消息 -->
 	<view class="msg padding">
 		请在 <text class="text-red">手机相册</text> 查看下载结果
 	</view>
+
 
 	<view>
 		<button class="bg-orange text-white" open-type="share">分享给朋友</button>

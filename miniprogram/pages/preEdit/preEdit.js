@@ -21,12 +21,11 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		const {index,width,height,discription,data} = options
+		const {index,width,height,data} = options
 		if (width && height) {
 			this.setData({px: width + ' * ' + height + '像素', width: +width, height: +height});
 		}else if(data){
 			let newData = JSON.parse(data);
-			console.log("数据------"+newData.width_px);
 			this.setData({ 
 				width:+newData.width_px, 
 				height:+newData.height_px, 

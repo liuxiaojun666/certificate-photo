@@ -2,8 +2,6 @@
 	<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
 	<button class="share-btn bg-gradual-blue padding radius text-center shadow-blur" open-type="share" type="default">点击邀请</button>
 
-
-
 	<view class="padding text-center">
 		<text class="text-green">成功邀请一位朋友 +3 次免费下载免冠照</text>
 	</view>

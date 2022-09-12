@@ -1,84 +1,11 @@
 const app = getApp()
 Page({
 
-	/**
-	 * 页面的初始数据
-	 */
-	data: {
-		groupQrcodeUrl: app.globalData.groupQrcodeUrl
-	},
-
-	copy () {
-		wx.setClipboardData({
-			data: '1297768249',
-			success (res) {
-				
-			}
-		})
-	},
-
-	// 预览群二维码
-	viewGroupQRcode () {
-		wx.previewImage({
-			urls: [app.globalData.groupQrcodeUrl],
-			current: app.globalData.groupQrcodeUrl   
-		})
-	},
-
-	// 下发群二维码
+	// 主动下发客服消息
 	sendGroupQRCode () {
 		wx.cloud.callFunction({
 			name: 'customerService'
 		})
-	},
-
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-	onLoad: function (options) {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
 	},
 
 	/**

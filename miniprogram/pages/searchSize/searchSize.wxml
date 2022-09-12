@@ -1,7 +1,10 @@
 <view class="top-fixed">
+  <!-- 搜索框 -->
 	<view bindtap="inputPush" class="searchView">
 		<image src="./images/search-input.png" style="width: 100%;height:70rpx;"></image>
 	</view>
+
+  <!-- 证件照分类tab切换 -->
 	<view class="swiper-tab" hidden="{{showMenu}}">
 		<view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">常用尺寸</view>
 		<view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">职业资格</view>
@@ -9,15 +12,17 @@
 		<view class="swiper-tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="clickTab">学历/语言</view>
 	</view>
 </view>
+
+<!-- 所有尺寸证件照列表 -->
 <scroll-view class="container" scroll-y bindscrolltolower="moredata">
-
-
-
 	<view wx:for="{{photoSizeList}}" wx:key="name" data-index="{{index}}" bindtap="goNextPage">
+    <!-- 自定义 -->
 		<navigator wx:if="{{ index % 6 === 0 }}" class="card margin-top custom" open-type="navigate" url="../searchSize/custom/custom">
 			<image src="./images/custom-img.png"></image>
 		</navigator>
+    <!-- 广告 -->
 		<ad wx:if="{{ index % 6 === 3 }}" unit-id="adunit-eaee002e3b71ca92"></ad>
+    <!-- 证件照列表 -->
 		<view class="hot-list-item">
 			<view class="title">{{ item.name }}</view>
 			<view class="description">{{item.width_px}}*{{item.height_px}} px  |  {{item.width_mm}}*{{item.height_mm}} mm</view>

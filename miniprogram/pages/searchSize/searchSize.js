@@ -1,5 +1,3 @@
-// 在页面中定义插屏广告
-let interstitialAd = null
 
 Page({
 
@@ -130,15 +128,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-		// 在页面onLoad回调事件中创建插屏广告实例
-		if (wx.createInterstitialAd) {
-			interstitialAd = wx.createInterstitialAd({
-				adUnitId: 'adunit-5e6ca9fec276ce4d'
-			})
-			interstitialAd.onLoad(() => {})
-			interstitialAd.onError((err) => {console.log(err)})
-			interstitialAd.onClose(() => {})
-		}
 		this.requestdata();
 		wx.setNavigationBarTitle({ title: '免冠照/证件照尺寸' })
 	},
@@ -164,9 +153,9 @@ Page({
 			});
       }
     })
-	},
+  },
+  // 跳转到搜索页面
 	inputPush(){
-		console.log("*************点击输入框搜索")
 		wx.navigateTo({
 			url: './searchView/searchView'
 		})
@@ -211,17 +200,7 @@ Page({
 		}
 		
 	},
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-		// 在适合的场景显示插屏广告
-		if (interstitialAd) {
-			// interstitialAd.show().catch((err) => {
-			// 	console.error(err)
-			// })
-		}
-	},
+
 	onReachBottom:function(){
 		console.log("滑动到底部")
 		this.moreclick();

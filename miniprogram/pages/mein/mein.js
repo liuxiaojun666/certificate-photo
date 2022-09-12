@@ -295,11 +295,4 @@ Page({
 			imageUrl: '/images/shareShow.jpg'
 		}
 	},
-		// 预览群二维码
-		viewGroupQRcode () {
-			wx.previewImage({
-				urls: [app.globalData.groupQrcodeUrl],
-				current: app.globalData.groupQrcodeUrl  
-			})
-		},
 })

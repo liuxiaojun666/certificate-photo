@@ -1,16 +1,11 @@
 //app.js
-import './tools/dateFormatter'
 App({
 	onLaunch: function () {
 
 		// 版本检查
 		this.getNewVersion()
-
 		// 初始化云开发
-		wx.cloud.init({
-			resourceEnv: 'dev-4iov0',
-			traceUser: true
-		})
+		wx.cloud.init({ resourceEnv: 'dev-4iov0', traceUser: true })
 		// 新用户入库
 		this.addUser()
 	},
@@ -20,8 +15,7 @@ App({
 		wx.cloud.callFunction({
 			name: 'addUser',
 			success: res => {
-				this.globalData.openid = res.result.openid,
-				this.globalData.groupQrcodeUrl = res.result.groupQrcodeUrl
+				this.globalData.openid = res.result.openid
 			},
 			fail(err) {
 				wx.showToast({
@@ -58,7 +52,6 @@ App({
 	// 初始化全局数据
 	globalData: {
 		openid: null,
-		groupQrcodeUrl: 'https://6465-dev-4iov0-1301148496.tcb.qcloud.la/group-qrcode/qrcode.jpg?t=' + Date.now(),
 		photoSizeList: [{
 				name: '一寸',
 				px: '295×413 px',

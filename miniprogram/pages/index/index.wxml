@@ -1,4 +1,5 @@
 <view class="container">
+  <!-- 轮播图 -->
 	<swiper autoplay circular>
 			<swiper-item>
 				<navigator
@@ -19,9 +20,13 @@
 				</navigator>
 			</swiper-item>
 	</swiper>
+
+  <!-- 搜索框 -->
 	<view class="search-view">
 		<image bindtap="navigateTo" data-url="/pages/searchSize/searchView/searchView" src="./images/search-input.png"></image>
 	</view>
+
+  <!-- 常用尺寸 -->
 	<view class="tip-list">
 		<view data-index="{{0}}" bindtap="goNextPage" class="tip-item">
 			<image src="./images/icon-size2.png"></image>
@@ -45,19 +50,23 @@
 		</view>
 	</view>
 
+  <!-- 两个入口 -->
 	<view class="make-view">
 		<image bindtap="navigateTo" data-url="/pages/helpMake/helpMake" src="./images/help-make.png"></image>
 		<image bindtap="navigateTo" data-url="/pages/searchSize/searchSize" src="./images/start-make.png"></image>
 	</view>
 	
+  <!-- 近期热门 -->
 	<view class="hot-view">
 		<image src="./images/hot.png"></image>
 	</view>
 
+  <!-- 自定义入口 -->
 	<view class="custom-view">
 		<image bindtap="navigateTo" data-url="/pages/searchSize/custom/custom" src="./images/custom.png"></image>
 	</view>
 
+  <!-- 热门列表 -->
 	<view class="hot-list">
 		<view
 			wx:for="{{photoSizeList}}"

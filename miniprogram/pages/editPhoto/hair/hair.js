@@ -19,16 +19,17 @@ Page({
 		}
 	},
 
+  // 切换男女
 	tabSelect(e) {
     this.setData({
       TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id-1)*60
+      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
     })
 	},
-	
+  
+  // 选择发型，开始看视频
 	selectImg (e) {
 		imgUrl = e.currentTarget.dataset.url
-
 		// 用户触发广告后，显示激励视频广告
 		if (videoAd) {
 			videoAd.show().catch(() => {
@@ -44,16 +45,16 @@ Page({
 		}
 	},
 
+  // 返回页面，传递图片地址
 	back () {
 		const eventChannel = this.getOpenerEventChannel()
     eventChannel.emit('selectHair', {imgUrl});
 		wx.navigateBack({})
 	},
 
+  // 获取发型列表
 	async getData () {
-		wx.showLoading({
-			title: '稍等片刻...',
-		})
+		wx.showLoading({ title: '稍等片刻...', })
 		const { result } = await wx.cloud.callFunction({
 			name: 'getHairs',
 		})
@@ -127,39 +128,4 @@ Page({
 			})
 		}
 	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
-	}
 })

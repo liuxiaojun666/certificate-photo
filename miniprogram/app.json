@@ -3,18 +3,15 @@
     "pages/index/index",
     "pages/share/share",
     "pages/mein/mein",
-    "pages/touch/touch",
     "pages/editPhoto/imageStyle/imageStyle",
     "pages/editPhoto/hair/hair",
     "pages/searchSize/searchSize",
     "pages/searchSize/searchView/searchView",
     "pages/searchSize/custom/custom",
-    "pages/editPhoto/watermark/watermark",
     "pages/editPhoto/complete/complete",
     "pages/helpMake/helpMake",
     "pages/preEdit/preEdit",
-    "pages/editPhoto/editPhotoPlus/editPhotoPlus",
-    "pages/groupQrcodeManage/index"
+    "pages/editPhoto/editPhotoPlus/editPhotoPlus"
   ],
   "window": {
     "backgroundColor": "#fff",
