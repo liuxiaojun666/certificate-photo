@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "wx-server-sdk": "~2.6.3",
-    "axios": "latest",
     "@alicloud/imageaudit20191230": "^2.0.1"
   }
 }
