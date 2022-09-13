@@ -3,7 +3,7 @@ const cloud = require('wx-server-sdk')
 
 cloud.init()
 
-// 云函数入口函数
+// 云函数入口函数，发送赞赏码到客服消息
 exports.main = async (event, context) => {
   const wxContext = event.wxContext || cloud.getWXContext()
 

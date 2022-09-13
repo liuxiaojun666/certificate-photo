@@ -9,8 +9,6 @@ const _ = db.command
 exports.main = async (event, context) => {
 	const wxContext = cloud.getWXContext()
 	const data = {
-		// 累计生成照片 只增不减
-		// accumCreatePhoto: _.inc(event.inc > 0 ? 0 : -(event.inc)),
 		vipCount: _.inc(event.lookVideo ? 1 : (1 * event.inc)),
 		lookVideoCount: _.inc(event.lookVideo ? 1 : 0)
 	}

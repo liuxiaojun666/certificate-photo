@@ -7,11 +7,13 @@ const _ = db.command
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-	console.log(event, context)
-	const wxContext = cloud.getWXContext()
+  const wxContext = cloud.getWXContext()
+  
+  // 不是自己邀请自己
 	if (event.shareOpenid !== wxContext.OPENID) {
 		await addToInviteesTodayList(event, wxContext)
-	}
+  }
+  // 给当前用户设置他的上一级，上一级就是邀请他的人
 	setParent(event.shareOpenid, wxContext.OPENID)
 
 	return {

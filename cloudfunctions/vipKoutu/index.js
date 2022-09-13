@@ -9,17 +9,19 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-
+  let type = event.imgType
   // 获取图片buffer
   let targetBuffer = await getHttpBuffer(event.imgSrc)
-  // 需要将图片转成jpg格式
-  if (event.imgType && !['png', 'jpg', 'jpeg'].includes(event.imgType)) {
-    targetBuffer = await transformImageBuffer(targetBuffer, event.imgType)
+  // 需要将图片转成jpg格式，这个接口只支持png、jpg，一般是不用转的
+  if (type && !['png', 'jpg', 'jpeg'].includes(type)) {
+    targetBuffer = await transformImageBuffer(targetBuffer, type)
+    type = 'jpg'
   }
+  // buffer转成base64
   const imageBase64 = encodeURI(targetBuffer.toString('base64'))
-
+  // 抠图接口调用
 	return (await axios.post('https://aliapi.aisegment.com/segment/matting', {
-		type: 'jpg',
+		type: type,
 		photo: imageBase64
 	}, {
 		headers: {

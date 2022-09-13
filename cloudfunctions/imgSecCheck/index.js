@@ -1,6 +1,6 @@
+const http = require('http')
+const https = require('https')
 const cloud = require('wx-server-sdk')
-const axios = require('axios')
-const dayjs = require('dayjs')
 const AliCloud = require('./AliCloud')
 cloud.init({
   env:cloud.DYNAMIC_CURRENT_ENV,
@@ -16,6 +16,7 @@ exports.main = async (event, context) => {
 // 图片压缩
 async function imageMinify (imgInfo) {
   const { width, height, filePath, type } = imgInfo
+  // 需要压缩，腾讯免费的图片安全接口要求的
   if ((width > 750 && height > 750) || width > 1334 || height > 1334) {
     const imgSize = getImageSize({ width, height })
     const { result } = await cloud.callFunction({
@@ -55,28 +56,17 @@ function getImageSize (imgInfo) {
 }
 
 // 获取图片buffer
-async function getBuffer (path) {
-  const { data } = await axios({
-    method: 'get',
-    url: path,
-    responseType: 'arraybuffer',
-  })
-  return data
-}
-
-// 上传图片到云存储
-async function uploadImage (path, type) {
-  const imgName = `${Date.now()}-${Math.random()}.${type}`
-  const imgBuffer = await getBuffer(path)
-  const fileID = await cloudUploadFile(`tmp/${dayjs().format('YYYY-MM-DD')}/${imgName}`, imgBuffer)
-  const db = cloud.database()
-  db.collection('tmp-file').add({ data: { time: Date.now(), fileID: fileID } })
-  return fileID
-}
-
-// 上传图片到云存储，返回图片id
-async function cloudUploadFile (cloudPath, fileContent) {
-	return (await cloud.uploadFile({ cloudPath, fileContent })).fileID
+function getBuffer (src) {
+	const protocol = src.split('://')[0]
+	return new Promise((resolve, reject) => {
+		;({ http, https }[protocol]).get(src, res => {
+			if (res.statusCode !== 200) return reject(new Error('图片加载失败'))
+			const rawData = []
+			res.setEncoding('binary')
+			res.on('data', chunk => rawData.push(chunk))
+			res.on('end', () => resolve(Buffer.from(rawData.join(''), 'binary')))
+		})
+	})
 }
 
 // 腾讯免费的图片内容安全检测

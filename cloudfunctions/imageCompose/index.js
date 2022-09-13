@@ -11,11 +11,15 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-
-	const imgType = event.imgType || 'png' || 'jpg' || 'jpeg' || 'gif' || 'bmp' || 'raw' || 'webp'
-	const dataType = event.dataType || 'fileID' || 'base64' || 'url'
-	const VImage = event.data || []
-	const img = await renderImg(VImage)
+  // 需要返回的图片格式
+  const imgType = event.imgType || 'png' || 'jpg' || 'jpeg' || 'gif' || 'bmp' || 'raw' || 'webp'
+  // 需要返回的文件类型
+  const dataType = event.dataType || 'fileID' || 'base64' || 'url'
+  // 海报层叠数组
+  const VImage = event.data || []
+  // 合成一张图片
+  const img = await renderImg(VImage)
+  // 根据入参所需返回图片类型
 	const resContent = await getContentByDataType(img, dataType, imgType)
 
 	return {
@@ -26,7 +30,7 @@ exports.main = async (event, context) => {
 	
 }
 
-// 渲染图片
+// 渲染图片，将多个层合并成一张图片
 function renderImg (VImage) {
 	return VImage.reduce(async (preRomise, curData) => {
 
@@ -49,7 +53,6 @@ function renderImg (VImage) {
 // 获取文件内容 base64 或 文件id 或 url
 async function getContentByDataType (img, dataType, imgType) {
 	const imgName = `${Date.now()}-${Math.random()}.${imgType}`
-
 	const imgBuffer = img.toBuffer(imgType)
 	if (dataType === 'base64') return imgBuffer.toString('base64')
 	const fileID = await cloudUploadFile(`tmp/${dayjs().format('YYYY-MM-DD')}/${imgName}`, imgBuffer)

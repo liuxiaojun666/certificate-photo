@@ -4,10 +4,11 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 const db = cloud.database()
 
-// 云函数入口函数
+// 云函数入口函数，邀请成功，来领次数了
 exports.main = async (event, context) => {
 	const wxContext = cloud.getWXContext()
 
+  // 更新邀请记录
 	const shareRes = await db.collection('share').where({
 		openid: wxContext.OPENID,
 		date: event.date
@@ -15,6 +16,7 @@ exports.main = async (event, context) => {
 		data: { [event.openid]: true }
 	})
 
+  // 更新成功，加3次
 	let useCountRes
 	if (shareRes.stats.updated) {
 		useCountRes = await cloud.callFunction({

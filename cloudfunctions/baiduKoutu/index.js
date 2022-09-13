@@ -19,15 +19,8 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  let filePath = event.filePath
-  if (!filePath) {
-    // 获取图片url地址
-    const tempFileURL = await getFileUrlByFileID(event.fileID)
-    // 云存储图片处理地址  返回这个地址，   精细抠图可能还会用
-    filePath = encodeURI(`${tempFileURL}?imageMogr2/thumbnail/1500x1500|imageMogr2/format/jpg`)
-  }
 	// 获取图片buffer
-	const imgBuffer = await getHttpBuffer(filePath)
+	const imgBuffer = await getHttpBuffer(event.filePath)
 	// 图片的base64
 	const imageBase64 = encodeURI(imgBuffer.toString('base64'))
 	// 百度抠图结果
@@ -35,6 +28,7 @@ exports.main = async (event, context) => {
 	if (error_code) return { msg: error_msg }
 	if (!foreground) return { foreground, error_code, error_msg }
 
+  // 将抠图结果存储到云存储
 	const resultFileId = await uploadBase64(foreground)
 	db.collection('tmp-file').add({ data: { time: Date.now(), fileID: resultFileId } })
 

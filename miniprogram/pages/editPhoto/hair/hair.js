@@ -12,7 +12,6 @@ Page({
 	data: {
 		TabCur: 0,
 		videoLoaded: false,
-		baseId: 'cloud://dev-4iov0.6465-dev-4iov0-1301148496',
 		imgList: {
 			nan: [],
 			nv: []
