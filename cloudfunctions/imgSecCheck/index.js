@@ -91,8 +91,6 @@ async function imgSecCheck (event, imgInfo) {
         value: buffer
       }
     })
-    // 上传原图到CDN
-    imgResult.fileId = await uploadImage(event.filePath, event.type) // 这行上线后要删掉，暂时兼容处理
     imgResult.filePath = imgInfo.filePath
     imgResult.originImgPath = event.filePath
     imgResult.originImgType = event.type
@@ -113,7 +111,6 @@ async function aliCheck (event, imgInfo) {
   // 检测通过
   else if (aliRes.status) return {
     errCode: 0,
-    fileId: await uploadImage(event.filePath, event.type), // 这行上线后要删掉，暂时兼容处理
     filePath: imgInfo.filePath,
     originImgPath: event.filePath,
     originImgType: event.type
