@@ -7,7 +7,7 @@ cloud.init()
 exports.main = async (event, context) => {
 	const wxContext = cloud.getWXContext()
 
-	if (event.Content.indexOf('赞赏') > -1) {
+	if (event.Content && event.Content.indexOf('赞赏') > -1) {
 		return await cloud.callFunction({ name: 'sendAppreciateQRCode', data: { wxContext } })
 	}
 
