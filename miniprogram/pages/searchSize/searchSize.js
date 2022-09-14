@@ -6,120 +6,29 @@ Page({
    */
   data: {
 		hideLoadView:true,
-		showMenu:false,
 		category:"1",
 		page:0,
-		putText:"",
 		currentTab:0,
-		// photoSizeList: getApp().globalData.photoSizeList,
 		photoSizeList:[],
 		allRecords:[]
 	},
 	//滑动切换
   swiperTab: function(e) {
-    var that = this;
-    that.setData({
-      currentTab: e.detail.current
-    });
+    this.setData({ currentTab: e.detail.current });
   },
  //点击切换 
  clickTab: function(e) {
-	this.setData({
-		photoSizeList:[],
-		putText:"",
-		showMenu:false,
-	});
-	var that = this;
-	console.log(this.data.currentTab,e.target.dataset.current)
-	if (this.data.currentTab === e.target.dataset.current) {
-		return false;
-	} else {
-
-		if (e.target.dataset.current==0) {
-			that.setData({
-				category:"1",
-				page:0,
-				currentTab: e.target.dataset.current,
-				photoSizeList:[]
-			})
-			
-		}else if (e.target.dataset.current==1) {
-			that.setData({
-				category:"2",
-				page:0,
-				currentTab: e.target.dataset.current,
-				photoSizeList:[]
-			})
-		}else if (e.target.dataset.current==2) {
-
-			that.setData({
-				category:"3",
-				page:0,
-				currentTab: e.target.dataset.current,
-				photoSizeList:[]
-			})
-		}else if (e.target.dataset.current==3) {
-
-			that.setData({
-				category:"4",
-				page:0,
-				currentTab: e.target.dataset.current,
-				photoSizeList:[]
-			})
-		}else if (e.target.dataset.current==4) {
-
-			that.setData({
-				category:null,
-				page:0,
-				currentTab: e.target.dataset.current,
-				photoSizeList:[]
-			})
-		}
-		this.requestdata()
-	}
+  if (this.data.currentTab === e.target.dataset.current) return false;
+  this.setData({
+    category: ['1', '2', '3', '4', null][e.target.dataset.current],
+    page:0,
+    currentTab: e.target.dataset.current,
+    photoSizeList:[]
+  })
+  this.requestdata()
 },
 
-	//输入框值
-	bindModel(e) {
-    let key = e.target.dataset.model;
-    this.setData({
-      putText: e.detail.value
-		});
-		if (this.data.putText.length==0) {
-			console.log("没数据")
-			this.setData({
-				photoSizeList:[],
-				putText:"",
-				showMenu:false,
-			});
-			this.requestdata()
-		}
-  },
-	searchClick:function () {
-		console.log(this.data.putText)
-		wx.showToast({
-			title:'查询----'+this.data.putText,
-			icon: 'none'
-		})
-		this.setData({
-			showMenu:true,
-			photoSizeList:[],
-			page:0
-		});
-		if (this.data.putText.length>0) {
-			this.searchData(this.data.putText)
-		}else{
-			this.setData({
-				photoSizeList:[],
-				putText:"",
-				showMenu:false,
-			});
-			this.requestdata()
-		}
-
-	},
 	goNextPage (e) {
-
 		wx.navigateTo({
 			url: '/pages/preEdit/preEdit?index=' + e.currentTarget.dataset.index + '&data='+JSON.stringify(this.data.photoSizeList[e.currentTarget.dataset.index])
 		})
@@ -131,34 +40,9 @@ Page({
 		this.requestdata();
 		wx.setNavigationBarTitle({ title: '免冠照/证件照尺寸' })
 	},
-	//搜索数据
-	searchData(e){
-		wx.showNavigationBarLoading()
-		const db = wx.cloud.database()
-		const MAX_LIMIT = 20
-		const num = this.data.page*MAX_LIMIT
-		db.collection('photo_size').where({
-      name:{
-        $regex:'.*'+ this.data.putText,
-        $options: 'i'
-      }
-		})
-		.skip(num)
-		.limit(MAX_LIMIT)
-		.get({
-      success: res => {
-			 wx.hideNavigationBarLoading()
-			 this.setData({
-				photoSizeList:this.data.photoSizeList.concat(res.data)
-			});
-      }
-    })
-  },
   // 跳转到搜索页面
 	inputPush(){
-		wx.navigateTo({
-			url: './searchView/searchView'
-		})
+		wx.navigateTo({ url: './searchView/searchView' })
 	},
 	//获取数据
 	requestdata (){
@@ -186,23 +70,14 @@ Page({
 	},
 	//加载更多
 	moreclick(){
-		if (this.data.hideLoadView==true) {
-			return 
-		}
-		this.setData({
-			page:this.data.page+=1
-		})
-		console.log("加载更多数据"+this.data.page+'页')
-		if (this.data.showMenu==false) {
-			this.requestdata();
-		} else {
-			this.searchData(this.data.putText);
-		}
-		
+    // 已经全部加载出来了
+		if (this.data.hideLoadView==true) return
+		this.setData({ page: this.data.page+=1 })
+    this.requestdata();
 	},
 
+  // 触底加载
 	onReachBottom:function(){
-		console.log("滑动到底部")
 		this.moreclick();
 	},
   /**
