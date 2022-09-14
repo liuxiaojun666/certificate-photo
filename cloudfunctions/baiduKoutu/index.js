@@ -38,13 +38,6 @@ exports.main = async (event, context) => {
 	}
 }
 
-// 获取文件的临时访问url
-async function getFileUrlByFileID (fileID) {
-	return (await cloud.getTempFileURL({
-    fileList: [fileID]
-	})).fileList[0].tempFileURL
-}
-
 // 根据http地址获取图片 buffer
 function getHttpBuffer (src) {
 	const protocol = src.split('://')[0]
