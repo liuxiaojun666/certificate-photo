@@ -54,7 +54,7 @@ async function sendImg (wxContext) {
 		type: 'image',
 		media: {
 			contentType: 'image/jpg',
-			value: await getCloudBuffer('cloud://dev-4iov0.6465-dev-4iov0-1301148496/微信图片_20200606104940.jpg')
+			value: await getCloudBuffer('cloud://dev-4iov0.6465-dev-4iov0-1301148496/WechatIMG199.jpeg')
 		}
 	})
 
