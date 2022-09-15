@@ -17,17 +17,18 @@ Page({
     this.setData({ currentTab: e.detail.current });
   },
  //点击切换 
- clickTab: function(e) {
-  if (this.data.currentTab === e.target.dataset.current) return false;
-  this.setData({
-    category: ['1', '2', '3', '4', null][e.target.dataset.current],
-    page:0,
-    currentTab: e.target.dataset.current,
-    photoSizeList:[]
-  })
-  this.requestdata()
-},
+  clickTab: function(e) {
+    if (this.data.currentTab === e.target.dataset.current) return false;
+    this.setData({
+      category: ['1', '2', '3', '4', null][e.target.dataset.current],
+      page:0,
+      currentTab: e.target.dataset.current,
+      photoSizeList:[]
+    })
+    this.requestdata()
+  },
 
+  // 跳转到下一页
 	goNextPage (e) {
 		wx.navigateTo({
 			url: '/pages/preEdit/preEdit?index=' + e.currentTarget.dataset.index + '&data='+JSON.stringify(this.data.photoSizeList[e.currentTarget.dataset.index])

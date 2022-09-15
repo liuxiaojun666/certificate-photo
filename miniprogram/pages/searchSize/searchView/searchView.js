@@ -14,9 +14,7 @@ Page({
 	},
 	//输入框值
 	bindModel(e) {
-    this.setData({
-      putText: e.detail.value
-		});
+    this.setData({ putText: e.detail.value });
 		if (this.data.putText.length==0) {
 			this.setData({
 				photoSizeList:[],

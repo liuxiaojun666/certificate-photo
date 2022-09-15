@@ -1,20 +1,24 @@
 const app = getApp()
 
+// 非响应式数据
+const pageData = {
+  photoSizeList: app.globalData.photoSizeList,
+  width: '',
+  height: '',
+  originImgPath: '',
+  originImgType: '',
+}
+
 Page({
 
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-		photoSizeList: app.globalData.photoSizeList,
-		width: '',
-		height: '',
 		px: '',
 		size: '自定义',
 		photoName: '自定义尺寸',
     discription: '',
-    originImgPath: '',
-    originImgType: '',
 	},
 
 	/**
@@ -23,20 +27,21 @@ Page({
 	onLoad: function (options) {
 		const {index,width,height,data} = options
 		if (width && height) {
-			this.setData({px: width + ' * ' + height + '像素', width: +width, height: +height});
+      this.setData({px: width + ' * ' + height + '像素'});
+      Object.assign(pageData, { width: +width, height: +height })
 		}else if(data){
 			let newData = JSON.parse(data);
 			this.setData({ 
-				width:+newData.width_px, 
-				height:+newData.height_px, 
 				px:newData.width_px+" * "+newData.height_px + " 像素", 
 				size:newData.width_mm+" × "+newData.height_mm + " mm", 
 				photoName: "基本信息", 
 				discription: newData.name 
-			});
+      });
+      Object.assign(pageData, { width:+newData.width_px, height:+newData.height_px,  })
 		}else{
-			const {width, height, px, size, name, discription} = this.data.photoSizeList[index];
-			this.setData({ width, height, px, size, photoName: name, discription: discription });
+			const {width, height, px, size, name, discription} = pageData.photoSizeList[index];
+      this.setData({ px, size, photoName: name, discription: discription });
+      Object.assign(pageData, { width, height })
 		}
 	},
 
@@ -80,9 +85,8 @@ Page({
     })
     // 图片安全检测结果处理
     .then((res) => {
-      console.log(res)
       if (res.result.errCode === 0) {
-        this.setData({
+        Object.assign(pageData, {
           originImgPath: res.result.originImgPath,
           originImgType: res.result.originImgType,
         })
@@ -122,7 +126,7 @@ Page({
 	 */
 	goEditPage (data) {
 		wx.hideLoading()
-		const { width, height, originImgPath, originImgType } = this.data
+		const { width, height, originImgPath, originImgType } = pageData
 		wx.navigateTo({
 			url: '/pages/editPhoto/editPhotoPlus/editPhotoPlus',
 			success: function (res) {
