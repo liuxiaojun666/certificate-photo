@@ -29,7 +29,7 @@
 		<view class="canvas-view" style="background-color: {{photoBg}};width: {{targetWidth * showScale}}rpx;height: {{targetHeight * showScale}}rpx;">
       <!-- 人像 -->
 			<image 
-				style="width: {{width * showScale}}rpx; height: {{height * showScale}}rpx; left: {{left * showScale}}rpx; top: {{top * showScale}}rpx; transform: translate(-50%, -50%) scale({{ scale }}) rotate({{ rotate }}deg);" 
+				style="width: {{width * showScale}}rpx; height: {{height * showScale}}rpx; left: {{left * showScale}}rpx; top: {{top * showScale}}rpx; transform: translate(-50%, -50%) scale({{ scale }});" 
 				class="people-photo" 
 				src="{{(tabIndex === 1 && filePath2) || filePath}}"
 				bindload="bindload"
@@ -40,7 +40,7 @@
       <!-- 衣服 -->
 			<image 
 				wx-if="{{clothes.show && clothes.src}}"
-				style="z-index:2;width: {{clothes.width * showScale}}rpx; height: {{clothes.height * showScale}}rpx; left: {{clothes.left * showScale}}rpx; top: {{clothes.top * showScale}}rpx; transform: translate(-50%, -50%) scale({{clothes.scale }}) rotate({{clothes.rotate }}deg);" 
+				style="z-index:2;width: {{clothes.width * showScale}}rpx; height: {{clothes.height * showScale}}rpx; left: {{clothes.left * showScale}}rpx; top: {{clothes.top * showScale}}rpx; transform: translate(-50%, -50%) scale({{clothes.scale }});" 
 				class="people-photo" 
 				src="{{clothes.src}}"
 				data-dataname="clothes"
@@ -52,7 +52,7 @@
       <!-- 头发 -->
 			<image 
 				wx-if="{{hair.show && hair.src}}"
-				style="z-index:1;width: {{hair.width * showScale}}rpx; height: {{hair.height * showScale}}rpx; left: {{hair.left * showScale}}rpx; top: {{hair.top * showScale}}rpx; transform: translate(-50%, -50%) scale({{hair.scale }}) rotate({{hair.rotate }}deg);" 
+				style="z-index:1;width: {{hair.width * showScale}}rpx; height: {{hair.height * showScale}}rpx; left: {{hair.left * showScale}}rpx; top: {{hair.top * showScale}}rpx; transform: translate(-50%, -50%) scale({{hair.scale }});" 
 				class="people-photo" 
 				src="{{hair.src}}"
 				data-dataname="hair"
@@ -102,11 +102,6 @@
 			<text class="style-text">作者</text>
 		</view>
 
-		<!-- <view wx-if="{{hair.src}}" class="change-hair left" data-name="hair" bindtap="showImage">
-			<image mode="widthFix" class="style" src="../images/ahvga-47qgd-003.png"></image>
-			<text wx-if="{{hair.show}}" class="style-text">隐藏</text>
-			<text wx-if="{{!hair.show}}" class="style-text">显示</text>
-		</view> -->
 	</view>
 	<view class="colors">
 		<view bindtap="toggleBg" data-color="white" class="color white {{bgc === 'white' ? 'active' : ''}}"></view>
@@ -118,13 +113,12 @@
 			<view class="custom-bg" style="background-color: {{colorData.pickerData.hex}}"></view>
 		</view>
 	</view>
-	<view wx-if="{{photoDescription}}" class="padding-xs">{{photoDescription}}</view>
 	<view class="padding-xs" wx:if="{{count <= 0 && !filePath2}}">
 		<view>下载次数已用完，升级版不限制下载次数。</view>
 		<view wx:if="{{tabIndex === 1}}">点击使用后即可下载</view>
 	</view>
 	<view class="download-view">
-		<view class="no-count" wx:if="{{count <= 0 && !filePath2 && !photoDescription && tabIndex === 0}}">
+		<view class="no-count" wx:if="{{count <= 0 && !filePath2 && tabIndex === 0}}">
 			<!-- <button wx:if="{{videoLoaded}}" bindtap="lookVideo" type="default">看视频后下载</button> -->
 			<navigator target="self" url="/pages/mein/mein" open-type="reLaunch">
 				<button type="default">领 取 次 数</button>
@@ -132,8 +126,5 @@
 		</view>
 		<button wx:if="{{(!hideDownloadBtn) && (count > 0) && (tabIndex === 0)}}" bindtap="composeImage" type="default">下 载 图 片</button>
 		<button wx:if="{{(!hideDownloadBtn) && filePath2 && (tabIndex === 1)}}" bindtap="composeImage" type="default">下 载 图 片</button>
-		<navigator wx:if="{{hideDownloadBtn && downloadSuccess}}" open-type="navigateBack">
-			<button type="default">继 续 生 成</button>
-		</navigator>
 	</view>
 </view>

@@ -1,12 +1,11 @@
 const hexRgb = require('./hex-rgb')
 
-const { photoSizeList } = getApp().globalData;
-const sizeNameList = photoSizeList.map(v => v.name)
 let canOnePointMove = false
 let onePoint = {
 	x: 0,
 	y: 0
 }
+// 双指
 let twoPoint = {
 	x1: 0,
 	y1: 0,
@@ -15,6 +14,12 @@ let twoPoint = {
 }
 // 在页面中定义激励视频广告
 let videoAd = null
+
+// 全局数据，非视图中绑定的数据
+const pageData = {
+  originImgPath: '',
+  originImgType: '',
+}
 Page({
 
 	/**
@@ -22,26 +27,21 @@ Page({
 	 */
 	data: {
 		tabIndex: 0,
-		videoLoaded: false,
-		targetWidth: '',
+		videoLoaded: false, // 是否有视频广告
+		targetWidth: '', // 目标图片宽度
 		targetHeight: '',
-		showScale: 1,
+		showScale: 1, // 图片缩放比例
 		count: 0, // 用户剩余次数
-		vipCount: 0,
-    originImgPath: '',
-    originImgType: '',
-		filePath: '',
-		filePath2: '',
-		canvasFilePath: '',
-		sourceImageData: null,
-		guided: '',
-		guideStep: 1,
-		hideDownloadBtn: false,
-		downloadSuccess: false,
-		uploadSuccess: false,
-		bgc: '#ffffff',
-		photoBg: '#ffffff',
-		showColorPicker: false,
+		vipCount: 0, // vip抠图剩余
+		filePath: '', // 普通版透明图
+		filePath2: '', // 精细版透明图
+		guided: '', // 指引已完成
+		guideStep: 1, // 指引第一步
+		hideDownloadBtn: false, // 隐藏下载按钮
+		bgc: '#ffffff', // 照片背景色，选项非实际颜色
+		photoBg: '#ffffff', // 实际颜色
+    showColorPicker: false, // 颜色面板是否打开
+    // 颜色面板
 		colorData: {
 			//基础色相，即左侧色盘右上顶点的颜色，由右侧的色相条控制
 			hueData: {
@@ -62,51 +62,31 @@ Page({
 			barY: 0
 		},
 		rpxRatio: 1, //此值为你的屏幕CSS像素宽度/750，单位rpx实际像素
-		array: sizeNameList,
-		photoSizeList: photoSizeList,
-		objectArray: photoSizeList,
-		index: 0,
-		photoDescription: '',
-		kb: '',
-		person_num: 1,
-		attributes: {},
-		initImgWidth: 0,
 		initImgHeight: 0,
-		originImgWidth: 0,
-		originImgHeight: 0,
 		width: 0,
 		height: 0,
 		left: 0,
 		top: 0,
 		scale: 1,
-		rotate: 0,
 		clothes: {
 			show: false,
 			src: '',
-			initImgWidth: 0,
 			initImgHeight: 0,
-			originImgWidth: 0,
-			originImgHeight: 0,
 			width: 0,
 			height: 0,
 			left: 0,
 			top: 0,
 			scale: 1,
-			rotate: 0,
 		},
 		hair: {
 			show: false,
 			src: '',
-			initImgWidth: 0,
 			initImgHeight: 0,
-			originImgWidth: 0,
-			originImgHeight: 0,
 			width: 0,
 			height: 0,
 			left: 0,
 			top: 0,
 			scale: 1,
-			rotate: 0,
 		}
 	},
 
@@ -116,11 +96,6 @@ Page({
 		this.setData({
 			tabIndex: +event.currentTarget.dataset.index
 		})
-	},
-
-	// 尺寸改变
-	bindPickerChange(e) {
-		this.setData({ index: e.detail.value })
 	},
 
 	//选择改色时触发（在左侧色盘触摸或者切换右侧色相条）
@@ -207,9 +182,10 @@ Page({
 
 	// 计算相对底图的 x ， y
 	computedXY (baseImg, imgData) {
-		const left = (imgData.left - imgData.initImgWidth / 2)
+    const initImgWidth = this.data.targetWidth
+		const left = (imgData.left - initImgWidth / 2)
 		const top = (imgData.top - imgData.initImgHeight / 2)
-		const noScaleImgHeight = baseImg.width * imgData.initImgHeight / imgData.initImgWidth
+		const noScaleImgHeight = baseImg.width * imgData.initImgHeight / initImgWidth
 		const resultImgWidth = baseImg.width * imgData.scale
 		const resultImgHeight = noScaleImgHeight * imgData.scale
 		const scaleChangeWidth = (resultImgWidth / 2 - baseImg.width / 2)
@@ -307,8 +283,8 @@ Page({
 		const { result } = await wx.cloud.callFunction({
       name: 'vipKoutu',
       data: {
-        imgSrc: this.data.originImgPath,
-        imgType: this.data.originImgType
+        imgSrc: pageData.originImgPath,
+        imgType: pageData.originImgType
       }
 		}).catch(e => wx.showToast({ title: '失败，请重试或帮助', icon: 'none' }))
 		
@@ -344,25 +320,6 @@ Page({
 			current: 'cloud://dev-4iov0.6465-dev-4iov0-1301148496/微信图片_20200606104940.jpg'    
 		})
 	},
-	
-
-	// 点击帮助
-	help () {
-		wx.showModal({
-			title: '帮助',
-			content: '即将离开本页面，进入帮助页面。当前页面操作不做保存，确定离开吗？',
-			showCancel: true,
-			cancelText: '取消',
-			confirmText: '确定',
-			success: (res) => {
-				if (res.confirm) {
-					wx.reLaunch({
-						url: '/pages/help/help',
-					})
-				}
-			},
-		})
-	},
 
 	/**
 	 * 生命周期函数--监听页面加载
@@ -388,19 +345,17 @@ Page({
 		const eventChannel = this.getOpenerEventChannel && this.getOpenerEventChannel()
 		eventChannel && eventChannel.on('acceptDataFromOpenerPage', (data) => {
 			const {width, height, baiduKoutuResultFileId, originImgPath, originImgType} = data
-
+      Object.assign(pageData, { originImgPath, originImgType })
 			this.setData({
 				targetWidth: width,
 				targetHeight: height,
 				showScale: (480 / (+width)),
 				filePath: baiduKoutuResultFileId,
-        originImgPath,
-        originImgType
 			})
 		})
 	},
 
-	// 引导指南是否完成
+	// 获取引导指南是否完成
 	getGuide () {
 		const _this = this
 		wx.getStorage({
@@ -517,22 +472,11 @@ Page({
 		})
 	},
 
-	// 显示隐藏 服装 、头发
-	showImage (event) {
-		const name = event.currentTarget.dataset.name
-		this.setData({
-			[name]: {
-				...this.data[name],
-				show: !this.data[name].show
-			}
-		})
-	},
-
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function (e) {
-
+    // 选择了衣服或发型，还没有加载出来
 		if (this.data.clothes.src && !this.data.clothes.width) {
 			wx.showLoading({ title: '图片加载中...', })
 		}
@@ -557,9 +501,6 @@ Page({
 		const _width = photoSizeObj.width
 		const _height = _width * height / width
 		const imgLoadSetData = {
-			originImgWidth: width,
-			originImgHeight: height,
-			initImgWidth: _width,
 			initImgHeight: _height,
 			width: _width,
 			height: _height,
@@ -578,7 +519,6 @@ Page({
 		} : imgLoadSetData)
 	},
 	touchstart: function (e) {
-		var that = this
 		if (e.touches.length < 2) {
 			canOnePointMove = true
 			onePoint.x = e.touches[0].pageX * 2
@@ -621,10 +561,7 @@ Page({
 			var perAngle = Math.atan((preTwoPoint.y1 - preTwoPoint.y2) / (preTwoPoint.x1 - preTwoPoint.x2)) * 180 / Math.PI
 			var curAngle = Math.atan((twoPoint.y1 - twoPoint.y2) / (twoPoint.x1 - twoPoint.x2)) * 180 / Math.PI
 			if (Math.abs(perAngle - curAngle) > 1) {
-				// that.setData({
-				// 	msg: '旋转',
-				// 	rotate: thatData.rotate + (curAngle - perAngle)
-				// })
+        // 旋转
 			} else {
 				// 计算距离，缩放
 				var preDistance = Math.sqrt(Math.pow((preTwoPoint.x1 - preTwoPoint.x2), 2) + Math.pow((preTwoPoint.y1 - preTwoPoint.y2), 2))
@@ -643,7 +580,6 @@ Page({
 		}
 	},
 	touchend: function (e) {
-		var that = this
 		canOnePointMove = false
 	},
 
