@@ -1,6 +1,5 @@
 /* miniprogram/pages/editPhoto/imageStyle/imageStyle.wxss */
 .scroll-height {
-	height: calc(100vh - 90rpx - 252rpx);
 	padding: 10rpx;
 	overflow: auto;
 }

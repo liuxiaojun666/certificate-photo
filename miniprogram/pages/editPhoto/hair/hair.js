@@ -4,6 +4,7 @@ let videoAd = null
 // 在页面中定义插屏广告
 let interstitialAd = null
 let imgUrl = ''
+const allHair = {}
 Page({
 
 	/**
@@ -56,9 +57,13 @@ Page({
 		wx.showLoading({ title: '稍等片刻...', })
 		const { result } = await wx.cloud.callFunction({
 			name: 'getHairs',
-		})
+    })
+    Object.assign(allHair, result.hairs)
 		this.setData({
-			imgList: result.hairs
+			imgList: {
+        nan: allHair.nan.slice(0, 6),
+        nv: allHair.nv.slice(0, 6),
+      }
 		})
 		wx.hideLoading()
 	},
@@ -126,5 +131,17 @@ Page({
 				console.error(err)
 			})
 		}
-	},
+  },
+  
+  // 触底加载
+  onReachBottom() {
+    const key = ['nv', 'nan'][this.data.TabCur]
+    if (this.data.imgList[key].length === allHair[key].length) return
+    this.setData({
+      imgList: {
+        ...this.data.imgList,
+        [key]: allHair[key].slice(0, this.data.imgList[key].length + 6)
+      }
+    })
+  }
 })
