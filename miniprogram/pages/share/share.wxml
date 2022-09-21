@@ -1,6 +1,6 @@
 <scroll-view scroll-y class="scroll-view">
 	<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
-	<button class="share-btn bg-gradual-blue padding radius text-center shadow-blur" open-type="share" type="default">点击邀请</button>
+	<button class="share-btn bg-gradual-purple padding radius text-center shadow-blur" open-type="share" type="default" style="width: 80vw;">点击邀请</button>
 
 	<view class="padding text-center">
 		<text class="text-green">成功邀请一位朋友 +3 次免费下载免冠照</text>
@@ -23,5 +23,9 @@
 		
 	</view>
 
-	<view class="padding" wx:if="{{!invitedList[0]}}">今日还没有成功邀请好友</view>
+	<view class="padding text-center" wx:if="{{!invitedList[0]}}">
+    <text>今日还没有成功邀请好友。</text>
+  </view>
+
+  <button bindtap="subscribeMessage" class="bg-gradual-green">邀请成功通知我</button>
 </scroll-view>

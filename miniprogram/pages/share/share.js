@@ -44,14 +44,39 @@ Page({
 
 	// 订阅邀请成功通知
 	subscribeMessage () {
+		const openid = getApp().globalData.openid
+		const db = wx.cloud.database()
+    const tmplIds = ["CNuffKDjmxEOU_hM44Cu0KoGqOjfdacpbk4LT1abcnE"]
 		wx.requestSubscribeMessage({
-			tmplIds: ['CNuffKDjmxEOU_hM44Cu0KoGqOjfdacpbk4LT1abcnE'],
-			success (res) { },
+			tmplIds: tmplIds,
+			success: (res) => {
+        if (res[tmplIds[0]] === 'accept') {
+          db.collection('subscrib-message').add({
+            data: {
+              openid,
+              tmplId: tmplIds[0],
+              time: Date.now()
+            },
+            success: (res) => {
+              wx.showToast({ title: '订阅成功', })
+            }
+          })
+        }
+      },
 			fail(error) {
 				console.log(error)
 			}
 		})
-	},
+  },
+  
+  trigger () {
+    wx.cloud.callFunction({
+			name: 'triggerSubscrib',
+			data: {}
+		}).then(res => {
+			console.log(res)
+		})
+  },
 
   // 今天是不是已经邀请过朋友，如果就展示邀请结果
 	getData () {

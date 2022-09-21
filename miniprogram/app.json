@@ -22,7 +22,6 @@
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",
-  "workers": "workers",
   "tabBar": {
     "backgroundColor": "#fff",
     "color": "#333333",
