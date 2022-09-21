@@ -1,4 +1,9 @@
 // miniprogram/pages/share/share.js
+
+
+const openid = getApp().globalData.openid
+const db = wx.cloud.database()
+
 Page({
 
 	/**
@@ -10,7 +15,8 @@ Page({
 		invitedList: [],
 		updateCountLoading: false,
 		successUserList: [],
-		showSubscribeBtn: false
+    showSubscribeBtn: false,
+    subscribed: true
 	},
 
   // 邀请成功，领取次数
@@ -39,13 +45,12 @@ Page({
 	 */
 	onShow: function () {
 		this.getData()
-		
+		this.getSubscribeStatus()
 	},
 
 	// 订阅邀请成功通知
 	subscribeMessage () {
 		const openid = getApp().globalData.openid
-		const db = wx.cloud.database()
     const tmplIds = ["CNuffKDjmxEOU_hM44Cu0KoGqOjfdacpbk4LT1abcnE"]
 		wx.requestSubscribeMessage({
 			tmplIds: tmplIds,
@@ -59,6 +64,7 @@ Page({
             },
             success: (res) => {
               wx.showToast({ title: '订阅成功', })
+              this.setData({ subscribed: true })
             }
           })
         }
@@ -68,20 +74,25 @@ Page({
 			}
 		})
   },
-  
-  trigger () {
-    wx.cloud.callFunction({
-			name: 'triggerSubscrib',
-			data: {}
-		}).then(res => {
-			console.log(res)
-		})
+
+  // 获取订阅状态
+  getSubscribeStatus () {
+    db.collection('subscrib-message').where({
+      _openid: openid,
+      tmplId: "CNuffKDjmxEOU_hM44Cu0KoGqOjfdacpbk4LT1abcnE"
+    }).count({
+      success: (res)=> {
+        this.setData({
+          subscribed: res.total > 0
+        })
+      },
+      fail: console.error
+    })
   },
 
   // 今天是不是已经邀请过朋友，如果就展示邀请结果
 	getData () {
 		wx.showLoading({ title: '加载中', })
-		const openid = getApp().globalData.openid
 		const db = wx.cloud.database()
 		db.collection('share').where({ openid, date: new Date().toDateString() }).get().then(res => {
 			wx.hideLoading({ complete: (res) => {}, })

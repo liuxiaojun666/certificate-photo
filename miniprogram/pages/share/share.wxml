@@ -27,5 +27,5 @@
     <text>今日还没有成功邀请好友。</text>
   </view>
 
-  <button bindtap="subscribeMessage" class="bg-gradual-green">邀请成功通知我</button>
+  <button wx:if="{{ !subscribed }}" bindtap="subscribeMessage" class="bg-gradual-green">邀请成功通知我</button>
 </scroll-view>
