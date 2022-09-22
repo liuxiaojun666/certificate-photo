@@ -12,11 +12,10 @@ exports.main = async (event, context) => {
   // 不是自己邀请自己
 	if (event.shareOpenid !== wxContext.OPENID) {
     await addToInviteesTodayList(event, wxContext)
-    cloud.callFunction({
+    // 触发消息推送
+    await cloud.callFunction({
       name: 'triggerSubscrib',
-      data: {
-        openid: event.shareOpenid
-      }
+      data: { openid: event.shareOpenid }
     })
   }
   // 给当前用户设置他的上一级，上一级就是邀请他的人

@@ -23,8 +23,9 @@ exports.main = async (event, context) => {
           }
         }
       })
+      // 删除订阅记录
       if (result.errCode === 0) {
-        await db.collection('todos').where({
+        await db.collection('subscrib-message').where({
           openid: event.openid,
           tmplId: tmplId
         }).remove()
