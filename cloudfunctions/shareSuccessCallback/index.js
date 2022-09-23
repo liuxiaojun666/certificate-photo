@@ -10,7 +10,7 @@ exports.main = async (event, context) => {
 
   // 更新邀请记录
 	const shareRes = await db.collection('share').where({
-		openid: wxContext.OPENID,
+		_openid: wxContext.OPENID,
 	}).update({
 		data: { [event.openid]: true }
 	})

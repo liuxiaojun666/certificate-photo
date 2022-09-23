@@ -25,7 +25,7 @@ Page({
 		this.setData({ updateCountLoading: true })
 		wx.cloud.callFunction({
 			name: 'shareSuccessCallback',
-			data: {openid, date: new Date().toDateString()}
+			data: {openid}
 		}).then(res => {
 			this.setData({ updateCountLoading: false })
 			this.getData()
@@ -77,7 +77,7 @@ Page({
   // 获取订阅状态
   getSubscribeStatus () {
     db.collection('subscrib-message').where({
-      _openid: openid,
+      _openid: getApp().globalData.openid,
       tmplId: "CNuffKDjmxEOU_hM44Cu0KoGqOjfdacpbk4LT1abcnE"
     }).count({
       success: (res)=> {
