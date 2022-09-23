@@ -53,7 +53,7 @@ Page({
 		wx.chooseMedia({
       count: 1,
       mediaType: ['image'],
-			sizeType: ['original', 'compressed'],
+			sizeType: ['compressed'],
 			success: (res) => {
         this.imgSecCheck(res.tempFiles[0].tempFilePath)
 			},

@@ -17,7 +17,7 @@ Page({
 		wx.setNavigationBarTitle({ title: '免冠照/证件照' })
 
     // 处理来自用户邀请
-		this.shareSuccess(options.shareOpenid, options.date)
+		this.shareSuccess(options.shareOpenid)
 	},
 
 	// 去选择照片页面
@@ -34,11 +34,9 @@ Page({
 	/**
 	 * 用户来自邀请
 	 */
-	shareSuccess (shareOpenid, date) {
+	shareSuccess (shareOpenid) {
     // 没有分享自id，不是来自邀请
-    if (!shareOpenid || !date) return
-    // 不是当天的邀请
-    if (date.trim() !== new Date().toDateString().trim()) return
+    if (!shareOpenid) return
     // 更新邀请者的邀请记录
 		wx.cloud.callFunction({
 			name: 'shareUpdate',

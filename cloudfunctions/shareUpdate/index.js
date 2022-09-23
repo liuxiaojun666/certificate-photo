@@ -11,12 +11,10 @@ exports.main = async (event, context) => {
   
   // 不是自己邀请自己
 	if (event.shareOpenid !== wxContext.OPENID) {
-    await addToInviteesTodayList(event, wxContext)
     // 触发消息推送
-    await cloud.callFunction({
-      name: 'triggerSubscrib',
-      data: { openid: event.shareOpenid }
-    })
+    await triggerMessage(event, wxContext.OPENID)
+    // 添加到邀请成功列表中
+    await addToInviteesTodayList(event, wxContext)
   }
   // 给当前用户设置他的上一级，上一级就是邀请他的人
 	setParent(event.shareOpenid, wxContext.OPENID)
@@ -33,12 +31,22 @@ exports.main = async (event, context) => {
 function addToInviteesTodayList (event, wxContext) {
 	return db.collection('share').where({
 		openid: event.shareOpenid,
-		date: event.date
 	}).update({
 		data: {
 			invitedList: _.addToSet(wxContext.OPENID)
 		}
 	})
+}
+
+async function triggerMessage (event, currentOpenid) {
+  const { data } = await db.collection('share').where({
+		openid: event.shareOpenid,
+  }).field({ invitedList: true }).get()
+  if (data.filter(item => item.invitedList.includes(currentOpenid))) return
+  cloud.callFunction({
+    name: 'triggerSubscrib',
+    data: { openid: event.shareOpenid }
+  })
 }
 
 // 给用户设置邀请人

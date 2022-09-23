@@ -24,7 +24,7 @@
 	</view>
 
 	<view class="padding text-center" wx:if="{{!invitedList[0]}}">
-    <text>今日还没有成功邀请好友。</text>
+    <text>还没有成功邀请好友。</text>
   </view>
 
   <button wx:if="{{ !subscribed }}" bindtap="subscribeMessage" class="bg-gradual-green">邀请成功通知我</button>

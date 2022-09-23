@@ -11,7 +11,6 @@ exports.main = async (event, context) => {
   // 更新邀请记录
 	const shareRes = await db.collection('share').where({
 		openid: wxContext.OPENID,
-		date: event.date
 	}).update({
 		data: { [event.openid]: true }
 	})

@@ -540,8 +540,8 @@ Page({
 			var onePointDiffY = e.touches[0].pageY * 2 - onePoint.y
 			const imgSetData = {
 				msg: '单点移动',
-				left: thatData.left + onePointDiffX,
-				top: thatData.top + onePointDiffY
+				left: thatData.left + onePointDiffX / this.data.rpxRatio,
+				top: thatData.top + onePointDiffY / this.data.rpxRatio
 			}
 			that.setData(outerDataName ? {
 				[outerDataName]: {
@@ -568,7 +568,7 @@ Page({
 				var curDistance = Math.sqrt(Math.pow((twoPoint.x1 - twoPoint.x2), 2) + Math.pow((twoPoint.y1 - twoPoint.y2), 2))
 				const imgSetData = {
 					msg: '缩放',
-					scale: thatData.scale + (curDistance - preDistance) * 0.005
+					scale: Math.max(thatData.scale + (curDistance - preDistance) * 0.005, 0.5)
 				}
 				that.setData(outerDataName ? {
 					[outerDataName]: {

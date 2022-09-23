@@ -90,11 +90,11 @@ Page({
     })
   },
 
-  // 今天是不是已经邀请过朋友，如果就展示邀请结果
+  // 是不是已经邀请过朋友，如果就展示邀请结果
 	getData () {
 		wx.showLoading({ title: '加载中', })
 		const db = wx.cloud.database()
-		db.collection('share').where({ openid, date: new Date().toDateString() }).get().then(res => {
+		db.collection('share').where({ openid }).get().then(res => {
 			wx.hideLoading({ complete: (res) => {}, })
 			if (!res.data[0]) {
 				this.setData({ shared: false })
@@ -145,7 +145,7 @@ Page({
 			}
 			return {
 				title: '证件照、免冠照、一寸照片、二寸照片、证件照换背景，免费生成、下载。',
-				path: '/pages/index/index?shareOpenid=' + openid + '&date=' + new Date().toDateString().trim(),
+				path: '/pages/index/index?shareOpenid=' + openid,
 				imageUrl: '/images/shareShow.jpg'
 			}
 		}
@@ -158,7 +158,7 @@ Page({
 			data: {
 				invitedList: [],
 				openid,
-        date: new Date().toDateString(),
+        createAt: Date.now(),
 			},
 			success: () => {
 				this.setData({ shared: true })
