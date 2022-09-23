@@ -33,3 +33,7 @@ button.share-btn[type='default'] {
 .cu-item .content .cu-avatar {
 	margin-right: 10rpx;
 }
+
+.bg-gradual-green {
+  margin-top: 30rpx;
+}

@@ -14,10 +14,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-		wx.setNavigationBarTitle({ title: '免冠照/证件照' })
-
-    // 处理来自用户邀请
-		this.shareSuccess(options.shareOpenid)
+    wx.setNavigationBarTitle({ title: '免冠照/证件照' })
+    // 来自邀请，签到时使用
+    if (options.shareOpenid) {
+      wx.setStorage({
+        key: "fromShare",
+        data: options.shareOpenid
+      })
+    }
 	},
 
 	// 去选择照片页面
@@ -30,24 +34,6 @@ Page({
   // 页面跳转
 	navigateTo(e) {
 		wx.navigateTo({ url: e.currentTarget.dataset.url, })
-	},
-	/**
-	 * 用户来自邀请
-	 */
-	shareSuccess (shareOpenid) {
-    // 没有分享自id，不是来自邀请
-    if (!shareOpenid) return
-    // 更新邀请者的邀请记录
-		wx.cloud.callFunction({
-			name: 'shareUpdate',
-			data: {
-				shareOpenid,
-				date: new Date().toDateString()
-			},
-			success: res => {
-				console.log(res)
-			}
-		})
 	},
 
   /**

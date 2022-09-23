@@ -38,11 +38,13 @@ function addToInviteesTodayList (event, wxContext) {
 	})
 }
 
+// 触发订阅消息
 async function triggerMessage (event, currentOpenid) {
   const { data } = await db.collection('share').where({
-		openid: event.shareOpenid,
+		_openid: event.shareOpenid,
   }).field({ invitedList: true }).get()
-  if (data.filter(item => item.invitedList.includes(currentOpenid))) return
+  if (!data.length) return
+  if (data[0].invitedList.some(openid => openid === currentOpenid)) return
   cloud.callFunction({
     name: 'triggerSubscrib',
     data: { openid: event.shareOpenid }

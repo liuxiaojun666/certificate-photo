@@ -1,7 +1,6 @@
 // miniprogram/pages/share/share.js
 
 
-const openid = getApp().globalData.openid
 const db = wx.cloud.database()
 
 Page({
@@ -16,7 +15,7 @@ Page({
 		updateCountLoading: false,
 		successUserList: [],
     showSubscribeBtn: false,
-    subscribed: true
+    subscribed: false
 	},
 
   // 邀请成功，领取次数
@@ -82,9 +81,7 @@ Page({
       tmplId: "CNuffKDjmxEOU_hM44Cu0KoGqOjfdacpbk4LT1abcnE"
     }).count({
       success: (res)=> {
-        this.setData({
-          subscribed: res.total > 0
-        })
+        this.setData({ subscribed: res.total > 0 })
       },
       fail: console.error
     })
@@ -94,8 +91,11 @@ Page({
 	getData () {
 		wx.showLoading({ title: '加载中', })
 		const db = wx.cloud.database()
-		db.collection('share').where({ openid }).get().then(res => {
-			wx.hideLoading({ complete: (res) => {}, })
+		db.collection('share').where({
+      _openid: getApp().globalData.openid
+    }).get().then(res => {
+      wx.hideLoading({ complete: (res) => {}, })
+      console.log(res)
 			if (!res.data[0]) {
 				this.setData({ shared: false })
 			} else {

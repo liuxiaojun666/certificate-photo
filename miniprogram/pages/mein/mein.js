@@ -98,9 +98,22 @@ Page({
 			data: {inc: 1, signIn: true}
 		}).then(res => {
 			wx.showToast({ title: '签到成功', })
-			this.getUserInfo()
+      this.getUserInfo()
+      this.shareSuccess()
 		})
-	},
+  },
+  
+  // 被邀请成功
+  shareSuccess () {
+    const fromShare = wx.getStorageSync('fromShare')
+    if (!fromShare) return
+    wx.cloud.callFunction({
+			name: 'shareUpdate',
+			data: {
+        shareOpenid: fromShare
+      }
+		})
+  },
 
 	// 看视频
 	lookVideo () {
