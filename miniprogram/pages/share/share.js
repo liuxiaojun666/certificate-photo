@@ -67,23 +67,13 @@ Page({
 
 	// 订阅邀请成功通知
 	subscribeMessage () {
-		const openid = getApp().globalData.openid
     const tmplIds = ["CNuffKDjmxEOU_hM44Cu0KoGqOjfdacpbk4LT1abcnE"]
 		wx.requestSubscribeMessage({
 			tmplIds: tmplIds,
 			success: (res) => {
         if (res[tmplIds[0]] === 'accept') {
-          db.collection('subscrib-message').add({
-            data: {
-              openid,
-              tmplId: tmplIds[0],
-              time: Date.now()
-            },
-            success: (res) => {
-              wx.showToast({ title: '订阅成功', })
-              this.setData({ subscribed: true })
-            }
-          })
+          wx.showToast({ title: '订阅成功', })
+          this.setData({ subscribed: true })
         }
       },
 			fail(error) {
