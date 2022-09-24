@@ -537,11 +537,12 @@ Page({
 		
 		if (e.touches.length < 2 && canOnePointMove) {
 			var onePointDiffX = e.touches[0].pageX * 2 - onePoint.x
-			var onePointDiffY = e.touches[0].pageY * 2 - onePoint.y
+      var onePointDiffY = e.touches[0].pageY * 2 - onePoint.y
+      console.log(this.data.rpxRatio)
 			const imgSetData = {
 				msg: '单点移动',
-				left: thatData.left + onePointDiffX / this.data.rpxRatio,
-				top: thatData.top + onePointDiffY / this.data.rpxRatio
+				left: thatData.left + onePointDiffX * this.data.rpxRatio,
+				top: thatData.top + onePointDiffY * this.data.rpxRatio
 			}
 			that.setData(outerDataName ? {
 				[outerDataName]: {

@@ -1,6 +1,4 @@
 // miniprogram/pages/mein/mein.js
-// 在页面中定义插屏广告
-let interstitialAd = null
 // 在页面中定义激励视频广告
 let videoAd = null
 const app = getApp()
@@ -193,16 +191,6 @@ Page({
 			})
 		}
 
-		// 在页面onLoad回调事件中创建插屏广告实例
-		if (wx.createInterstitialAd) {
-			interstitialAd = wx.createInterstitialAd({
-				adUnitId: 'adunit-7bd4afc44e5cebbd'
-			})
-			interstitialAd.onLoad(() => {})
-			interstitialAd.onError((err) => {})
-			interstitialAd.onClose(() => {})
-		}
-
 		// 在页面onLoad回调事件中创建激励视频广告实例
 		if (wx.createRewardedVideoAd) {
 			videoAd = wx.createRewardedVideoAd({
@@ -282,13 +270,6 @@ Page({
 	 */
 	onShow: function () {
 		this.timerFunc()
-
-		// 在适合的场景显示插屏广告
-		if (interstitialAd) {
-			interstitialAd.show().catch((err) => {
-				console.error(err)
-			})
-		}
 	},
 
 	// 定时器，解决第一次进入页面没有openid 的问题

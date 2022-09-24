@@ -37,12 +37,6 @@
 
 <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
   <view class="cu-item arrow">
-    <button class="cu-btn content" open-type="contact" bindtouchstart="sendAppreciateQRCode">
-      <text class="cuIcon-appreciate text-red"></text>
-      <text class="text-red">赞赏支持 => 回复"赞赏"</text>
-    </button>
-  </view>
-  <view class="cu-item arrow">
     <navigator class="content" url="/pages/share/share">
       <text class="cuIcon-friendadd text-red"></text>
       <text>邀请好友 + 次数</text>

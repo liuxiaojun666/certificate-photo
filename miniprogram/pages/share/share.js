@@ -1,6 +1,7 @@
 // miniprogram/pages/share/share.js
 
-
+// 在页面中定义插屏广告
+let interstitialAd = null
 const db = wx.cloud.database()
 
 Page({
@@ -36,7 +37,17 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		wx.setNavigationBarTitle({ title: '分享免冠照' })
+    wx.setNavigationBarTitle({ title: '分享免冠照' })
+    
+    		// 在页面onLoad回调事件中创建插屏广告实例
+		if (wx.createInterstitialAd) {
+			interstitialAd = wx.createInterstitialAd({
+				adUnitId: 'adunit-7bd4afc44e5cebbd'
+			})
+			interstitialAd.onLoad(() => {})
+			interstitialAd.onError((err) => {})
+			interstitialAd.onClose(() => {})
+		}
 	},
 
 	/**
@@ -44,7 +55,14 @@ Page({
 	 */
 	onShow: function () {
 		this.getData()
-		this.getSubscribeStatus()
+    this.getSubscribeStatus()
+    
+    // 在适合的场景显示插屏广告
+		if (interstitialAd) {
+			interstitialAd.show().catch((err) => {
+				console.error(err)
+			})
+		}
 	},
 
 	// 订阅邀请成功通知

@@ -17,7 +17,7 @@
 					<text>+3 次</text>
 					<text wx:if="{{updateCountLoading}}">...</text>
 				</button>
-        <button wx:else data-openid="{{item}}" class="jia3ci-btn cu-btn round bg-green shadow">已领取</button>
+        <button wx:else data-openid="{{item}}" class="jia3ci-btn cu-btn round bg-gray shadow">已领取</button>
       </view>
     </view>
 		
