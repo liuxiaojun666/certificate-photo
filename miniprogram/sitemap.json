@@ -3,7 +3,11 @@
   "rules": [
 		{
 			"action": "allow",
-			"page": "pages/index/index"
+			"page": "/pages/index/index"
+		},
+		{
+			"action": "allow",
+			"page": "/pages/searchSize/searchSize"
 		}
 	]
 }

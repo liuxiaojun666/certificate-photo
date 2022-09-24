@@ -1,24 +1,25 @@
 <view class="container">
+  <!-- <ad unit-id="adunit-eaee002e3b71ca92"></ad> -->
   <!-- 轮播图 -->
 	<swiper autoplay circular>
-			<swiper-item>
-				<navigator
-					hover-class="none"
-					target="miniProgram" 
-					open-type="navigate" 
-					app-id="wxb8dbf52db369e889"
-					version="release"
-					class="swiper-item">
-					<view class="img-p">
-						<image mode="widthFix" src="./images/banner.jpg"></image>
-						<view class="msg text-orange light">
-							<text class="cu-btn radius bg-orange">人像抠图 →</text>
-							<view></view>
-							<text class="sub-title">背景图片随意换</text>
-						</view>
-					</view>
-				</navigator>
-			</swiper-item>
+    <swiper-item>
+      <navigator
+        hover-class="none"
+        target="miniProgram" 
+        open-type="navigate" 
+        app-id="wxb8dbf52db369e889"
+        version="release"
+        class="swiper-item">
+        <view class="img-p">
+          <image mode="widthFix" src="./images/banner.jpg"></image>
+          <view class="msg text-orange light">
+            <text class="cu-btn radius bg-orange">人像抠图 →</text>
+            <view></view>
+            <text class="sub-title">背景图片随意换</text>
+          </view>
+        </view>
+      </navigator>
+    </swiper-item>
 	</swiper>
 
   <!-- 搜索框 -->
