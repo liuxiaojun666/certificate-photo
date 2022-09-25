@@ -6,10 +6,10 @@ cloud.init()
 // 云函数入口函数
 exports.main = async (event, context) => {
 	const wxContext = cloud.getWXContext()
-  // 微信不让赞赏
-	// if (event.Content && event.Content.indexOf('赞赏') > -1) {
-	// 	return await cloud.callFunction({ name: 'sendAppreciateQRCode', data: { wxContext } })
-	// }
+
+	if (event.Content && event.Content.indexOf('人工') > -1) {
+		return await sendImg(wxContext)
+	}
 
 	// await sendText(wxContext)
 	

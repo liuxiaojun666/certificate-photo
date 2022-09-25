@@ -40,5 +40,6 @@
         "selectedIconPath": "./images/me-active.png"
       }
     ]
-  }
+  },
+  "lazyCodeLoading": "requiredComponents"
 }
