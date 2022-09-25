@@ -1,7 +1,8 @@
 /* miniprogram/pages/editPhoto/imageStyle/imageStyle.wxss */
 .scroll-height {
 	padding: 10rpx;
-	overflow: auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .scroll-height .img-list {

@@ -58,3 +58,7 @@
   mix-blend-mode: screen;  
   height: 100rpx;   
 }
+
+.github .text-blue{
+  padding: 10px 0;
+}

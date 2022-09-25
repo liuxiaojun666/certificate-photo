@@ -221,8 +221,6 @@ Page({
 			wx.saveImageToPhotosAlbum({
 				filePath: tempFilePath,
 				success: () => {
-					this.setData({ downloadSuccess: true })
-					wx.showToast({ title: '下载成功' })
 					if (!isVip) this.useCount()
 					resolve()
 				},
@@ -275,7 +273,6 @@ Page({
 
 		// vip 精细抠图   
 	async vipKoutu () {
-		if (this.data.downloadSuccess) return
 		if (this.data.vipCount <= 0) return
 		if (this.data.usedVip) return
 		wx.showLoading({ title: '处理中...', })

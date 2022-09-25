@@ -2,6 +2,7 @@
 
 // 在页面中定义插屏广告
 let interstitialAd = null
+let shared = false
 const db = wx.cloud.database()
 
 Page({
@@ -10,7 +11,6 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		shared: false,
 		allShareData: {},
 		invitedList: [],
 		updateCountLoading: false,
@@ -105,12 +105,12 @@ Page({
       wx.hideLoading({ complete: (res) => {}, })
       console.log(res)
 			if (!res.data[0]) {
-				this.setData({ shared: false })
+				shared = false
 			} else {
+        shared = true
 				this.setData({
 					allShareData: res.data[0],
-					invitedList: res.data[0].invitedList, 
-					shared: true
+					invitedList: res.data[0].invitedList
 				})
 				this.getAvatar(res.data[0].invitedList || [])
 			}
@@ -148,9 +148,7 @@ Page({
 	onShareAppMessage: function (res) {
 		if (res.from === 'button') {
 			const openid = getApp().globalData.openid
-			if (!this.data.shared) {
-				this.share(openid)
-			}
+			if (!shared) this.share(openid)
 			return {
 				title: '证件照、免冠照、一寸照片、二寸照片、证件照换背景，免费生成、下载。',
 				path: '/pages/index/index?shareOpenid=' + openid,
@@ -169,7 +167,7 @@ Page({
         createAt: Date.now(),
 			},
 			success: () => {
-				this.setData({ shared: true })
+				shared = true
 			}
 		})
 	}

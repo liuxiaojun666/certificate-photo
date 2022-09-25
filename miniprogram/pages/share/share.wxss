@@ -4,7 +4,8 @@
 	height: 100vh;
 	overflow: auto;
 	position: relative;
-	background-color: #fff;
+  background-color: #fff;
+  -webkit-overflow-scrolling: touch;
 }
 
 ad {

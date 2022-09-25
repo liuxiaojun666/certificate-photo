@@ -1,11 +1,10 @@
-
+const hideLoadView = true
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-		hideLoadView:true,
 		category:"1",
 		page:0,
 		currentTab:0,
@@ -63,16 +62,16 @@ Page({
 			 console.log(arrNum);
 			 wx.hideLoading()
 			 this.setData({
-				photoSizeList:this.data.photoSizeList.concat(res.data),
-				hideLoadView:(arrNum==20)?false:true
-			});
+          photoSizeList:this.data.photoSizeList.concat(res.data),
+        });
+        hideLoadView = arrNum !== 20
       }
     })
 	},
 	//加载更多
 	moreclick(){
     // 已经全部加载出来了
-		if (this.data.hideLoadView==true) return
+		if (hideLoadView==true) return
 		this.setData({ page: this.data.page+=1 })
     this.requestdata();
 	},
