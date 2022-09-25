@@ -1,6 +1,5 @@
 <scroll-view class="container" scroll-y>
 
-<ad class="margin-bottom" unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
 
 <view class="header">{{photoName}}</view>
 <view class="tips">
@@ -9,6 +8,14 @@
 	<view>照片描述：{{discription}}</view>
 </view>
 
+<view class="header">拍照秘籍</view>
+<view class="tips">
+	<view>- 照片使用纯色背景（推荐白墙）</view>
+	<view>- 避免多人出现在照片中</view>
+	<view>- 露出耳朵、眉毛和下巴</view>
+</view>
+
+<ad class="margin-bottom" unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
 
 <view class="flex justify-around padding-right btn-view">
 	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow">帮 制 作</navigator>

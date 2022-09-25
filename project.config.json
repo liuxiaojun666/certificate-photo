@@ -36,7 +36,10 @@
     "disableUseStrict": false,
     "minifyWXML": true,
     "showES6CompileOption": false,
-    "useCompilerPlugins": false,
+    "useCompilerPlugins": [
+      "typescript",
+      "less"
+    ],
     "lazyloadPlaceholderEnable": false,
     "useStaticServer": true
   },
