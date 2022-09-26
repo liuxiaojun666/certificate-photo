@@ -1,13 +1,34 @@
+let rpxRatio = 1
+
+wx.getSystemInfo({
+    success(res) {
+        rpxRatio = res.screenWidth / 750
+    }
+})
+
 Component({
   properties: {
-    //单位rpx实际像素
-    rpxRatio: {
-      type: Number,
-      value: 1
-    },
     colorData: {
       type: Object,
-      value: {}
+      value: {
+            //基础色相，即左侧色盘右上顶点的颜色，由右侧的色相条控制
+            hueData: {
+                colorStopRed: 255,
+                colorStopGreen: 0,
+                colorStopBlue: 0,
+            },
+            //选择点的信息（左侧色盘上的小圆点，即你选择的颜色）
+            pickerData: {
+                x: 0, //选择点x轴偏移量
+                y: 480, //选择点y轴偏移量
+                red: 0,
+                green: 0,
+                blue: 0,
+                hex: '#000000'
+            },
+            //色相控制条的位置
+            barY: 0
+        }
     }
   },
   data: {
@@ -61,8 +82,8 @@ Component({
     //选中颜色
     _chooseColor(e) {
       clearTimeout(this.data.timer)
-      let x = (e.changedTouches[0].pageX - this.data.left - this.data.scrollLeft) / this.data.rpxRatio
-      let y = (e.changedTouches[0].pageY - this.data.top - this.data.scrollTop) / this.data.rpxRatio
+      let x = (e.changedTouches[0].pageX - this.data.left - this.data.scrollLeft) / rpxRatio
+      let y = (e.changedTouches[0].pageY - this.data.top - this.data.scrollTop) / rpxRatio
       x = x > 480 ? 480 : x
       y = y > 480 ? 480 : y
       x = x < 0 ? 0 : x
@@ -80,7 +101,7 @@ Component({
     //拖动色相bar
     //这个地方选择出来的颜色就是色盘最右上角的颜色
     _changeBar(e) {
-      let y = (e.changedTouches[0].pageY - this.data.top - this.data.scrollTop) / this.data.rpxRatio
+      let y = (e.changedTouches[0].pageY - this.data.top - this.data.scrollTop) / rpxRatio
       y = y > 490 ? 490 : y
       y = y < 0 ? 0 : y
       this.setData({

@@ -30,12 +30,13 @@ exports.main = async (event, context) => {
 
   // 将抠图结果存储到云存储
 	const resultFileId = await uploadBase64(foreground)
-	db.collection('tmp-file').add({ data: { time: Date.now(), fileID: resultFileId } })
+  db.collection('tmp-file').add({ data: { time: Date.now(), fileID: resultFileId } })
+  const url = await getFileUrlByFileID(resultFileId)
 
-
-	return {
-		baiduKoutuResultFileId: resultFileId
-	}
+  return {
+    baiduKoutuResultFileId: resultFileId,
+    baiduKoutuUrl: url
+  }
 }
 
 // 根据http地址获取图片 buffer
@@ -66,4 +67,11 @@ async function uploadBase64 (base64) {
 // 上传图片到云存储，返回图片id
 async function cloudUploadFile (cloudPath, fileContent) {
 	return (await cloud.uploadFile({ cloudPath, fileContent })).fileID
+}
+
+// 获取文件的临时访问url
+async function getFileUrlByFileID (fileID) {
+	return (await cloud.getTempFileURL({
+    fileList: [fileID]
+	})).fileList[0].tempFileURL
 }

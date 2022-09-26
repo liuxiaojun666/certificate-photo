@@ -13,7 +13,7 @@
 
   <!-- 自定义背景颜色选择器 -->
 	<view class="color-picker-view">
-		<view wx:if="{{showColorPicker}}" class="color-picker-content">
+		<view wx:if="{{ showColorPicker }}" class="color-picker-content">
 			<button bindtap="closeColorPicker" size="mini" type="default">确定</button>
 			<view class="tips">
 				<text class="text-red">先选右侧色系</text>
@@ -21,7 +21,7 @@
 				<text class="text-red">后选左侧色值</text>
 			</view>
 			<view class="current-color" style="background-color: {{colorData.pickerData.hex}}"></view>
-			<color-picker class="color-picker" colorData="{{colorData}}" rpxRatio="{{rpxRatio}}" bindchangecolor="onChangeColor"></color-picker>
+			<color-picker class="color-picker" bindchangecolor="onChangeColor"></color-picker>
 		</view>
 	</view>
 
@@ -29,9 +29,10 @@
 		<view class="canvas-view" style="background-color: {{photoBg}};width: {{targetWidth * showScale}}rpx;height: {{targetHeight * showScale}}rpx;">
       <!-- 人像 -->
 			<image 
-				style="width: {{width * showScale}}rpx; height: {{height * showScale}}rpx; left: {{left * showScale}}rpx; top: {{top * showScale}}rpx; transform: translate(-50%, -50%) scale({{ scale }});" 
+				style="width: {{portrait.width * showScale}}rpx; height: {{portrait.height * showScale}}rpx; left: {{portrait.left * showScale}}rpx; top: {{portrait.top * showScale}}rpx; transform: translate(-50%, -50%) scale({{ portrait.scale }});" 
 				class="people-photo" 
 				src="{{(tabIndex === 1 && filePath2) || filePath}}"
+				data-dataname="portrait"
 				bindload="bindload"
 				catchtouchstart="touchstart"
 				catchtouchmove="touchmove"
@@ -110,7 +111,7 @@
 		<view bindtap="toggleBg" data-color="blue2" class="color blue2 {{bgc === 'blue2' ? 'active' : ''}}"></view>
 		<view bindtap="toggleBg" data-color="custom" class="color custom {{bgc === 'custom' ? 'active' : ''}}">
 			<view class="text" style="font-size: 12px;"><text>自定义</text></view>
-			<view class="custom-bg" style="background-color: {{colorData.pickerData.hex}}"></view>
+			<view class="custom-bg" style="background-color: {{customBg}}"></view>
 		</view>
 	</view>
 	<view class="padding-xs" wx:if="{{count <= 0 && !filePath2}}">

@@ -118,6 +118,9 @@ page {
 	width: 100%;
 	background-color: #fff;
 }
+.color-picker-view .color-picker-content.hide {
+    display: none;
+}
 .color-picker-view .color-picker-content .tips {
 	position: absolute;
 	width: 4em;
