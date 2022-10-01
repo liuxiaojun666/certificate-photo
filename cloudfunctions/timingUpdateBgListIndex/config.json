@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "openapi": [
+    ]
+  },
+  "triggers": [
+    {
+      "name": "timingGetImage",
+      "type": "timer",
+      "config": "0 0 0 * * ? *"
+    }
+  ]
+}

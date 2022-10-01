@@ -29,7 +29,6 @@ Page({
         photoBg: '#ffffff', // 实际颜色
         customBg: '#000000',
         showColorPicker: false, // 颜色面板是否打开
-        rpxRatio: 1, //此值为你的屏幕CSS像素宽度/750，单位rpx实际像素
         portrait: {
             initImgHeight: 0,
             width: 0,
@@ -328,16 +327,6 @@ Page({
             key: 'guided',
             success(res) {
                 _this.setData({ guided: res.data })
-            }
-        })
-    },
-
-    // 设置屏幕宽度比例
-    setRpxRatio() {
-        const _this = this
-        wx.getSystemInfo({
-            success(res) {
-                _this.setData({ rpxRatio: res.screenWidth / 750 })
             }
         })
     },

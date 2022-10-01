@@ -10,12 +10,6 @@ let twoPoint = {
     x2: 0,
     y2: 0
 }
-let rpxRatio = 1
-wx.getSystemInfo({
-    success(res) {
-        rpxRatio = res.screenWidth / 750
-    }
-})
 export default {
     touchstart: function (e) {
         if (e.touches.length < 2) {
@@ -30,16 +24,13 @@ export default {
         }
     },
     touchmove: function (e, oldData) {
-        var that = this
-        const outerDataName = e.currentTarget.dataset.dataname
-
         if (e.touches.length < 2 && canOnePointMove) {
             const onePointDiffX = e.touches[0].pageX * 2 - onePoint.x
             const onePointDiffY = e.touches[0].pageY * 2 - onePoint.y
             const imgSetData = {
                 msg: '单点移动',
-                left: oldData.left + onePointDiffX * rpxRatio,
-                top: oldData.top + onePointDiffY * rpxRatio
+                left: oldData.left + onePointDiffX / 2,
+                top: oldData.top + onePointDiffY / 2
             }
             onePoint.x = e.touches[0].pageX * 2
             onePoint.y = e.touches[0].pageY * 2
