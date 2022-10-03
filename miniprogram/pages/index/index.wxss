@@ -122,6 +122,9 @@ swiper-item .swiper-item {
 	position: relative;
 	margin-bottom: 20rpx;
 }
+.hot-list ad {
+  margin-bottom: 20rpx;
+}
 .hot-list	.hot-list-item .title {
 	font-size: 26rpx;
 }

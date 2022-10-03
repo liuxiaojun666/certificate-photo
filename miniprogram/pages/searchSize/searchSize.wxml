@@ -29,4 +29,7 @@
 			<image src="./images/card-people.png"></image>
 		</view>
 	</view>
+  <view class="ad-view">
+		<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
+	</view>
 </scroll-view>

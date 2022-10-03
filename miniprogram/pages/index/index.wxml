@@ -7,13 +7,13 @@
         hover-class="none"
         target="miniProgram" 
         open-type="navigate" 
-        app-id="wxb8dbf52db369e889"
+        app-id="wx59207a0f58974db4"
         version="release"
         class="swiper-item">
         <view class="img-p">
           <image mode="widthFix" src="https://6465-dev-4iov0-1301148496.tcb.qcloud.la/pageSource/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200712103220.jpg?sign=45b750045f0072dadf793e6585900d9f&t=1664074868"></image>
           <view class="msg text-orange light">
-            <text class="cu-btn radius bg-orange">人像抠图 →</text>
+            <text class="cu-btn radius bg-orange">一键人像抠图 →</text>
             <view></view>
             <text class="sub-title">背景图片随意换</text>
           </view>
@@ -67,18 +67,25 @@
 		<image bindtap="navigateTo" data-url="/pages/searchSize/custom/custom" src="https://6465-dev-4iov0-1301148496.tcb.qcloud.la/pageSource/custom.png"></image>
 	</view>
 
+
   <!-- 热门列表 -->
 	<view class="hot-list">
-		<view
-			wx:for="{{photoSizeList}}"
-			wx:key="name"
-			data-index="{{index}}"
-			bindtap="goNextPage"
-			class="hot-list-item">
-			<view class="title">{{ item.name }}</view>
-			<view class="description">{{ item.px }}  |  {{ item.size }}</view>
-			<image src="/images/take.png"></image>
-		</view>
+    <view
+      wx:for="{{photoSizeList}}"
+      wx:key="name">
+      <ad
+        wx:if="{{ index % 3 === 1 }}"
+        unit-id="adunit-eaee002e3b71ca92">
+      </ad>
+      <view
+        data-index="{{index}}"
+        bindtap="goNextPage"
+        class="hot-list-item">
+        <view class="title">{{ item.name }}</view>
+        <view class="description">{{ item.px }}  |  {{ item.size }}</view>
+        <image src="/images/take.png"></image>
+      </view>
+    </view>
 	</view>
 
 	<view class="ad-view">

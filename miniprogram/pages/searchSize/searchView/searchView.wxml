@@ -15,10 +15,14 @@
 	<icon class="searchBtn" bindtap="searchClick" size="30" type="search" color="#3E85EE"></icon>
 </view>
 
-<view class="hot-list-item" wx:for="{{photoSizeList}}" wx:key="name" data-index="{{index}}" bindtap="goNextPage">
-	<view class="title">{{ item.name }}</view>
-	<view class="description">{{item.width_px}}*{{item.height_px}} px  |  {{item.width_mm}}*{{item.height_mm}} mm</view>
-	<image src="../images/card-people.png"></image>
+<ad unit-id="adunit-eaee002e3b71ca92"></ad>
+<view  wx:for="{{photoSizeList}}" wx:key="name">
+  <ad wx:if="{{ index % 3 === 2 }}" unit-id="adunit-eaee002e3b71ca92"></ad>
+  <view class="hot-list-item" data-index="{{index}}" bindtap="goNextPage">
+    <view class="title">{{ item.name }}</view>
+    <view class="description">{{item.width_px}}*{{item.height_px}} px  |  {{item.width_mm}}*{{item.height_mm}} mm</view>
+    <image src="../images/card-people.png"></image>
+  </view>
 </view>
 
 </scroll-view>
