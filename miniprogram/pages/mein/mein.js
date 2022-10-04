@@ -90,6 +90,7 @@ Page({
 				icon: 'none'
 			})
 		}
+    this.subscribeSign()
 		this.setData({ signInLoading: true })
 		wx.cloud.callFunction({
 			name: 'useCount',
@@ -110,6 +111,22 @@ Page({
 			data: {
         shareOpenid: fromShare
       }
+		})
+  },
+
+  // 订阅签到
+  subscribeSign() {
+    const tmplIds = ["h_P9sODh-NfeXteA5t7h6sS9BAIjtEyppGwt-biQIQ0"]
+		wx.requestSubscribeMessage({
+			tmplIds: tmplIds,
+			success: (res) => {
+        if (res[tmplIds[0]] === 'accept') {
+          wx.showToast({ title: '订阅成功', })
+        }
+      },
+			fail(error) {
+				console.log(error)
+			}
 		})
   },
 

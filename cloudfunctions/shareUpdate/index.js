@@ -47,7 +47,10 @@ async function triggerMessage (event, currentOpenid) {
   if (data[0].invitedList.some(openid => openid === currentOpenid)) return
   cloud.callFunction({
     name: 'triggerSubscrib',
-    data: { openid: event.shareOpenid }
+    data: {
+      openid: event.shareOpenid,
+      tmplId: 'CNuffKDjmxEOU_hM44Cu0KoGqOjfdacpbk4LT1abcnE'
+    }
   })
 }
 
