@@ -1,9 +1,11 @@
 const hexRgb = require('./hex-rgb')
 const { default: touch } = require('./touch')
+const imgSecCheck = require('./imgSecCheck')
 // 在页面中定义激励视频广告
 let videoAd = null
 // 全局数据，非视图中绑定的数据
 const pageData = {
+    originTempFilePath: '',
     originImgPath: '',
     originImgType: '',
 }
@@ -56,7 +58,8 @@ Page({
             left: 0,
             top: 0,
             scale: 1,
-        }
+        },
+        suportCropImage: !!wx.cropImage
     },
 
     // 切换普通抠图 、精细抠图
@@ -110,7 +113,7 @@ Page({
         // 人像图片vip src
         const vipSrc = (tabIndex === 1 && filePath2)
         // 人像图
-        const peopleImg = { imgId: vipSrc ? null : filePath, src: vipSrc, ...this.computedXY(baseImg, portrait) }
+        const peopleImg = { src: filePath || vipSrc, ...this.computedXY(baseImg, portrait) }
         // 发饰图
         const hairImg = { src: hair.src, ...this.computedXY(baseImg, hair) }
         // 衣服图
@@ -170,7 +173,6 @@ Page({
                 url,
                 success(res) {
                     if (res.statusCode === 200) {
-                        console.log(res)
                         resolve(res)
                     } else {
                         reject(res)
@@ -301,21 +303,19 @@ Page({
 
         this.getCount()
 
-        this.setRpxRatio()
-
     },
 
     // 接收参数
     receivingParameters() {
         const eventChannel = this.getOpenerEventChannel && this.getOpenerEventChannel()
         eventChannel && eventChannel.on('acceptDataFromOpenerPage', (data) => {
-            const { width, height, baiduKoutuResultFileId, originImgPath, originImgType } = data
-            Object.assign(pageData, { originImgPath, originImgType })
+            const { width, height, baiduKoutuUrl, originTempFilePath, originImgPath, originImgType } = data
+            Object.assign(pageData, { originTempFilePath, originImgPath, originImgType })
             this.setData({
                 targetWidth: width,
                 targetHeight: height,
                 showScale: (480 / (+width)),
-                filePath: baiduKoutuResultFileId,
+                filePath: baiduKoutuUrl,
             })
         })
     },
@@ -387,6 +387,37 @@ Page({
                 vipCount: res.data[0].vipCount
             })
         })
+    },
+
+    // 人像裁切，切完后变成白色背景了。放弃
+    async cropImage () {
+      wx.cropImage({
+        src: pageData.originTempFilePath,
+        cropScale: "1:1",
+        success: (res) => {
+          pageData.originTempFilePath = res.tempFilePath
+          imgSecCheck(res.tempFilePath).then(res => {
+            pageData.originImgPath = res.filePath
+            pageData.originImgType = res.originImgType
+            this.baiduKoutu(res.filePath)
+          })
+        }
+      })
+    },
+
+    	// 使用百度抠图
+    baiduKoutu (filePath) {
+      wx.showLoading({ title: '智能人像分割', })
+      wx.cloud.callFunction({
+        name: 'baiduKoutu',
+        data: { filePath }
+      })
+      .then(({ result }) => {
+        this.setData({ filePath: result.baiduKoutuUrl })
+      }).catch((error) => {
+        console.log(error)
+        wx.showToast({ 	title: '失败，请重试' })
+      })
     },
 
     // 换装

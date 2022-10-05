@@ -5,6 +5,7 @@ const pageData = {
   photoSizeList: app.globalData.photoSizeList,
   width: '',
   height: '',
+  originTempFilePath: '',
   originImgPath: '',
   originImgType: '',
 }
@@ -55,7 +56,9 @@ Page({
       mediaType: ['image'],
 			sizeType: ['compressed'],
 			success: (res) => {
-        this.imgSecCheck(res.tempFiles[0].tempFilePath)
+        const tempFilePath = res.tempFiles[0].tempFilePath
+        Object.assign(pageData, {originTempFilePath: tempFilePath})
+        this.imgSecCheck(tempFilePath)
 			},
 			fail () {
 				wx.showToast({ title: '取消选择', icon: 'none', duration: 2000 })
@@ -126,12 +129,13 @@ Page({
 	 */
 	goEditPage (data) {
 		wx.hideLoading()
-		const { width, height, originImgPath, originImgType } = pageData
+		const { width, height, originImgPath, originImgType, originTempFilePath } = pageData
 		wx.navigateTo({
 			url: '/pages/editPhoto/editPhotoPlus/editPhotoPlus',
 			success: function (res) {
 				res.eventChannel.emit('acceptDataFromOpenerPage', {
           ...data,
+          originTempFilePath,
           originImgPath,
           originImgType,
 					width,

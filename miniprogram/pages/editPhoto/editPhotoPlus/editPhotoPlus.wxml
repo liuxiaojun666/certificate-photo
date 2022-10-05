@@ -89,6 +89,15 @@
 			<image mode="widthFix" class="style" src="https://6465-dev-4iov0-1301148496.tcb.qcloud.la/hair/1/ahvga-47qgd-003_s.png"></image>
 			<text class="style-text">头发</text>
 		</view>
+    <!-- 不是很好用 -->
+		<!-- <view
+      wx:if="{{suportCropImage}}"
+      class="crop-image right"
+      bindtap="cropImage"
+      style="top: {{-(targetHeight * showScale)}}rpx;">
+			<image mode="widthFix" class="style" src="../images/crop.png"></image>
+			<text class="style-text">裁切</text>
+		</view> -->
 
 		<view wx-if="{{tabIndex === 1 && videoLoaded}}" bindtap="lookVideo" class="look-videw left" style="top: {{-(targetHeight * showScale)}}rpx;">
 			<image mode="widthFix" class="style" src="../images/look-video.png"></image>

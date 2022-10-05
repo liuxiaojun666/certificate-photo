@@ -13,16 +13,23 @@ swiper {
 	width: 100%;
 	height: 300rpx;
 }
+swiper-item {
+  width: 100%;
+  height: 100%;
+}
 swiper-item .swiper-item {
-	/* background-color: pink; */
-	height: 100%;
+  /* background-color: pink; */
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 
 /* 人像抠图 */
 .img-p {
 	background-color: #fff;
-	position: relative;
+  position: relative;
+  width: 100%;
 	height: 100%;
 }
 .img-p image {

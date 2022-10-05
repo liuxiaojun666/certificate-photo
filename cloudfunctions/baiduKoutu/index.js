@@ -34,6 +34,7 @@ exports.main = async (event, context) => {
   const url = await getFileUrlByFileID(resultFileId)
 
   return {
+    originFilePath: event.filePath,
     baiduKoutuResultFileId: resultFileId,
     baiduKoutuUrl: url
   }

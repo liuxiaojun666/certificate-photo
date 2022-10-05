@@ -252,6 +252,13 @@ page {
 	height: 100rpx;
 	text-align: center;
 }
+.gesture .crop-image {
+	position: absolute;
+	top: -250rpx;
+	width: 100rpx;
+	height: 100rpx;
+	text-align: center;
+}
 .gesture .look-videw {
 	position: absolute;
 	top: -250rpx;

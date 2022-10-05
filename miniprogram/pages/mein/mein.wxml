@@ -51,6 +51,12 @@
     </view>
   </view>
   <view class="cu-item arrow">
+    <view class="content" bindtap="previewQRcode">
+      <text class="cuIcon-people text-blue"></text>
+      <text>有问题找作者</text>
+    </view>
+  </view>
+  <view class="cu-item arrow">
     <button class="cu-btn content" open-type="contact" bindtouchstart="sendGroupQRCode">
       <text class="cuIcon-messagefill text-green"></text>
       <text class="text-grey">联系客服</text>
