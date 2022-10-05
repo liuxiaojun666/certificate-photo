@@ -301,13 +301,9 @@ Page({
   
   // 作者二维码
   previewQRcode() {
-    // wx.previewImage({
-    //   urls: ['cloud://dev-4iov0.6465-dev-4iov0-1301148496/WechatIMG199.jpeg'],
-    //   current: 'cloud://dev-4iov0.6465-dev-4iov0-1301148496/WechatIMG199.jpeg'
-    // })
-    wx.cropImage({
-      src: '/pages/index/images/help-make.png',
-      cropScale: '1:1'
+    wx.previewImage({
+      urls: ['cloud://dev-4iov0.6465-dev-4iov0-1301148496/WechatIMG199.jpeg'],
+      current: 'cloud://dev-4iov0.6465-dev-4iov0-1301148496/WechatIMG199.jpeg'
     })
   },
 
