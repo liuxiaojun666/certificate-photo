@@ -92,7 +92,7 @@
       wx:for="{{photoSizeList}}"
       wx:key="name">
       <ad
-        wx:if="{{ index % 3 === 1 }}"
+        wx:if="{{ index % 7 === 1 }}"
         unit-id="adunit-eaee002e3b71ca92">
       </ad>
       <view

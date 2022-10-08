@@ -9,8 +9,6 @@
 	<view>照片描述：{{discription}}</view>
 </view>
 
-<ad unit-id="adunit-eaee002e3b71ca92"></ad>
-
 <view class="header">拍照秘籍</view>
 <view class="tips">
 	<view>- 照片使用纯色背景（推荐白墙）</view>
