@@ -2,5 +2,13 @@
   "permissions": {
     "openapi": [
     ]
-  }
+  },
+
+  "triggers": [
+    {
+      "name": "timingUpdateImageCount",
+      "type": "timer",
+      "config": "0 */30 * * * * *"
+    }
+  ]
 }
