@@ -104,7 +104,7 @@ Page({
       } else if (res.result.errCode === -604102) {
         wx.showToast({ title: '超时，再试一下。或换个图试试', icon: 'none', duration: 3000 })
       } else {
-        wx.showToast({ title: '又是啥问题呀，请重试' + res.result.errCode, icon: 'none' })
+        wx.showToast({ title: '又是啥问题呀，请换图重试', icon: 'none', duration: 3000 })
       }
     })
     // 错误处理
