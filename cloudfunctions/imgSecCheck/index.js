@@ -7,10 +7,14 @@ cloud.init({
 })
 // 云函数入口函数
 exports.main = async (event, context) => {
-  // 图片压缩
-  const imgInfo = await imageMinify(event)
-  // 图片校验
-  return await imgSecCheck(event, imgInfo)
+  try {
+    // 图片压缩
+    const imgInfo = await imageMinify(event)
+    // 图片校验
+    return await imgSecCheck(event, imgInfo)
+  } catch (error) {
+    return await imgSecCheck(event, event)
+  }
 }
 
 // 图片压缩
