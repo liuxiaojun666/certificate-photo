@@ -8,6 +8,7 @@ const pageData = {
     originTempFilePath: '',
     originImgPath: '',
     originImgType: '',
+    compressImagePath: '',
 }
 Page({
 
@@ -251,7 +252,8 @@ Page({
             name: 'vipKoutu',
             data: {
                 imgSrc: pageData.originImgPath,
-                imgType: pageData.originImgType
+                imgType: pageData.originImgType,
+                compressSrc: pageData.compressImagePath
             }
         }).catch(e => wx.showToast({ title: '失败，请重试或帮助', icon: 'none' }))
 
@@ -309,8 +311,8 @@ Page({
     receivingParameters() {
         const eventChannel = this.getOpenerEventChannel && this.getOpenerEventChannel()
         eventChannel && eventChannel.on('acceptDataFromOpenerPage', (data) => {
-            const { width, height, baiduKoutuUrl, originTempFilePath, originImgPath, originImgType } = data
-            Object.assign(pageData, { originTempFilePath, originImgPath, originImgType })
+            const { width, height, baiduKoutuUrl, originTempFilePath, originImgPath, originImgType, compressImagePath } = data
+            Object.assign(pageData, { originTempFilePath, originImgPath, originImgType, compressImagePath })
             this.setData({
                 targetWidth: width,
                 targetHeight: height,

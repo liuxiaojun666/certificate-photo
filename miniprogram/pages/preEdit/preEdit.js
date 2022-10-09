@@ -8,6 +8,7 @@ const pageData = {
   originTempFilePath: '',
   originImgPath: '',
   originImgType: '',
+  compressImagePath: ''
 }
 
 Page({
@@ -92,6 +93,7 @@ Page({
         Object.assign(pageData, {
           originImgPath: res.result.originImgPath,
           originImgType: res.result.originImgType,
+          compressImagePath: res.result.filePath
         })
         this.baiduKoutu({
           fileID: res.result.fileId,
@@ -129,7 +131,7 @@ Page({
 	 */
 	goEditPage (data) {
 		wx.hideLoading()
-		const { width, height, originImgPath, originImgType, originTempFilePath } = pageData
+		const { width, height, originImgPath, originImgType, originTempFilePath, compressImagePath } = pageData
 		wx.navigateTo({
 			url: '/pages/editPhoto/editPhotoPlus/editPhotoPlus',
 			success: function (res) {
@@ -138,6 +140,7 @@ Page({
           originTempFilePath,
           originImgPath,
           originImgType,
+          compressImagePath,
 					width,
 					height
 				})
