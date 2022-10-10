@@ -21,15 +21,12 @@
 			<image src="./images/custom-img.png"></image>
 		</navigator>
     <!-- 广告 -->
-		<ad wx:if="{{ index % 6 === 3 }}" unit-id="adunit-eaee002e3b71ca92"></ad>
+		<ad wx:if="{{ index % 7 === 3 }}" unit-id="adunit-eaee002e3b71ca92"></ad>
     <!-- 证件照列表 -->
 		<view class="hot-list-item">
 			<view class="title">{{ item.name }}</view>
 			<view class="description">{{item.width_px}}*{{item.height_px}} px  |  {{item.width_mm}}*{{item.height_mm}} mm</view>
 			<image src="./images/card-people.png"></image>
 		</view>
-	</view>
-  <view class="ad-view">
-		<ad unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>
 	</view>
 </scroll-view>
