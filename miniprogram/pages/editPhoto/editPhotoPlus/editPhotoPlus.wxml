@@ -82,11 +82,11 @@
 	</view>
 	<view class="gesture">
 		<view class="change-clothes right" bindtap="changeClothes">
-			<image mode="widthFix" class="style" src="https://6465-dev-4iov0-1301148496.tcb.qcloud.la/clothes/2/acl8s-bu9e0-016_s.png"></image>
+			<image mode="widthFix" class="style" src="../images/acl8s-bu9e0-016_s.png"></image>
 			<text class="style-text">换装</text>
 		</view>
 		<view class="change-hair right" bindtap="changeHair">
-			<image mode="widthFix" class="style" src="https://6465-dev-4iov0-1301148496.tcb.qcloud.la/hair/1/ahvga-47qgd-003_s.png"></image>
+			<image mode="widthFix" class="style" src="../images/ahvga-47qgd-003_s.png"></image>
 			<text class="style-text">头发</text>
 		</view>
     <!-- 不是很好用 -->

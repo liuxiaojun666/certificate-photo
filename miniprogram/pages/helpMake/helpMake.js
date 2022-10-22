@@ -38,7 +38,7 @@ Page({
 		return {
 			title: '点这个帮我做张免冠照片吧。谢谢！',
 			path: '/pages/index/index',
-			imageUrl: 'https://6465-dev-4iov0-1301148496.tcb.qcloud.la/pageSource/shareShow.jpg'
+			imageUrl: '/shareShow.jpg'
 		}
 	},
 	
@@ -46,7 +46,7 @@ Page({
 		return {
 			title: '谁帮我制作个免冠照？点这个，谢谢。',
 			// path: '/pages/index/index',
-			imageUrl: 'https://6465-dev-4iov0-1301148496.tcb.qcloud.la/pageSource/shareShow.jpg'
+			imageUrl: '/shareShow.jpg'
 		}
 	},
 })

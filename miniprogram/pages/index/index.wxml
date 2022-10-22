@@ -11,7 +11,7 @@
         version="release"
         class="swiper-item">
         <view class="img-p">
-          <image mode="widthFix" src="cloud://dev-4iov0.6465-dev-4iov0-1301148496/pageSource/微信图片_20200712103220.jpg"></image>
+          <image mode="widthFix" src="./images/微信图片_20200712103220.jpg"></image>
           <view class="msg text-orange light">
             <text class="cu-btn radius bg-orange">一键P图</text>
             <view></view>
@@ -29,7 +29,7 @@
         version="release"
         class="swiper-item">
         <view class="img-p">
-          <image mode="widthFix" src="cloud://dev-4iov0.6465-dev-4iov0-1301148496/pageSource/2091664857079_.pic.jpg"></image>
+          <image mode="widthFix" src="./images/2091664857079_.pic.jpg"></image>
           <view class="msg text-blue light">
             <view class="cu-btn radius bg-blue text-white">下载</view>
             <view></view>
@@ -82,7 +82,7 @@
 
   <!-- 自定义入口 -->
 	<view class="custom-view">
-		<image bindtap="navigateTo" data-url="/pages/searchSize/custom/custom" src="https://6465-dev-4iov0-1301148496.tcb.qcloud.la/pageSource/custom.png"></image>
+		<image bindtap="navigateTo" data-url="/pages/searchSize/custom/custom" src="./images/custom.png"></image>
 	</view>
 
 

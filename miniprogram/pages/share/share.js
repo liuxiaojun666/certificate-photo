@@ -152,7 +152,7 @@ Page({
 			return {
 				title: '证件照、免冠照、一寸照片、二寸照片、证件照换背景，免费生成、下载。',
 				path: '/pages/index/index?shareOpenid=' + openid,
-				imageUrl: 'https://6465-dev-4iov0-1301148496.tcb.qcloud.la/pageSource/shareShow.jpg'
+				imageUrl: '/shareShow.jpg'
 			}
 		}
 	},

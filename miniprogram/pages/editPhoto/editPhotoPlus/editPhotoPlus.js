@@ -285,8 +285,8 @@ Page({
     // 显示作者二维码
     showQrcode2() {
         wx.previewImage({
-            urls: ['cloud://dev-4iov0.6465-dev-4iov0-1301148496/微信图片_20200606104940.jpg'],
-            current: 'cloud://dev-4iov0.6465-dev-4iov0-1301148496/微信图片_20200606104940.jpg'
+            urls: ['/images/WechatIMG199.jpeg'],
+            current: '/images/WechatIMG199.jpeg'
         })
     },
 
