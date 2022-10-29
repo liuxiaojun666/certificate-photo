@@ -8,23 +8,28 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  console.log(event)
   let type = event.imgType
   // 获取图片buffer
   let targetBuffer = await getHttpBuffer(event.imgSrc)
   // buffer转成base64
   let imageBase64 = encodeURI(targetBuffer.toString('base64'))
-  // 抠图接口调用
-  const result = await koutu(type, imageBase64)
-  // 抠图成功
-  if (result.status === 0) return result
+  try {
+    // 抠图接口调用
+    const result = await koutu(type, imageBase64)
+    // 抠图成功
+    if (result.status === 0) return result
+  } catch (error) {
+    
+    // 没有压缩图
+    if (!event.compressSrc) return result
+  
+    // 使用压缩图抠图
+    targetBuffer = await getHttpBuffer(event.compressSrc)
+    imageBase64 = encodeURI(targetBuffer.toString('base64'))
+    return await koutu('jpg', imageBase64)
+  }
 
-  // 没有压缩图
-  if (!event.compressSrc) return result
-
-  // 使用压缩图抠图
-  targetBuffer = await getHttpBuffer(event.compressSrc)
-  imageBase64 = encodeURI(targetBuffer.toString('base64'))
-	return await koutu('jpg', imageBase64)
 }
 
 async function koutu (type, imageBase64) {
