@@ -20,7 +20,7 @@ exports.main = async (event, context) => {
 	if (shareRes.stats.updated) {
 		useCountRes = await cloud.callFunction({
 			name: 'useCount',
-			data: { inc: 3, openid: wxContext.OPENID }
+			data: { inc: 10, openid: wxContext.OPENID }
 		})
 	}
 

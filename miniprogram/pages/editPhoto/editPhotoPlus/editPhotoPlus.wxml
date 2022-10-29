@@ -105,7 +105,7 @@
 		</view>
 		<view wx-if="{{tabIndex === 1}}" bindtap="vipKoutu" class="look-videw left" style="top: {{-(targetHeight * showScale) + 200}}rpx;">
 			<image mode="widthFix" class="style" src="../images/use.png"></image>
-			<text class="style-text text-red">{{vipCount}}次</text>
+			<text class="style-text text-red">剩{{vipCount}}次</text>
 		</view>
 		<view wx-if="{{tabIndex === 1 && ((targetHeight * showScale) > 350)}}" bindtap="showQrcode2" class="look-videw left" style="top: {{-150}}rpx;">
 			<image mode="widthFix" class="style" src="../images/author.png"></image>
@@ -128,13 +128,14 @@
 		<view wx:if="{{tabIndex === 1}}">点击使用后即可下载</view>
 	</view>
 	<view class="download-view">
-		<view class="no-count" wx:if="{{count <= 0 && !filePath2 && tabIndex === 0}}">
+		<view class="no-count" wx:if="{{ count <= 0 && !filePath2 && tabIndex === 0}}">
 			<!-- <button wx:if="{{videoLoaded}}" bindtap="lookVideo" type="default">看视频后下载</button> -->
 			<navigator target="self" url="/pages/mein/mein" open-type="reLaunch">
-				<button type="default">领 取 次 数</button>
+				<button type="default">领 取 次 数 (+10)</button>
 			</navigator>
 		</view>
 		<button wx:if="{{(!hideDownloadBtn) && (count > 0) && (tabIndex === 0)}}" bindtap="composeImage" type="default">下 载 图 片</button>
 		<button wx:if="{{(!hideDownloadBtn) && filePath2 && (tabIndex === 1)}}" bindtap="composeImage" type="default">下 载 图 片</button>
 	</view>
+    <ad unit-id="adunit-eaee002e3b71ca92"></ad>
 </view>

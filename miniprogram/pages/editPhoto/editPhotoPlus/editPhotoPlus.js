@@ -244,7 +244,9 @@ Page({
 
     // vip 精细抠图   
     async vipKoutu() {
-        if (this.data.vipCount <= 0) return
+        if (this.data.vipCount <= 0) {
+            return this.lookVideo()
+        }
         if (this.data.usedVip) return
         wx.showLoading({ title: '处理中...', })
 
