@@ -30,7 +30,7 @@ Page({
         hideDownloadBtn: false, // 隐藏下载按钮
         bgc: '#ffffff', // 照片背景色，选项非实际颜色
         photoBg: '#ffffff', // 实际颜色
-        customBg: '#000000',
+        customBg: '#ff0000',
         showColorPicker: false, // 颜色面板是否打开
         portrait: {
             initImgHeight: 0,

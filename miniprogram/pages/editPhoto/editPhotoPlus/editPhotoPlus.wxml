@@ -14,7 +14,7 @@
   <!-- 自定义背景颜色选择器 -->
 	<view class="color-picker-view">
 		<view wx:if="{{ showColorPicker }}" class="color-picker-content">
-			<button bindtap="closeColorPicker" size="mini" type="default">确定</button>
+			<button bindtap="closeColorPicker" size="mini" type="primary" style="background-color: #3E85EE;">确定</button>
 			<view class="tips">
 				<text class="text-red">先选右侧色系</text>
 				<text>\n\n</text>
