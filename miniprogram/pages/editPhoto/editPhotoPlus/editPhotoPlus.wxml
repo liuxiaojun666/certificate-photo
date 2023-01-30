@@ -131,7 +131,7 @@
 		<view class="no-count" wx:if="{{ count <= 0 && !filePath2 && tabIndex === 0}}">
 			<!-- <button wx:if="{{videoLoaded}}" bindtap="lookVideo" type="default">看视频后下载</button> -->
 			<navigator target="self" url="/pages/mein/mein" open-type="reLaunch">
-				<button type="default">领 取 次 数 (+10)</button>
+				<button type="default">领 取 次 数 (+1)</button>
 			</navigator>
 		</view>
 		<button wx:if="{{(!hideDownloadBtn) && (count > 0) && (tabIndex === 0)}}" bindtap="composeImage" type="default">下 载 图 片</button>

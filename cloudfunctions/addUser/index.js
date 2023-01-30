@@ -20,7 +20,7 @@ exports.main = async (event, context) => {
 			openid,
 			create_time: Date.now(),
 			accumCreatePhoto: 0,
-			count: 10,
+			count: 1,
 			signInDate: ''
 		}
 	})

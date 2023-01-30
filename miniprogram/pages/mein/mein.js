@@ -94,7 +94,7 @@ Page({
 		this.setData({ signInLoading: true })
 		wx.cloud.callFunction({
 			name: 'useCount',
-			data: {inc: 10, signIn: true}
+			data: {inc: 1, signIn: true}
 		}).then(res => {
 			wx.showToast({ title: '签到成功', })
       this.getUserInfo()
@@ -152,7 +152,7 @@ Page({
 	modalConfirm() {
 		wx.showModal({
 			title: '请选择奖励',
-			content: '选择普通，+10次普通下载，选择升级版 +1次升级版精细抠图',
+			content: '选择普通，+3次普通下载，选择升级版 +1次升级版精细抠图',
 			showCancel: true,
 			cancelText: '普通版',
 			confirmText: '升级版',
@@ -177,7 +177,7 @@ Page({
 		wx.showLoading()
 		wx.cloud.callFunction({
 			name: 'useCount',
-			data: {inc: 10}
+			data: {inc: 3}
 		}).then(res => {
 			wx.hideLoading({})
 			this.timerFunc()
