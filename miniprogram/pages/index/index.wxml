@@ -70,10 +70,10 @@
 	</view>
 
   <!-- 两个入口 -->
-	<view class="make-view">
+	<!-- <view class="make-view">
 		<image bindtap="navigateTo" data-url="/pages/helpMake/helpMake" src="./images/help-make.png"></image>
 		<image bindtap="navigateTo" data-url="/pages/searchSize/searchSize" src="./images/start-make.png"></image>
-	</view>
+	</view> -->
 	
   <!-- 近期热门 -->
 	<view class="hot-view">
@@ -92,7 +92,7 @@
       wx:for="{{photoSizeList}}"
       wx:key="name">
       <ad
-        wx:if="{{ index % 17 === 1 }}"
+        wx:if="{{ index % 17 === 2 }}"
         unit-id="adunit-eaee002e3b71ca92">
       </ad>
       <view

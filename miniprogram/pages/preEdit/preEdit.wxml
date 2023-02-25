@@ -17,15 +17,15 @@
 </view>
 
 
-<view class="flex justify-around padding-right btn-view">
-	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow">帮 制 作</navigator>
+<view class="flex justify-around btn-view">
+	<!-- <navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow">帮 制 作</navigator> -->
 	<view bindtap="chooseImage" class="cu-btn round bg-blue lg shadow">开始制作</view>
 </view>
 
 </scroll-view>
 
-<view class="flex justify-around padding-right btn-view">
-	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow">帮 制 作</navigator>
+<view class="flex justify-around btn-view">
+	<!-- <navigator url="/pages/helpMake/helpMake" hover-class="none" class="cu-btn round bg-orange lg shadow">帮 制 作</navigator> -->
 	<view bindtap="chooseImage" class="cu-btn round bg-blue lg shadow">开始制作</view>
 </view>
 

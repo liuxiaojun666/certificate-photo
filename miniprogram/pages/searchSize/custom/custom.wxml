@@ -14,6 +14,6 @@
 			<button class="btn-confirm" type="default" bindtap="selectPhoto">确定</button>
 		</view>
 	</form>
-	<navigator url="/pages/helpMake/helpMake" hover-class="none" class="text-orange lg margin-top">看不懂？不知道尺寸？帮制作</navigator>
+	<!-- <navigator url="/pages/helpMake/helpMake" hover-class="none" class="text-orange lg margin-top">看不懂？不知道尺寸？帮制作</navigator> -->
 </view>
 

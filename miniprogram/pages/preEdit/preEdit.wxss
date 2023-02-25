@@ -68,6 +68,9 @@ page {
 	box-shadow: 0 -10rpx 10rpx rgba(0,0,0,.1);
 	z-index: 9999;
 }
+.btn-view .cu-btn {
+  width: 90%;
+}
 
 .result-canvas-view {
 	position: absolute;
