@@ -29,7 +29,7 @@
         version="release"
         class="swiper-item">
         <view class="img-p">
-          <image mode="widthFix" src="./images/2091664857079_.pic.jpg"></image>
+          <image mode="widthFix" src="./images/3001677327372_.pic.jpg"></image>
           <view class="msg text-blue light">
             <view class="cu-btn radius bg-blue text-white">下载</view>
             <view></view>
