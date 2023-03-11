@@ -1,3 +1,4 @@
+<page-scroll-message style="width: 100%;"></page-scroll-message>
 <scroll-view class="container" scroll-y>
 
   <ad class="margin-bottom" unit-id="adunit-5ad655824a82ac5e" ad-type="video" ad-theme="white"></ad>

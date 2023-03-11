@@ -1,0 +1,38 @@
+/* components/pageScrollMessage.wxss */
+.container {
+  width: 100%;
+  height: 40rpx;
+  background-color: #DBEDFC;
+
+  
+}
+.container .msg {
+    display: block;
+    width: max-content;
+    line-height: 40rpx;
+    font-size: 24rpx;
+    color: #ee8b8d;
+    position: relative;
+    animation: 20s identifier linear infinite normal;
+    -webkit-animation: 20s identifier linear infinite normal;
+    word-break: keep-all;
+    white-space: nowrap;
+}
+
+@keyframes identifier {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes identifier {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}

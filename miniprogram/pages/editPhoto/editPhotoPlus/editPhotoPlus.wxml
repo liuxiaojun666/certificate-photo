@@ -1,4 +1,5 @@
 <view class="container">
+  <page-scroll-message style="width: 100%;"></page-scroll-message>
   <!-- tab切换 -->
 	<view wx:if="{{vipCount || filePath2 || videoLoaded}}" class="tabs">
 		<view bindtap="changeTab" data-index="0" class="{{tabIndex === 0 ? 'tab tab-active' : 'tab'}}">

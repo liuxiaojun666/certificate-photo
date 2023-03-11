@@ -1,4 +1,5 @@
 <view class="container">
+  <page-scroll-message style="width: 100%;"></page-scroll-message>
   <!-- <ad unit-id="adunit-eaee002e3b71ca92"></ad> -->
   <!-- 轮播图 -->
 	<swiper autoplay circular>

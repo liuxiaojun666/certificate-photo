@@ -1,0 +1,3 @@
+<view class="container">
+  <text id="text" class="msg text-yellow">制作免冠照片/证件照所上传及生成的图片资源最多保存两小时将被删除，请及时保存结果！</text>
+</view>

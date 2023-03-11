@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "选择照片",
 	"disableScroll": true,
-  "usingComponents": {}
+  "usingComponents": {
+		"page-scroll-message": "/components/pageScrollMessage/pageScrollMessage"
+  }
 }

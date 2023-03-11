@@ -1,6 +1,6 @@
 {
 	"navigationBarTitleText": "免冠照/证件照",
   "usingComponents": {
-		
+		"page-scroll-message": "/components/pageScrollMessage/pageScrollMessage"
 	}
 }
