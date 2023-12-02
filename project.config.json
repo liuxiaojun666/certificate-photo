@@ -42,13 +42,15 @@
     ],
     "lazyloadPlaceholderEnable": false,
     "useStaticServer": true,
-    "condition": false
+    "condition": true
   },
   "appid": "wxbe6c30a61a51b422",
   "projectname": "证件照微信小程序",
   "libVersion": "2.14.1",
   "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
+  "simulatorPluginLibVersion": {
+    "wxext14566970e7e9f62": "2.27.3"
+  },
   "compileType": "miniprogram",
   "srcMiniprogramRoot": "miniprogram/",
   "packOptions": {
@@ -60,5 +62,6 @@
     "tabSize": 2
   },
   "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
-  "condition": {}
+  "condition": {},
+  "projectArchitecture": "multiPlatform"
 }
