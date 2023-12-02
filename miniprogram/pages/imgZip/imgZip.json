@@ -1,0 +1,6 @@
+{
+	"navigationBarTitleText": "图片压缩",
+  "usingComponents": {
+		"page-scroll-message": "/components/pageScrollMessage/pageScrollMessage"
+	}
+}

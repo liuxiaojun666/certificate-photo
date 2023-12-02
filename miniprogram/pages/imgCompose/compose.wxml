@@ -1,0 +1,12 @@
+<view class="container">
+  <image class="backView" bindtap="choosePic" src="{{imageSrc?imageSrc:'../imgZip/image/choosePic.png'}}" mode="{{imageSrc?'aspectFit':'center'}}" />
+  <text wx:if="{{!imageSrc}}" style="position: relative;top: -250rpx;color: #999;font-size: 30rpx;">上传照片</text>
+
+  <view>
+    <text style="color: #999;">排版尺寸为常用6寸，建议原图为一寸/二寸照片</text>
+  </view>
+
+  <view style="display: flex;width: 85%;margin-top: 100rpx;">
+    <button bind:tap="downloadClick" class="zipBtn" style="flex: 1;">下载</button>
+  </view>
+</view>

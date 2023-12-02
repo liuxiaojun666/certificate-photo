@@ -4,7 +4,7 @@
 	position: relative;
 	box-sizing: border-box;
 	width: 100vw;
-	height: 100vh;
+	/* height: 100vh; */
 	display: flex;
 	flex-direction: column;
 }
@@ -49,17 +49,25 @@ swiper-item .swiper-item {
 }
 
 .search-view {
-	box-sizing: border-box;
-	width: 100%;
-	padding: 30rpx;
+  /* box-sizing: border-box; */
+  padding-left: 30rpx;
+  color: #999999;
+  margin: 30rpx;
+  width: 90%;
+  height: 35px;
+  padding: 15rpx;
+  border: 1px solid #3E85EE;
+  border-radius: 5px
+  
 }
-.search-view image {
+/* .search-view label {
 	width: 100%;
-	height: 70rpx;
-}
+  height: 170rpx;
+  padding-left: 50px;
+} */
 
 .tip-list {
-	padding: 0 30rpx;
+	padding: 0 50rpx;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -69,13 +77,15 @@ swiper-item .swiper-item {
 .tip-list .tip-item {
 	width: 88rpx;
 	height: 160rpx;
-	text-align: center;
-	font-size: 26rpx;
+  font-size: 22rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .tip-list .tip-item image {
-	width: 88rpx;
-	height: 88rpx;
+	width: 60rpx;
+	height: 60rpx;
 	margin-bottom: 20rpx;
 }
 
@@ -96,11 +106,11 @@ swiper-item .swiper-item {
 .hot-view {
 	box-sizing: border-box;
 	width: 100%;
-	padding: 0 30rpx;
+	padding: 0 40rpx;
 }
 .hot-view image {
-	width: 194rpx;
-	height: 55rpx;
+	width: 184rpx;
+	height: 50rpx;
 }
 
 .custom-view {
@@ -110,7 +120,7 @@ swiper-item .swiper-item {
 }
 .custom-view image {
 	width: 100%;
-	height: 130rpx;
+  height: 130rpx;
 }
 
 
@@ -124,7 +134,7 @@ swiper-item .swiper-item {
 	width: 100%;
 	height: 130rpx;
 	padding: 25rpx 40rpx;
-	background: #DBEDFC;
+  border: 1px solid #eee;
 	border-radius: 10rpx;
 	position: relative;
 	margin-bottom: 20rpx;
@@ -152,4 +162,56 @@ swiper-item .swiper-item {
 	width: 100%;
 	box-sizing: border-box;
 	padding: 0 30rpx;
+}
+
+
+.tips {
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 22rpx;
+    padding: 0 30rpx;
+    background: rgba(0,0,0,.6);
+    position: fixed;
+    top: 22rpx;
+    right: 30rpx;
+    z-index: 999;
+    border-radius: 8rpx;
+    display: flex;
+    align-items: center;
+}
+
+.tips.active {
+    display: none;
+}
+
+.sml_dot {
+    width: 10rpx;
+    height: 10rpx;
+    border-radius: 10rpx;
+    background: #fff;
+    display: inline-block;
+}
+
+.lag_dot {
+    width: 16rpx;
+    height: 16rpx;
+    border-radius: 16rpx;
+    background: #fff;
+    display: inline-block;
+    margin: 0 4rpx;
+}
+.top_arrow {
+    position: absolute;
+    top: -35rpx;
+    right: 100rpx;
+    width: 0;
+    height: 0;
+    border: 18rpx solid transparent;
+    border-bottom-color: rgba(0,0,0,.5);
+}
+.ok {
+    margin-left: 30rpx;
+    color: #f44;
 }

@@ -1,0 +1,33 @@
+<view class="container">
+
+<view class="backView">
+  <image bindtap="choosePic" src="{{imageSrc?imageSrc:'./image/choosePic.png'}}" mode="{{imageSrc?'aspectFit':'center'}}" />
+</view>
+<text wx:if="{{!imageSrc}}" style="position: relative;top: -280rpx;color: #999;font-size: 30rpx;">上传图片</text>
+
+<view wx:if="{{imageSrc}}">
+  <text style="color: #999;font-size: 24rpx;">压缩前图片宽{{realW}}px，高{{realH}}px，占用空间{{size}}kb</text>
+</view>
+
+<view class="setZipView" style="margin-top: 40rpx;">
+  <view style="text-align: left;display: flex;align-items: center;">
+    <label style="height: 100%;margin-right: 5rpx;">等比压缩：宽</label>
+    <input type="number" bindinput='imgWidth' value="{{imgW}}"/>
+    <label style="margin-left: 5rpx;">px</label>
+    <view style="width: 30rpx;"></view>
+    <label style="height: 100%;margin-right: 5rpx;">高</label>
+    <input type="number" bindinput='imgHeight' value="{{imgH}}"/>
+    <label style="margin-left: 5rpx;">px</label>
+  </view>
+</view>
+<view class="setZipView">
+  <view style="text-align: left;display: flex;align-items: center;">
+    <label style="height: 100%;">压缩质量：</label>
+    <input type="number" bindinput="imgQuality" placeholder="请输入50-100整数" value="{{quality}}" style="width: 370rpx;" />
+  </view>
+</view>
+
+<view class="setZipView">
+  <button bind:tap="zipClick" class="zipBtn">压缩</button>
+</view>
+</view>

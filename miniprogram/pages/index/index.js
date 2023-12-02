@@ -22,7 +22,14 @@ Page({
         data: options.shareOpenid
       })
     }
-	},
+  },
+  
+  //跳转分类页面
+  goClassPage(e) {
+    wx.navigateTo({
+        url: '/pages/searchSize/searchSize?index=' + e.currentTarget.dataset.index,
+    })
+  },
 
 	// 去选择照片页面
 	goNextPage (e) {

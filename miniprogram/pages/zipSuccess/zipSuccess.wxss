@@ -1,0 +1,28 @@
+/* pages/zipSuccess/zipSuccess.wxss *//* pages/imgZip/imgZip.wxss */
+.container {
+  width: 100%;
+  height: 100%;
+	/* overflow: hidden; */
+}
+.backView{
+  margin-top: 30rpx;
+  width: 85%;
+  height: 700rpx;
+  /* background-color: #999999; */
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.backView image {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+.downloadBtn{
+  background-color: #3E85EE;
+  margin-top: 20px;
+  color: white;
+  width: 90%;
+}

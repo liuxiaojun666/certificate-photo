@@ -1,4 +1,9 @@
 <view class="container">
+  <view wx:if="{{!tipsActiveClass}}" class="{{['tips',tipsActiveClass]}}">点击“<text class="sml_dot"></text>
+      <text class="lag_dot"></text>
+      <text class="sml_dot"></text>”添加到我的小程序<text bindtap="handleClickCollect" class="ok">我知道了</text>
+      <view class="top_arrow"></view>
+  </view>
   <page-scroll-message style="width: 100%;"></page-scroll-message>
   <!-- <ad unit-id="adunit-eaee002e3b71ca92"></ad> -->
   <!-- 轮播图 -->
@@ -41,51 +46,63 @@
     </swiper-item>
 	</swiper>
 
-  <!-- 搜索框 -->
-	<view class="search-view">
-		<image bindtap="navigateTo" data-url="/pages/searchSize/searchView/searchView" src="./images/search-input.png"></image>
-	</view>
+    <!-- 搜索框 -->
+    <view class="search-view" bindtap="navigateTo" data-url="/pages/searchSize/searchView/searchView">
+        搜索：如“一寸”
+    </view>
 
-  <!-- 常用尺寸 -->
-	<view class="tip-list">
-		<view data-index="{{0}}" bindtap="goNextPage" class="tip-item">
-			<image src="./images/icon-size2.png"></image>
-			<text>一寸</text>
-		</view>
-		<view data-index="{{1}}" bindtap="goNextPage" class="tip-item">
-			<image src="./images/icon-size1.png"></image>
-			<text>小一寸</text>
-		</view>
-		<view data-index="{{3}}" bindtap="goNextPage" class="tip-item">
-			<image src="./images/icon-size2.png"></image>
-			<text>二寸</text>
-		</view>
-		<view data-index="{{4}}" bindtap="goNextPage" class="tip-item">
-			<image src="./images/icon-size1.png"></image>
-			<text>小二寸</text>
-		</view>
-		<view bindtap="navigateTo" data-url="/pages/searchSize/searchSize" class="tip-item">
+    <!-- 功能区第一行 -->
+    <view class="tip-list">
+        <view data-index="{{0}}" bindtap="goClassPage" class="tip-item">
+            <image src="./images/home_icon0.png"></image>
+            <text>常用尺寸</text>
+        </view>
+        <view data-index="{{1}}" bindtap="goClassPage" class="tip-item">
+            <image src="./images/home_icon1.png"></image>
+            <text>职业资格</text>
+        </view>
+        <view data-index="{{2}}" bindtap="goClassPage" class="tip-item">
+            <image src="./images/home_icon2.png"></image>
+            <text>公务员</text>
+        </view>
+        <view data-index="{{3}}" bindtap="goClassPage" class="tip-item">
+            <image src="./images/home_icon3.png"></image>
+            <text>学历语言</text>
+        </view>
+        <!-- <view bindtap="navigateTo" data-url="/pages/searchSize/searchSize" class="tip-item">
 			<image src="./images/icon-more.png"></image>
 			<text>更多</text>
-		</view>
-	</view>
-
-  <!-- 两个入口 -->
-	<!-- <view class="make-view">
-		<image bindtap="navigateTo" data-url="/pages/helpMake/helpMake" src="./images/help-make.png"></image>
-		<image bindtap="navigateTo" data-url="/pages/searchSize/searchSize" src="./images/start-make.png"></image>
-	</view> -->
+		</view> -->
+    </view>
+    <!-- 功能区第二行 -->
+    <view class="tip-list">
+      <view bindtap="navigateTo" data-url="/pages/imgZip/imgZip" class="tip-item">
+          <image src="./images/home_icon4.png"></image>
+          <text>图片压缩</text>
+      </view>
+      <view bindtap="navigateTo" data-url="/pages/searchSize/custom/custom" class="tip-item">
+          <image src="./images/home_icon5.png"></image>
+          <text>自定尺寸</text>
+      </view>
+      <!--  -->
+      <view bindtap="navigateTo" data-url="/pages/imgCompose/compose" class="tip-item">
+          <image src="./images/home_icon6.png"></image>
+          <text>打印排版</text>
+      </view>
+      <view data-index="{{0}}" bindtap="goClassPage" class="tip-item">
+          <image src="./images/home_icon7.png"></image>
+          <text>更多</text>
+      </view>
+      <!-- <view bindtap="navigateTo" data-url="/pages/searchSize/searchSize" class="tip-item">
+    <image src="./images/icon-more.png"></image>
+    <text>更多</text>
+  </view> -->
+  </view>
 	
   <!-- 近期热门 -->
 	<view class="hot-view">
 		<image src="./images/hot.png"></image>
 	</view>
-
-  <!-- 自定义入口 -->
-	<view class="custom-view">
-		<image bindtap="navigateTo" data-url="/pages/searchSize/custom/custom" src="./images/custom.png"></image>
-	</view>
-
 
   <!-- 热门列表 -->
 	<view class="hot-list">

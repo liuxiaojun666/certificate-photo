@@ -37,7 +37,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-		this.requestdata();
+    // this.requestdata();
+    const {index} = options;
+    this.clickTab({ target: { dataset: { current: index || '1' } } })
 		wx.setNavigationBarTitle({ title: '免冠照/证件照尺寸' })
 	},
   // 跳转到搜索页面

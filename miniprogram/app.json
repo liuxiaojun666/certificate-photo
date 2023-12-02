@@ -11,7 +11,10 @@
     "pages/editPhoto/complete/complete",
     "pages/helpMake/helpMake",
     "pages/preEdit/preEdit",
-    "pages/editPhoto/editPhotoPlus/editPhotoPlus"
+    "pages/editPhoto/editPhotoPlus/editPhotoPlus",
+    "pages/imgZip/imgZip",
+    "pages/zipSuccess/zipSuccess",
+    "pages/imgCompose/compose"
   ],
   "window": {
     "backgroundColor": "#fff",

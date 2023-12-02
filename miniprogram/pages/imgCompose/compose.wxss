@@ -1,0 +1,25 @@
+/* pages/imgCompose/compose.wxss */
+/* pages/imgZip/imgZip.wxss */
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+	/* overflow: hidden; */
+}
+.backView{
+  margin-top: 30rpx;
+  width: 85%;
+  height: 700rpx;
+  /* background-color: #999999; */
+  border: 1px solid #eee;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.zipBtn{
+  background-color: #3E85EE;
+  margin-top: 20px;
+  color: white;
+  width: 90%;
+}

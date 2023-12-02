@@ -41,7 +41,8 @@
       "less"
     ],
     "lazyloadPlaceholderEnable": false,
-    "useStaticServer": true
+    "useStaticServer": true,
+    "condition": false
   },
   "appid": "wxbe6c30a61a51b422",
   "projectname": "证件照微信小程序",
