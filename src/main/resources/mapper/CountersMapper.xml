@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tencent.wxcloudrun.dao.CountersMapper">
+
+    <resultMap id="countersMapper" type="com.tencent.wxcloudrun.model.Counter">
+        <id property="id" column="id"/>
+        <result property="count" column="count"/>
+        <result property="createdAt" column="createdAt" javaType="java.time.LocalDateTime" />
+        <result property="updatedAt" column="updatedAt" javaType="java.time.LocalDateTime"  />
+    </resultMap>
+
+    <select id="getCounter" resultMap="countersMapper" parameterType="java.lang.Integer">
+        SELECT `id`, `count`, `createdAt`, `updatedAt`
+        FROM Counters
+        WHERE id = #{id}
+    </select>
+
+    <delete id="clearCount" parameterType="java.lang.Integer">
+        DELETE
+        FROM Counters
+        where id = #{id}
+        limit 1
+    </delete>
+
+    <update id="upsertCount" parameterType="com.tencent.wxcloudrun.model.Counter">
+        INSERT INTO `Counters`(`id`, `count`)
+        VALUE(#{id}, #{count}) 
+        ON DUPLICATE KEY UPDATE count=#{count}
+    </update>
+
+</mapper>

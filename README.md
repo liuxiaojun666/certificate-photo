@@ -1,34 +1,122 @@
+# wxcloudrun-springboot
+[![GitHub license](https://img.shields.io/github/license/WeixinCloud/wxcloudrun-express)](https://github.com/WeixinCloud/wxcloudrun-express)
+![GitHub package.json dependency version (prod)](https://img.shields.io/badge/maven-3.6.0-green)
+![GitHub package.json dependency version (prod)](https://img.shields.io/badge/jdk-11-green)
 
-# 证件照 小程序 (原生微信小程序 + 云开发)
-一个用于生成证件照的小程序
+微信云托管 Java Springboot 框架模版，实现简单的计数器读写接口，使用云托管 MySQL 读写、记录计数值。
 
-## 本项目仅供学习交流，禁止商业用途
-
-**声明：本项目禁止商用！否则后果自负。**
-
-**网络上发现了一些基于此项目的二次创作，感谢你们的二次创作。请尊重原创，辛苦二次创作以及分享的时候注明原作者原项目来源。**
-
-**不要直接问怎么配置上架，极其反感。** 
-
-### 功能
-
-用于免费快速生成证件照
-
-- 可自定义照片尺寸、背景颜色 
-- 支持换装、换发型 
-- 支持手势拖拽缩放编辑图片
+![](https://qcloudimg.tencent-cloud.cn/raw/be22992d297d1b9a1a5365e606276781.png)
 
 
-- 客服消息自动回复
-- 定时触发器
-- 云函数海报生成，图片合成
+## 快速开始
+前往 [微信云托管快速开始页面](https://developers.weixin.qq.com/miniprogram/dev/wxcloudrun/src/basic/guide.html)，选择相应语言的模板，根据引导完成部署。
 
--------------------------
+## 本地调试
+下载代码在本地调试，请参考[微信云托管本地调试指南](https://developers.weixin.qq.com/miniprogram/dev/wxcloudrun/src/guide/debug/)。
 
-![小程序码](https://6465-dev-4iov0-1301148496.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210411162950.jpg?sign=1cdabb92e1b2f3ffa846fc4f8007f5f8&t=1618129824)
+## 实时开发
+代码变动时，不需要重新构建和启动容器，即可查看变动后的效果。请参考[微信云托管实时开发指南](https://developers.weixin.qq.com/miniprogram/dev/wxcloudrun/src/guide/debug/dev.html)
 
-![欢迎骚扰](https://6465-dev-4iov0-1301148496.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200606104940.jpg?sign=185169727273f47f237464b4ebf90106&t=1618129640)
+## Dockerfile最佳实践
+请参考[如何提高项目构建效率](https://developers.weixin.qq.com/miniprogram/dev/wxcloudrun/src/scene/build/speed.html)
 
-![赞赏支持](https://6465-dev-4iov0-1301148496.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200327222252.jpg?sign=9b042f8caa5f3a4e4506cdd75b04f789&t=1618129652)
+## 目录结构说明
+~~~
+.
+├── Dockerfile                      Dockerfile 文件
+├── LICENSE                         LICENSE 文件
+├── README.md                       README 文件
+├── container.config.json           模板部署「服务设置」初始化配置（二开请忽略）
+├── mvnw                            mvnw 文件，处理mevan版本兼容问题
+├── mvnw.cmd                        mvnw.cmd 文件，处理mevan版本兼容问题
+├── pom.xml                         pom.xml文件
+├── settings.xml                    maven 配置文件
+├── springboot-cloudbaserun.iml     项目配置文件
+└── src                             源码目录
+    └── main                        源码主目录
+        ├── java                    业务逻辑目录
+        └── resources               资源文件目录
+~~~
 
 
+## 服务 API 文档
+
+### `GET /api/count`
+
+获取当前计数
+
+#### 请求参数
+
+无
+
+#### 响应结果
+
+- `code`：错误码
+- `data`：当前计数值
+
+##### 响应结果示例
+
+```json
+{
+  "code": 0,
+  "data": 42
+}
+```
+
+#### 调用示例
+
+```
+curl https://<云托管服务域名>/api/count
+```
+
+
+
+### `POST /api/count`
+
+更新计数，自增或者清零
+
+#### 请求参数
+
+- `action`：`string` 类型，枚举值
+  - 等于 `"inc"` 时，表示计数加一
+  - 等于 `"clear"` 时，表示计数重置（清零）
+
+##### 请求参数示例
+
+```
+{
+  "action": "inc"
+}
+```
+
+#### 响应结果
+
+- `code`：错误码
+- `data`：当前计数值
+
+##### 响应结果示例
+
+```json
+{
+  "code": 0,
+  "data": 42
+}
+```
+
+#### 调用示例
+
+```
+curl -X POST -H 'content-type: application/json' -d '{"action": "inc"}' https://<云托管服务域名>/api/count
+```
+
+## 使用注意
+如果不是通过微信云托管控制台部署模板代码，而是自行复制/下载模板代码后，手动新建一个服务并部署，需要在「服务设置」中补全以下环境变量，才可正常使用，否则会引发无法连接数据库，进而导致部署失败。
+- MYSQL_ADDRESS
+- MYSQL_PASSWORD
+- MYSQL_USERNAME
+以上三个变量的值请按实际情况填写。如果使用云托管内MySQL，可以在控制台MySQL页面获取相关信息。
+
+
+## License
+
+[MIT](./LICENSE)
